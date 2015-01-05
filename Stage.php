@@ -1,6 +1,3 @@
-<?php
-defined('ABSPATH') or die("No script kiddies please!");
-?>
 <html>
 	<head>
 		<title>Starting Version Demo Page</title>
@@ -16,6 +13,7 @@ defined('ABSPATH') or die("No script kiddies please!");
 		 'Age:'.
 		 '<input type="text" name="lastname">16-17 <br>'.
 		 '<input type="text" name="lastname">18+<br>'.
+		 'Last name: <input type="text" name="lastname"><br>'.
 		  '</form>'
 ?>
 	</body>
