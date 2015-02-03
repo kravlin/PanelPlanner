@@ -1,5 +1,3 @@
-//defined('ABSPATH') or die("No script kiddies please!");
-
 <?php
 /**
  Plugin Name: Panel Planner
