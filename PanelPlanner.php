@@ -25,7 +25,7 @@ defined('ABSPATH') or die("No script kiddies please!");
     along with this program; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 **/
-
+/**
 if(!class_exists('PanelPlanner'))
 {
 	class PanelPlanner
@@ -38,7 +38,7 @@ if(!class_exists('PanelPlanner'))
 		}
 	/**Activate the plugin**/
 		public static function activate(){
-
+			
 		}
 	/**Deactivate the plugin**/
 		public static function deactivate(){
@@ -80,3 +80,21 @@ if(class_exists('PanelPlanner'))
    		add_filter("plugin_action_links_$plugin", 'plugin_settings_link');
 	}
 }
+**/
+
+function panel_planner_menu(){
+		add_options_page( 'Panel Planner Options', 'Panel Planner', 'manage_options','panel_planner','panel_planner_admin' );
+}
+
+function panel_planner_admin(){
+	if( !current_user_can( 'manage_options') ){
+		wp_die( __( 'You do not have permission to access this page.') );
+	}
+	echo '<div class="wrap">';
+	echo '<p>Options will eventually go here.</p>';
+	echo '</div>';
+}
+
+
+/** Main method for instantiating Panel Planner */
+add_action( 'admin_menu', 'panel_planner_menu');
