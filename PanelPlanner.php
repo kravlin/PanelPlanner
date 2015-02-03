@@ -26,7 +26,7 @@
 
 
 function panel_planner_menu(){
-		add_options_page('Panel Planner Settings','Settings', 'manage_options','panelplanner-options.php','panel_planner_gen_options');}
+		add_options_page('Panel Planner Settings','Panel Planner Settings', 'manage_options','panelplanner-options.php','panel_planner_gen_options');}
 
 function panel_planner_admin(){
 	if( !current_user_can( 'manage_options') ){
