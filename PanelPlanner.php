@@ -28,18 +28,8 @@
 function panel_planner_menu(){
 		add_options_page('Panel Planner Settings','Panel Planner Settings', 'manage_options','panelplanner-options.php','panel_planner_gen_options');}
 
-function panel_planner_admin(){
-	if( !current_user_can( 'manage_options') ){
-		wp_die( __( 'You do not have permission to access this page.') );
-	}
-	echo '<div class="wrap">';
-	echo '<p>Options will eventually go here.</p>';
-	echo '</div>';
-}
 
-
-/** Main method for instantiating Panel Planner */
+/** Main method for running Panel Planner */
 add_action( 'admin_menu', 'panel_planner_menu');
-
 
 ?>
