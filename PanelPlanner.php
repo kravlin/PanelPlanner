@@ -26,7 +26,7 @@
 
 
 function panel_planner_menu(){
-		add_options_page('Panel Planner Settings','Panel Planner Settings', 'manage_options','panelplanner-options.php','panel_planner_gen_options');}
+		add_options_page('Panel Planner Settings','Panel Planner Settings', 'manage_options','panelplanner-options.php','panel_planner_gen_options_page');}
 
 
 /** Main method for running Panel Planner */
