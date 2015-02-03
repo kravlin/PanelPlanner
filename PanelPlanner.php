@@ -43,6 +43,6 @@ function panel_planner_admin(){
 
 /** Main method for instantiating Panel Planner */
 add_action( 'admin_menu', 'panel_planner_menu');
-add_options_page('Panel Planner Settings','Settings', 'manage_options','panelplanner-options.php');
+add_options_page('Panel Planner Settings','Settings', 'manage_options','panelplanner-options.php','panel_planner_gen_options');
 
 ?>
