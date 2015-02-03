@@ -26,10 +26,36 @@
 
 
 function panel_planner_menu(){
-		add_options_page('Panel Planner Settings','Panel Planner Settings', 'manage_options','panelplanner-options.php','panel_planner_gen_options_page');}
+	add_options_page('Panel Planner Settings','Panel Planner Settings', 'manage_options','panelplanner-options.php','panel_planner_gen_options_page');
+}
 
+function panel_planner_activate(){
+	remove_role("panel_planner"); //This is here in case the following code changes. As otherwise it will not overwrite the old settings.
+	add_role ("panel_planner", "Panel Planner", array( //I'd love to set this to user level 0, but that's depricated.
+		'read' => false,
+		'edit_posts' => false, 
+		'delete_posts' => false,
+		) 
+	);
+	if( null !== $result ){
+		echo "Panel Planner role created.";
+	}else{
+		echo "Panel Planner role already exists";
+	}
+}
+
+function panel_planner_deactivate(){
+
+}
+
+function panel_planner_uninstall(){
+	remove_role("panel_planner"); //Remove old user rights.
+}
 
 /** Main method for running Panel Planner */
 add_action( 'admin_menu', 'panel_planner_menu');
+register_activation_hook( __FILE__, 'panel_planner_activate');
+register_deactivation_hook(__FILE__, 'panel_planner_deactivate');
+register_uninstall_hook(__FILE__, 'panel_planner_uninstall');
 
 ?>
