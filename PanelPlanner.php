@@ -42,6 +42,8 @@ function panel_planner_activate(){
 	}else{
 		echo "Panel Planner role already exists";
 	}
+	$custom_capability = 'Approve Panels';
+	
 }
 
 function panel_planner_deactivate(){

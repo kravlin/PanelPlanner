@@ -1,9 +1,21 @@
 <?php
 
 function panelplanner_build_form_stage1(){
-	echo '<form action="' . esc_url( $_SERVER['REQUEST_URI'] ) . '" method="post">';
+    //Begin Javascript
+	echo '<script type="text/Javascript">'.
+         'function show_copanelist() {'.
+         'if (document.getElementById("CoPanelist").style.display = "none"'.
+         '}'.
+         'function hide_copanelist() {'.
+         'if (document.getElementById("CoPanelist").style.display = "hide"'.
+         '}'.
+         '</script>'
+    //End Javascript
+
+    echo '<form action="' . esc_url( $_SERVER['REQUEST_URI'] ) . '" method="post">';
+
+	//Begin Panelist
     echo '<p>';
-	
 	echo 'First Name (required) <br />';
     echo '<input type="text" name="pp-first-name" pattern="[a-zA-Z0-9 ]+" value="' . ( isset( $_POST["pp-first-name"] ) ? esc_attr( $_POST["pp-first-name"] ) : '' ) . '" size="40" />';
     echo '</p>';
@@ -19,8 +31,15 @@ function panelplanner_build_form_stage1(){
     echo 'Age (required) <br />';
     echo '<input type="text" name="pp-age" pattern="[0-9]+" value="' . ( isset( $_POST["pp-age"] ) ? esc_attr( $_POST["pp-age"] ) : '' ) . '" size="40" />';
     echo '</p>';
-    echo '<p>';
+    //End Panelist
+    
+    echo '<p>'
+    echo '<input type="checkbox" onchange="show_hide_copanelist()"/> I have a CoPanelist.'
+    echo '</p>'
 
+    //Begin Copanelist
+    echo '<div id="divCopanelist" style="visibility: hidden" >' 
+    echo '<p>';
     echo 'First Name (required) <br />';
     echo '<input type="text" name="pp-first-name2" pattern="[a-zA-Z0-9 ]+" value="' . ( isset( $_POST["pp-first-name2"] ) ? esc_attr( $_POST["pp-first-name2"] ) : '' ) . '" size="40" />';
     echo '</p>';
@@ -36,8 +55,10 @@ function panelplanner_build_form_stage1(){
     echo 'Age (required) <br />';
     echo '<input type="text" name="pp-age2" pattern="[0-9]+" value="' . ( isset( $_POST["pp-age2"] ) ? esc_attr( $_POST["pp-age2"] ) : '' ) . '" size="40" />';
     echo '</p>';
-    echo '<p>';
-}
+    echo '</div>' 
+    //End Copanelist
+
+    //Begin Panel
     echo '<p>';
     echo 'Panel Title (required) <br />';
     echo '<input type="text" name="pp-title" value="' . ( isset( $_POST["pp-title"] ) ? esc_attr( $_POST["pp-title"] ) : '' ) . '" size="40" />';
@@ -51,6 +72,7 @@ function panelplanner_build_form_stage1(){
 	echo '</p>';
     echo '<p><input type="submit" name="pp-submitted" value="Send"/></p>';
     echo '</form>';
+    //End Panel
 }
 
 function save_input(){
