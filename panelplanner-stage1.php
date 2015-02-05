@@ -101,8 +101,6 @@ function send_mail(){
 
 }
 
-}
-
 panel_planner_build_form_stage1();
 
 ?>
