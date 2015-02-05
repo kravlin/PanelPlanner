@@ -1,5 +1,8 @@
-<?php
+<html>
+<head> NDK Panel Form - Stage 1 </head>
+<body>
 
+<?php
 function panel_planner_build_form_stage1(){
     //Begin Javascript
 	echo '<script type="text/Javascript">'.
@@ -103,3 +106,6 @@ function send_mail(){
 panel_planner_build_form_stage1();
 
 ?>
+
+</body>
+</html>
