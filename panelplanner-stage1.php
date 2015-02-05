@@ -9,9 +9,9 @@ function panel_planner_build_form_stage1(){
          'function show_hide_copanelist() {'.
             'var toChange = document.getElementById("CoPanelist")'.
             'if (toChange.style.display = "none"){'.
-                'toChange.style.display = "block"'.               
+                'toChange.style.display = ""'.               
             '}'.
-            'if (toChange.style.display = "block"){'.
+            'if (toChange.style.display = ""){'.
                 'toChange.style.display = "none"'.
             '}'.
          '}'.
@@ -40,11 +40,11 @@ function panel_planner_build_form_stage1(){
     //End Panelist
     
     echo '<p>';
-    echo '<input type="checkbox" onchange="show_hide_copanelist()"/> I have a CoPanelist.';
+    echo '<input type="checkbox" onchange="javascript:show_hide_copanelist()"/> I have a CoPanelist.';
     echo '</p>';
 
     //Begin Copanelist
-    echo '<div id="CoPanelist" style="display: block" >'; 
+    echo '<div id="CoPanelist" style="display: none" >'; 
     echo '<p>';
     echo 'First Name (required) <br />';
     echo '<input type="text" name="pp-first-name2" pattern="[a-zA-Z0-9 ]+" value="' . ( isset( $_POST["pp-first-name2"] ) ? esc_attr( $_POST["pp-first-name2"] ) : '' ) . '" size="40" />';
