@@ -1,5 +1,5 @@
 <html>
-<head> NDK Panel Form - Stage 1 </head>
+<head><title> NDK Panel Form - Stage 1 </title></head>
 <body>
 
 <?php
@@ -17,7 +17,7 @@ function panel_planner_build_form_stage1(){
          '</script>';
     //End Javascript
 
-    echo '<form action="' . esc_url( $_SERVER['REQUEST_URI'] ) . '" method="post">';
+    echo '<form action="panelplanner-stage1.php" method="post">';
 
 	//Begin Panelist
     echo '<p>';
