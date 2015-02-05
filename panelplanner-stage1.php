@@ -43,7 +43,7 @@ function panel_planner_build_form_stage1(){
     echo '</p>';
 
     //Begin Copanelist
-    echo '<div id="divCopanelist" style="display: block" >'; 
+    echo '<div id="Copanelist" style="display: block" >'; 
     echo '<p>';
     echo 'First Name (required) <br />';
     echo '<input type="text" name="pp-first-name2" pattern="[a-zA-Z0-9 ]+" value="' . ( isset( $_POST["pp-first-name2"] ) ? esc_attr( $_POST["pp-first-name2"] ) : '' ) . '" size="40" />';
