@@ -7,11 +7,12 @@ function panel_planner_build_form_stage1(){
     //Begin Javascript
 	echo '<script type="text/Javascript">'.
          'function show_hide_copanelist() {'.
-            'if (document.getElementById("CoPanelist").style.display = "none"){'.
-                'document.getElementById("CoPanelist").style.display = "block"'.               
+            'var toChange = document.getElementById("CoPanelist")'.
+            'if (toChange.style.display = "none"){'.
+                'toChange.style.display = "block"'.               
             '}'.
-            'if (document.getElementById("CoPanelist").style.display = "block"){'.
-                'document.getElementById("CoPanelist").style.display = "none"'.
+            'if (toChange.style.display = "block"){'.
+                'toChange.style.display = "none"'.
             '}'.
          '}'.
          '</script>';
@@ -43,7 +44,7 @@ function panel_planner_build_form_stage1(){
     echo '</p>';
 
     //Begin Copanelist
-    echo '<div id="Copanelist" style="display: block" >'; 
+    echo '<div id="CoPanelist" style="display: block" >'; 
     echo '<p>';
     echo 'First Name (required) <br />';
     echo '<input type="text" name="pp-first-name2" pattern="[a-zA-Z0-9 ]+" value="' . ( isset( $_POST["pp-first-name2"] ) ? esc_attr( $_POST["pp-first-name2"] ) : '' ) . '" size="40" />';
