@@ -3,11 +3,13 @@
 function panelplanner_build_form_stage1(){
     //Begin Javascript
 	echo '<script type="text/Javascript">'.
-         'function show_copanelist() {'.
-         'if (document.getElementById("CoPanelist").style.display = "none"'.
-         '}'.
-         'function hide_copanelist() {'.
-         'if (document.getElementById("CoPanelist").style.display = "hide"'.
+         'function show_hide_copanelist() {'.
+            'if (document.getElementById("CoPanelist").style.display = "none"){'.
+                'document.getElementById("CoPanelist").style.display = "hide"'.               
+            '}'.
+            'if (document.getElementById("CoPanelist").style.display = "hide"){'.
+                'document.getElementById("CoPanelist").style.display = "none"'.
+            '}'.
          '}'.
          '</script>'
     //End Javascript
