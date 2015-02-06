@@ -2,7 +2,7 @@
 <head><title> NDK Panel Form - Stage 1 </title>
 <script type="text/Javascript">
     function show_hide(element) {
-        if (document.getElementById(element).style.display = "none"){
+        if (document.getElementById(element).style.display == "none"){
             document.getElementById(element).style.display = "";              
         }
         else{
