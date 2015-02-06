@@ -1,12 +1,12 @@
 <html>
 <head><title> NDK Panel Form - Stage 1 </title>
 <script type="text/Javascript">
-    function show_hide_copanelist(element) {
+    function show_hide(element) {
         if (document.getElementById(element).style.display = "none"){
-            document.getElementById(element).style.display = ""              
+            document.getElementById(element).style.display = "";              
         }
         if (document.getElementById(element).style.display = ""){
-            element.style.display = "none"
+            document.getElementById(element).style.display = "none";
         }
     }
 </script>
