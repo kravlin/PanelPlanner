@@ -1,8 +1,8 @@
 <html>
 <head><title> NDK Panel Form - Stage 1 </title>
 <script type="text/Javascript">
-    function show_hide(element) {
-        if (document.getElementById(element).checked){
+    function show_hide(element1, element2) {
+        if (document.getElementById(element2).checked){
             document.getElementById(element).style.display = "";              
         }
         else{
@@ -40,7 +40,7 @@ function panel_planner_build_form_stage1(){
     //End Panelist
     
     echo '<p>';
-    echo '<input type="checkbox" onchange="javascript:show_hide(\'CoPanelist\');"/> I have a CoPanelist.';
+    echo '<input type="checkbox" onchange="javascript:show_hide(\'CoPanelist\',\'checkbox\');"/> I have a CoPanelist.';
     echo '</p>';
 
     //Begin Copanelist
