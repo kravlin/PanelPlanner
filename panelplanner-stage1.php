@@ -1,21 +1,21 @@
 <html>
 <head><title> NDK Panel Form - Stage 1 </title></head>
+<script type="text/Javascript">
+         function show_hide_copanelist(element) {
+            if (element.style.display = "none"){
+                element.style.display = ""              
+            }
+            if (element.style.display = ""){
+                element.style.display = "none"
+            }
+         }
+</script>
 <body>
 
 <?php
 function panel_planner_build_form_stage1(){
     //Begin Javascript
-	echo '<script type="text/Javascript">'.
-         'function show_hide_copanelist() {'.
-            'var toChange = document.getElementById("CoPanelist")'.
-            'if (toChange.style.display = "none"){'.
-                'toChange.style.display = ""'.               
-            '}'.
-            'if (toChange.style.display = ""){'.
-                'toChange.style.display = "none"'.
-            '}'.
-         '}'.
-         '</script>';
+
     //End Javascript
 
     echo '<form action="panelplanner-stage1.php" method="post">';
