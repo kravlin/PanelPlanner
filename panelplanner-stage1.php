@@ -40,7 +40,7 @@ function panel_planner_build_form_stage1(){
     //End Panelist
     
     echo '<p>';
-    echo '<input type="checkbox" id="has_copanelist" onchange="javascript:show_hide(\'CoPanelist\',\'has_copanelist\');"/> I have a CoPanelist.';
+    echo '<input type="checkbox" checked="false" id="has_copanelist" onchange="javascript:show_hide(\'CoPanelist\',\'has_copanelist\');"/> I have a CoPanelist.';
     echo '</p>';
 
     //Begin Copanelist
