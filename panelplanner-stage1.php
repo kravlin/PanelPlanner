@@ -1,17 +1,17 @@
 <html>
-<head><title> NDK Panel Form - Stage 1 </title></head>
+<head><title> NDK Panel Form - Stage 1 </title>
 <script type="text/Javascript">
-         function show_hide_copanelist(element) {
-            if (element.style.display = "none"){
-                element.style.display = ""              
-            }
-            if (element.style.display = ""){
-                element.style.display = "none"
-            }
-         }
+    function show_hide_copanelist(element) {
+        if (document.getElementById(element).style.display = "none"){
+            document.getElementById(element).style.display = ""              
+        }
+        if (document.getElementById(element).style.display = ""){
+            element.style.display = "none"
+        }
+    }
 </script>
+</head>
 <body>
-
 <?php
 function panel_planner_build_form_stage1(){
     //Begin Javascript
@@ -40,7 +40,7 @@ function panel_planner_build_form_stage1(){
     //End Panelist
     
     echo '<p>';
-    echo '<input type="checkbox" onchange="javascript:show_hide_copanelist()"/> I have a CoPanelist.';
+    echo '<input type="checkbox" onchange="javascript:show_hide('CoPanelist');"/> I have a CoPanelist.';
     echo '</p>';
 
     //Begin Copanelist
