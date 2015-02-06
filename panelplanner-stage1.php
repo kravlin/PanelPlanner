@@ -3,10 +3,10 @@
 <script type="text/Javascript">
     function show_hide(element1, element2) {
         if (document.getElementById(element2).checked){
-            document.getElementById(element).style.display = "";              
+            document.getElementById(element1).style.display = "";              
         }
         else{
-            document.getElementById(element).style.display = "none";
+            document.getElementById(element1).style.display = "none";
         }
     }
 </script>
