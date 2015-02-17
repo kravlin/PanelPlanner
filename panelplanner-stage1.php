@@ -40,7 +40,7 @@ function panel_planner_build_form_stage1(){
     //End Panelist
     
     echo '<p>';
-    echo '<input type="checkbox" checked="false" id="has_copanelist" onchange="javascript:show_hide(\'CoPanelist\',\'has_copanelist\');"/> I have a CoPanelist.';
+    echo '<input type="checkbox" checked="false" id="pp-hasCopanelist" onchange="javascript:show_hide(\'CoPanelist\',\'pp-hasCopanelist\');"/> I have a CoPanelist.';
     echo '</p>';
 
     //Begin Copanelist
@@ -82,27 +82,85 @@ function panel_planner_build_form_stage1(){
 }
 
 function save_input(){
-	if ( isset( $_POST['pp-submitted'] ) ) {
-		$first_name = sanitize_text_field( $_POST["pp-first-name"]);
-		$last_name = sanitize_text_field( $_POST["pp-last-name"]);
-		$email_address = sanitize_email( $_POST["pp-email"]);
-		$age = sanitize_text_field( $_POST["pp-age"]);
 
-		$first_name2 = sanitize_text_field( $_POST["pp-first-name2"]);
-		$last_name2 = sanitize_text_field( $_POST["pp-last-name2"]);
-		$email_address2 = sanitize_email( $_POST["pp-email2"]);
-		$age2 = sanitize_text_field( $_POST["pp-age2"]);
+    try{
+        $db_conn = new PDO("mysql:host=$servername;dbname=myDB", $username, $password);
+        $db_conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        echo "Connected successfully"
+    }
+    catch(PDOException $e){
+        echo "Connection failed: " . $e->getMessage();
+    }
 
-		$panel_description = esc_textarea( $_POST["pp-description"]);
-		$panel_outline = esc_textarea( $_POST["pp-outline"]);
-	}
-	$to = get_option( 'admin_email' );
+    //Prepare statements for insertion of panelists and panels
+    
+    $panelist_query = $db_conn->prepare("INSERT INTO panelists (firstName, lastName, emailAddress, age) VALUES (:firstname, :lastname, :email, :age)");
+    $panelist_query->bindParam(':firstname', $firstName);
+    $panelist_query->bindParam(':lastname', $lastName);
+    $panelist_query->bindParam(':email', $email);
+    $panelist_query->bindParam(':age', $age);
+
+    $panel_query = $db_conn->prepare("INSERT INTO panel (panelTitle, panelDescription, panelOutline) VALUES (:paneltitle, :paneldescription, :paneloutline)");
+    $panel_query->bindParam(':paneltitle', $panelTitle);
+    $panel_query->bindParam(':paneldescription', $panelDescription);
+    $panel_query->bindParam(':paneloutline', $panelOutline);
+
+    //Insert new copanelist
+
+	$firstName = sanitize_text_field( $_POST["pp-first-name"]);
+	$lastName = sanitize_text_field( $_POST["pp-last-name"]);
+	$panelist_email = sanitize_email( $_POST["pp-email"]);
+    $email = $panelist_email
+	$age = sanitize_text_field( $_POST["pp-age"]);
+
+    $panelistSuccess = $panelist_query->execute();
+    $copanelistSuccess
+
+    //What if they have a copanelist
+    
+    if(isset( $_POST['pp-hasCopanelist'] ) ){
+        $firstName = sanitize_text_field( $_POST["pp-first-name2"]);
+        $lastName = sanitize_text_field( $_POST["pp-last-name2"]);
+        $email = sanitize_email( $_POST["pp-email2"]);
+        $age = sanitize_text_field( $_POST["pp-age2"]);
+
+        $copanelist_success = $panelist_query->execute();
+    }
+
+
+    //Store the panel information
+
+    $panelTitle = sanitize_text_field( $_POST["pp-title"]);
+	$panelDescription = esc_textarea( $_POST["pp-description"]);
+	$panelOutline = esc_textarea( $_POST["pp-outline"]);
+
+    $panelSuccess = $panel_query->execute();
+
+    //Close the connection
+
+    $conn->close();
+
+    if($panelistSuccess && $copanelistSuccess && $panelSuccess){
+        echo "Your panel submission has been recieved. An email has been sent to ",$email,"<br />";
+        echo "If you have any questions or concerns, please send an email to josh.sorenson@ndkdenver.org"
+    }else{
+        echo "There was an issue with your panel submission. (Probably on our side)<br />";
+        echo "please send an email to josh.sorenson@ndkdenver.org and we'll get it sorted out."
+    }
+
+
+
+
 }
 function send_mail(){
 
 }
 
-panel_planner_build_form_stage1();
+if ( isset( $_POST['pp-submitted'] ) ) {
+    save_input();
+}else{
+    panel_planner_build_form_stage1();
+}
 
 ?>
 
