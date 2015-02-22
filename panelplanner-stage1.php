@@ -1,17 +1,5 @@
 <html>
-<head><title> NDK Panel Form - Stage 1 </title>
-<script type="text/Javascript">
-    function show_hide(element1, element2) {
-        if (document.getElementById(element2).checked){
-            document.getElementById(element1).style.display = "";              
-        }
-        else{
-            document.getElementById(element1).style.display = "none";
-        }
-    }
-</script>
-</head>
-<body>
+
 <?php
 function panel_planner_build_form_stage1(){
     //Begin Javascript
@@ -20,9 +8,9 @@ function panel_planner_build_form_stage1(){
 
     echo '<form action="panelplanner-stage1.php" method="post">';
 
-	//Begin Panelist
+    //Begin Panelist
     echo '<p>';
-	echo 'First Name (required) <br />';
+    echo 'First Name (required) <br />';
     echo '<input type="text" name="pp-first-name" pattern="[a-zA-Z0-9 ]+" value="' . ( isset( $_POST["pp-first-name"] ) ? esc_attr( $_POST["pp-first-name"] ) : '' ) . '" size="40" />';
     echo '</p>';
     echo '<p>';
@@ -75,7 +63,7 @@ function panel_planner_build_form_stage1(){
     echo '<p>';
     echo 'Detailed Panel outline (required) <br />';
     echo '<textarea rows="10" cols="35" name="pp-outline">' . ( isset( $_POST["pp-outline"] ) ? esc_attr( $_POST["pp-outline"] ) : '' ) . '</textarea>';
-	echo '</p>';
+    echo '</p>';
     echo '<p><input type="submit" name="pp-submitted" value="Send"/></p>';
     echo '</form>';
     //End Panel
@@ -100,21 +88,23 @@ function save_input(){
     $panelist_query->bindParam(':email', $email);
     $panelist_query->bindParam(':age', $age);
 
-    $panel_query = $db_conn->prepare("INSERT INTO panel (panelTitle, panelDescription, panelOutline) VALUES (:paneltitle, :paneldescription, :paneloutline)");
+    $panel_query = $db_conn->prepare("INSERT INTO panel (panelTitle, panelDesc, panelOutline) VALUES (:paneltitle, :paneldescription, :paneloutline)");
     $panel_query->bindParam(':paneltitle', $panelTitle);
     $panel_query->bindParam(':paneldescription', $panelDescription);
     $panel_query->bindParam(':paneloutline', $panelOutline);
 
     //Insert new copanelist
 
-	$firstName = sanitize_text_field( $_POST["pp-first-name"]);
-	$lastName = sanitize_text_field( $_POST["pp-last-name"]);
-	$panelist_email = sanitize_email( $_POST["pp-email"]);
+    $firstName = sanitize_text_field( $_POST["pp-first-name"]);
+    $lastName = sanitize_text_field( $_POST["pp-last-name"]);
+    $panelist_email = sanitize_email( $_POST["pp-email"]);
     $email = $panelist_email
-	$age = sanitize_text_field( $_POST["pp-age"]);
+    $age = sanitize_text_field( $_POST["pp-age"]);
 
     $panelistSuccess = $panelist_query->execute();
-    $copanelistSuccess
+    $copanelist_success = true;
+    $panelistID = $db_conn->lastInsertID();
+    $copanelistID = 0;
 
     //What if they have a copanelist
     
@@ -125,14 +115,14 @@ function save_input(){
         $age = sanitize_text_field( $_POST["pp-age2"]);
 
         $copanelist_success = $panelist_query->execute();
+        $copanelistID = $db_conn->lastInsertID();
     }
-
 
     //Store the panel information
 
     $panelTitle = sanitize_text_field( $_POST["pp-title"]);
-	$panelDescription = esc_textarea( $_POST["pp-description"]);
-	$panelOutline = esc_textarea( $_POST["pp-outline"]);
+    $panelDescription = esc_textarea( $_POST["pp-description"]);
+    $panelOutline = esc_textarea( $_POST["pp-outline"]);
 
     $panelSuccess = $panel_query->execute();
 
@@ -148,13 +138,26 @@ function save_input(){
         echo "please send an email to josh.sorenson@ndkdenver.org and we'll get it sorted out."
     }
 
-
-
-
 }
 function send_mail(){
 
 }
+
+?>
+<head><title> NDK Panel Form - Stage 1 </title>
+<script type="text/Javascript">
+    function show_hide(element1, element2) {
+        if (document.getElementById(element2).checked){
+            document.getElementById(element1).style.display = "";              
+        }
+        else{
+            document.getElementById(element1).style.display = "none";
+        }
+    }
+</script>
+</head>
+<body>
+<?php
 
 if ( isset( $_POST['pp-submitted'] ) ) {
     save_input();
