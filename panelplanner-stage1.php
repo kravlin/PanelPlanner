@@ -152,21 +152,3 @@ function save_input(){
 function send_mail(){
 
 }
-
-?>
-<head><title> NDK Panel Form - Stage 1 </title>
-
-</head>
-<body>
-<?php
-
-if ( isset( $_POST['pp-submitted'] ) ) {
-    save_input();
-}else{
-    panel_planner_build_form_stage1();
-}
-
-?>
-
-</body>
-</html>
