@@ -1,5 +1,3 @@
-<html>
-
 <?php
 function panel_planner_build_form_stage1(){
     //Begin Javascript
@@ -74,7 +72,7 @@ function save_input(){
     try{
         $db_conn = new PDO("mysql:host=$servername;dbname=myDB", $username, $password);
         $db_conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "Connected successfully"
+        echo "Connected successfully";
     }
     catch(PDOException $e){
         echo "Connection failed: " . $e->getMessage();
