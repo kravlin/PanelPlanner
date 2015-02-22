@@ -50,7 +50,7 @@ function panel_planner_activate(){
 	$custom_capability = 'Approve Panels';
 	$my_page = array(
 	'post_title' => 'Panel Submission',
-	'post_content' => '<?echo panel_planner_build_form_stage1(); ?> Hello!',
+	'post_content' => panel_planner_build_form_stage1(),
 	'post_status' => 'publish',
 	'post_type' => 'page',
 	'post_author' => 2,
