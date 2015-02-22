@@ -45,7 +45,7 @@ function panel_planner_activate(){
 	$custom_capability = 'Approve Panels';
 	$my_page = array(
 	'post_title' => 'Panel Submission',
-	'post_content' => 'This is a new page. You can add any content you want here, including shortcodes.',
+	'post_content' => '<?php include 'panelplanner-stage1.php' echo panel_planner_build_form_stage1(); ?> ',
 	'post_status' => 'publish',
 	'post_type' => 'page',
 	'post_author' => 2,
