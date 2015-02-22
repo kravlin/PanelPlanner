@@ -96,7 +96,7 @@ function save_input(){
     $firstName = sanitize_text_field( $_POST["pp-first-name"]);
     $lastName = sanitize_text_field( $_POST["pp-last-name"]);
     $panelist_email = sanitize_email( $_POST["pp-email"]);
-    $email = $panelist_email
+    $email = $panelist_email;
     $age = sanitize_text_field( $_POST["pp-age"]);
 
     $panelistSuccess = $panelist_query->execute();
