@@ -1,7 +1,19 @@
 <?php
 function panel_planner_build_form_stage1(){
+    
     //Begin Javascript
-
+    
+    echo '<script type="text/Javascript">';
+    echo 'function show_hide(element1, element2) {';
+    echo '    if (document.getElementById(element2).checked){';
+    echo '        document.getElementById(element1).style.display = "";';       
+    echo '   }';
+    echo '    else{';
+    echo '        document.getElementById(element1).style.display = "none";';
+    echo '    }';
+    echo '}';
+    echo '</script>';
+    
     //End Javascript
 
     echo '<form action="panelplanner-stage1.php" method="post">';
@@ -143,16 +155,7 @@ function send_mail(){
 
 ?>
 <head><title> NDK Panel Form - Stage 1 </title>
-<script type="text/Javascript">
-    function show_hide(element1, element2) {
-        if (document.getElementById(element2).checked){
-            document.getElementById(element1).style.display = "";              
-        }
-        else{
-            document.getElementById(element1).style.display = "none";
-        }
-    }
-</script>
+
 </head>
 <body>
 <?php
