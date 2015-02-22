@@ -2,7 +2,7 @@
 function panel_planner_build_form_stage1(){
     
     //Begin Javascript
-    $toReturn = ""
+    $toReturn = "";
     
     $toReturn .= '<script type="text/Javascript">';
     $toReturn .= 'function show_hide(element1, element2) {';
