@@ -24,7 +24,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 **/
 
-//include dirname(__FILE__) .'/panelplanner-stage1.php';
+include dirname(__FILE__) .'/panelplanner-stage1.php';
 include dirname(__FILE__) .'/panelplanner-stage2.php';
 include dirname(__FILE__) .'/panelplanner-viewcampaign.php';
 include dirname(__FILE__) .'/panelplanner-viewpanel.php';
@@ -50,7 +50,7 @@ function panel_planner_activate(){
 	$custom_capability = 'Approve Panels';
 	$my_page = array(
 	'post_title' => 'Panel Submission',
-	//'post_content' => panel_planner_build_form_stage1(),
+	'post_content' => panel_planner_build_form_stage1(),
 	'post_status' => 'publish',
 	'post_type' => 'page',
 	'post_author' => 2,
