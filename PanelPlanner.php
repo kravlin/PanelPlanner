@@ -44,9 +44,28 @@ function panel_planner_activate(){
 	}
 	$custom_capability = 'Approve Panels';
 	$my_page = array(
-	'post_title' => 'Our New Auto-Created Page',
+	'post_title' => 'Panel Submission',
 	'post_content' => 'This is a new page. You can add any content you want here, including shortcodes.',
 	'post_status' => 'publish',
+	'post_type' => 'page',
+	'post_author' => 2,
+	'post_date' => '2012-08-20 15:10:30'
+	);
+	$post_id = wp_insert_post($my_page);
+	$my_page = array(
+	'post_title' => 'Panel Submission - Stage 2',
+	'post_content' => 'This is a new page. You can add any content you want here, including shortcodes.',
+	'post_status' => 'private',
+	'post_type' => 'page',
+	'post_author' => 2,
+	'post_date' => '2012-08-20 15:10:30'
+	);
+
+	$post_id = wp_insert_post($my_page);
+	$my_page = array(
+	'post_title' => 'Panel Management',
+	'post_content' => 'This is a new page. You can add any content you want here, including shortcodes.',
+	'post_status' => 'private',
 	'post_type' => 'page',
 	'post_author' => 2,
 	'post_date' => '2012-08-20 15:10:30'
