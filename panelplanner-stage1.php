@@ -130,10 +130,10 @@ function save_input(){
 
     if($panelistSuccess && $copanelistSuccess && $panelSuccess){
         echo "Your panel submission has been recieved. An email has been sent to ",$email,"<br />";
-        echo "If you have any questions or concerns, please send an email to josh.sorenson@ndkdenver.org"
+        echo "If you have any questions or concerns, please send an email to josh.sorenson@ndkdenver.org";
     }else{
         echo "There was an issue with your panel submission. (Probably on our side)<br />";
-        echo "please send an email to josh.sorenson@ndkdenver.org and we'll get it sorted out."
+        echo "please send an email to josh.sorenson@ndkdenver.org and we'll get it sorted out.";
     }
 
 }
