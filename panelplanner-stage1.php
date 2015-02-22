@@ -2,84 +2,84 @@
 function panel_planner_build_form_stage1(){
     
     //Begin Javascript
-    toReturn = ""
+    $toReturn = ""
     
-    toReturn .= '<script type="text/Javascript">';
-    toReturn .= 'function show_hide(element1, element2) {';
-    toReturn .= '    if (document.getElementById(element2).checked){';
-    toReturn .= '        document.getElementById(element1).style.display = "";';       
-    toReturn .= '   }';
-    toReturn .= '    else{';
-    toReturn .= '        document.getElementById(element1).style.display = "none";';
-    toReturn .= '    }';
-    toReturn .= '}';
-    toReturn .= '</script>';
+    $toReturn .= '<script type="text/Javascript">';
+    $toReturn .= 'function show_hide(element1, element2) {';
+    $toReturn .= '    if (document.getElementById(element2).checked){';
+    $toReturn .= '        document.getElementById(element1).style.display = "";';       
+    $toReturn .= '   }';
+    $toReturn .= '    else{';
+    $toReturn .= '        document.getElementById(element1).style.display = "none";';
+    $toReturn .= '    }';
+    $toReturn .= '}';
+    $toReturn .= '</script>';
     
     //End Javascript
 
-    toReturn .= '<form action="panelplanner-stage1.php" method="post">';
+    $toReturn .= '<form action="panelplanner-stage1.php" method="post">';
 
     //Begin Panelist
-    toReturn .= '<p>';
-    toReturn .= 'First Name (required) <br />';
-    toReturn .= '<input type="text" name="pp-first-name" pattern="[a-zA-Z0-9 ]+" value="' . ( isset( $_POST["pp-first-name"] ) ? esc_attr( $_POST["pp-first-name"] ) : '' ) . '" size="40" />';
-    toReturn .= '</p>';
-    toReturn .= '<p>';
-    toReturn .= 'Last Name (required) <br />';
-    toReturn .= '<input type="text" name="pp-last-name" pattern="[a-zA-Z0-9 ]+" value="' . ( isset( $_POST["pp-last-name"] ) ? esc_attr( $_POST["pp-last-name"] ) : '' ) . '" size="40" />';
-    toReturn .= '</p>';
-    toReturn .= '<p>';
-    toReturn .= 'Email Address (required) <br />';
-    toReturn .= '<input type="email" name="pp-email" value="' . ( isset( $_POST["pp-email"] ) ? esc_attr( $_POST["pp-email"] ) : '' ) . '" size="40" />';
-    toReturn .= '</p>';
-    toReturn .= '<p>';
-    toReturn .= 'Age (required) <br />';
-    toReturn .= '<input type="text" name="pp-age" pattern="[0-9]+" value="' . ( isset( $_POST["pp-age"] ) ? esc_attr( $_POST["pp-age"] ) : '' ) . '" size="40" />';
-    toReturn .= '</p>';
+    $toReturn .= '<p>';
+    $toReturn .= 'First Name (required) <br />';
+    $toReturn .= '<input type="text" name="pp-first-name" pattern="[a-zA-Z0-9 ]+" value="' . ( isset( $_POST["pp-first-name"] ) ? esc_attr( $_POST["pp-first-name"] ) : '' ) . '" size="40" />';
+    $toReturn .= '</p>';
+    $toReturn .= '<p>';
+    $toReturn .= 'Last Name (required) <br />';
+    $toReturn .= '<input type="text" name="pp-last-name" pattern="[a-zA-Z0-9 ]+" value="' . ( isset( $_POST["pp-last-name"] ) ? esc_attr( $_POST["pp-last-name"] ) : '' ) . '" size="40" />';
+    $toReturn .= '</p>';
+    $toReturn .= '<p>';
+    $toReturn .= 'Email Address (required) <br />';
+    $toReturn .= '<input type="email" name="pp-email" value="' . ( isset( $_POST["pp-email"] ) ? esc_attr( $_POST["pp-email"] ) : '' ) . '" size="40" />';
+    $toReturn .= '</p>';
+    $toReturn .= '<p>';
+    $toReturn .= 'Age (required) <br />';
+    $toReturn .= '<input type="text" name="pp-age" pattern="[0-9]+" value="' . ( isset( $_POST["pp-age"] ) ? esc_attr( $_POST["pp-age"] ) : '' ) . '" size="40" />';
+    $toReturn .= '</p>';
     //End Panelist
     
-    toReturn .= '<p>';
-    toReturn .= '<input type="checkbox" checked="false" id="pp-hasCopanelist" onchange="javascript:show_hide(\'CoPanelist\',\'pp-hasCopanelist\');"/> I have a CoPanelist.';
-    toReturn .= '</p>';
+    $toReturn .= '<p>';
+    $toReturn .= '<input type="checkbox" checked="false" id="pp-hasCopanelist" onchange="javascript:show_hide(\'CoPanelist\',\'pp-hasCopanelist\');"/> I have a CoPanelist.';
+    $toReturn .= '</p>';
 
     //Begin Copanelist
-    toReturn .= '<div id="CoPanelist" style="display: none" >'; 
-    toReturn .= '<p>';
-    toReturn .= 'First Name (required) <br />';
-    toReturn .= '<input type="text" name="pp-first-name2" pattern="[a-zA-Z0-9 ]+" value="' . ( isset( $_POST["pp-first-name2"] ) ? esc_attr( $_POST["pp-first-name2"] ) : '' ) . '" size="40" />';
-    toReturn .= '</p>';
-    toReturn .= '<p>';
-    toReturn .= 'Last Name (required) <br />';
-    toReturn .= '<input type="text" name="pp-last-name2" pattern="[a-zA-Z0-9 ]+" value="' . ( isset( $_POST["pp-last-name2"] ) ? esc_attr( $_POST["pp-last-name2"] ) : '' ) . '" size="40" />';
-    toReturn .= '</p>';
-    toReturn .= '<p>';
-    toReturn .= 'Email Address (required) <br />';
-    toReturn .= '<input type="email" name="pp-email2" value="' . ( isset( $_POST["pp-email2"] ) ? esc_attr( $_POST["pp-email2"] ) : '' ) . '" size="40" />';
-    toReturn .= '</p>';
-    toReturn .= '<p>';
-    toReturn .= 'Age (required) <br />';
-    toReturn .= '<input type="text" name="pp-age2" pattern="[0-9]+" value="' . ( isset( $_POST["pp-age2"] ) ? esc_attr( $_POST["pp-age2"] ) : '' ) . '" size="40" />';
-    toReturn .= '</p>';
-    toReturn .= '</div>';
+    $toReturn .= '<div id="CoPanelist" style="display: none" >'; 
+    $toReturn .= '<p>';
+    $toReturn .= 'First Name (required) <br />';
+    $toReturn .= '<input type="text" name="pp-first-name2" pattern="[a-zA-Z0-9 ]+" value="' . ( isset( $_POST["pp-first-name2"] ) ? esc_attr( $_POST["pp-first-name2"] ) : '' ) . '" size="40" />';
+    $toReturn .= '</p>';
+    $toReturn .= '<p>';
+    $toReturn .= 'Last Name (required) <br />';
+    $toReturn .= '<input type="text" name="pp-last-name2" pattern="[a-zA-Z0-9 ]+" value="' . ( isset( $_POST["pp-last-name2"] ) ? esc_attr( $_POST["pp-last-name2"] ) : '' ) . '" size="40" />';
+    $toReturn .= '</p>';
+    $toReturn .= '<p>';
+    $toReturn .= 'Email Address (required) <br />';
+    $toReturn .= '<input type="email" name="pp-email2" value="' . ( isset( $_POST["pp-email2"] ) ? esc_attr( $_POST["pp-email2"] ) : '' ) . '" size="40" />';
+    $toReturn .= '</p>';
+    $toReturn .= '<p>';
+    $toReturn .= 'Age (required) <br />';
+    $toReturn .= '<input type="text" name="pp-age2" pattern="[0-9]+" value="' . ( isset( $_POST["pp-age2"] ) ? esc_attr( $_POST["pp-age2"] ) : '' ) . '" size="40" />';
+    $toReturn .= '</p>';
+    $toReturn .= '</div>';
     //End Copanelist
 
     //Begin Panel
-    toReturn .= '<p>';
-    toReturn .= 'Panel Title (required) <br />';
-    toReturn .= '<input type="text" name="pp-title" value="' . ( isset( $_POST["pp-title"] ) ? esc_attr( $_POST["pp-title"] ) : '' ) . '" size="40" />';
-    toReturn .= '</p>';
-    toReturn .= 'Short Panel Description (required) <br />';
-    toReturn .= '<textarea rows="10" cols="35" name="pp-description">' . ( isset( $_POST["pp-description"] ) ? esc_attr( $_POST["pp-description"] ) : '' ) . '</textarea>';
-    toReturn .= '</p>';
-    toReturn .= '<p>';
-    toReturn .= 'Detailed Panel outline (required) <br />';
-    toReturn .= '<textarea rows="10" cols="35" name="pp-outline">' . ( isset( $_POST["pp-outline"] ) ? esc_attr( $_POST["pp-outline"] ) : '' ) . '</textarea>';
-    toReturn .= '</p>';
-    toReturn .= '<p><input type="submit" name="pp-submitted" value="Send"/></p>';
-    toReturn .= '</form>';
+    $toReturn .= '<p>';
+    $toReturn .= 'Panel Title (required) <br />';
+    $toReturn .= '<input type="text" name="pp-title" value="' . ( isset( $_POST["pp-title"] ) ? esc_attr( $_POST["pp-title"] ) : '' ) . '" size="40" />';
+    $toReturn .= '</p>';
+    $toReturn .= 'Short Panel Description (required) <br />';
+    $toReturn .= '<textarea rows="10" cols="35" name="pp-description">' . ( isset( $_POST["pp-description"] ) ? esc_attr( $_POST["pp-description"] ) : '' ) . '</textarea>';
+    $toReturn .= '</p>';
+    $toReturn .= '<p>';
+    $toReturn .= 'Detailed Panel outline (required) <br />';
+    $toReturn .= '<textarea rows="10" cols="35" name="pp-outline">' . ( isset( $_POST["pp-outline"] ) ? esc_attr( $_POST["pp-outline"] ) : '' ) . '</textarea>';
+    $toReturn .= '</p>';
+    $toReturn .= '<p><input type="submit" name="pp-submitted" value="Send"/></p>';
+    $toReturn .= '</form>';
     //End Panel
     
-    return toReturn;
+    return $toReturn;
 }
 
 function save_input(){
