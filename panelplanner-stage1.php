@@ -152,6 +152,6 @@ function panel_planner_save_input_stage1(){
     }
 
 }
-function send_mail(){
+function panel_planner_send_mail_stage1(){
 
 }

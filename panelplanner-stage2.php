@@ -152,7 +152,7 @@ function panel_planner_save_input_stage2(){
     }
 
 }
-function send_mail(){
+function panel_planner_send_mail_stage2(){
 
 }
 
