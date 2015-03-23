@@ -33,7 +33,7 @@
 				echo '<p><input type="hidden name="pp-panelID value='.$panelID.'/></p>';
 				echo '<p><input type="submit" name="pp-submitted" value="Accept"/></p>';
 				echo '<p><input type="submit" name="pp-submitted" value="Reject"/></p>';
-				echo '</form>'
+				echo '</form>';
 			} elseif ($stage == 2) {
 				echo "";
 			}
