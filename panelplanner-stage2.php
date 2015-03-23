@@ -3,7 +3,9 @@
 function panelplanner_build_form_stage2(){
     //Begin Javascript
     $toReturn = "";
-    
+
+
+
     $toReturn .= '<script type="text/Javascript">';
     $toReturn .= 'function show_hide(element1, element2) {';
     $toReturn .= '    if (document.getElementById(element2).checked){';
@@ -16,6 +18,17 @@ function panelplanner_build_form_stage2(){
     $toReturn .= '</script>';
     
     //End Javascript
+    
+    $toReturn .='<?php get_header(); ?>';
+    $toReturn .='<div id="primary" class="site-content">';
+    $toReturn .='<div id="content" role="main">';
+    $toReturn .='<?php while ( have_posts() ) : the_post(); ?>';
+    $toReturn .='<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>';
+    $toReturn .='<header class="entry-header">';
+    $toReturn .='<h1 class="entry-title"><?php the_title(); ?></h1>';
+    $toReturn .='</header>';
+    $toReturn .='<div class="entry-content">';
+    $toReturn .='<?php the_content(); ?>';
 
     $toReturn .= '<form action="panelplanner-stage1.php" method="post">';
 
@@ -77,6 +90,14 @@ function panelplanner_build_form_stage2(){
     $toReturn .= '</p>';
     $toReturn .= '<p><input type="submit" name="pp-submitted" value="Send"/></p>';
     $toReturn .= '</form>';
+
+    $toReturn .='</div><!-- .entry-content -->';
+    $toReturn .='</article><!-- #post -->';
+    $toReturn .='<?php endwhile; // end of the loop. ?>';
+    $toReturn .='</div><!-- #content -->';
+    $toReturn .='</div><!-- #primary -->';
+    $toReturn .='<?php get_sidebar(); ?>';
+    $toReturn .='<?php get_footer(); ?>';
     //End Panel
     
     return $toReturn;
