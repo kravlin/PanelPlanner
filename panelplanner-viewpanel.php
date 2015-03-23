@@ -1,6 +1,6 @@
 
 <?php
-
+// This page is supposed to lay out one of the pages for accepting/rejecting a panel.
 	global $wpdb;
 
 	function showPanel($panelID) {
@@ -30,8 +30,9 @@
 				echo "<br>".$panelOutline;
 				echo "<br>";
 				echo '<form action="panelplanner-viewpanel.php" method="post">';
-				echo '<p><input type="Accept" name="pp-submitted" value="Accept"/></p>';
-				echo '<p><input type="Reject" name="pp-submitted" value="Reject"/></p>';
+				echo '<p><input type="hidden name="pp-panelID value='.$panelID.'/></p>';
+				echo '<p><input type="submit" name="pp-submitted" value="Accept"/></p>';
+				echo '<p><input type="submit" name="pp-submitted" value="Reject"/></p>';
 				echo '</form>'
 			}else if($stage == 2){
 				echo "";
