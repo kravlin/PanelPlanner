@@ -220,3 +220,6 @@ pip-log.txt
 panelplanner.sublime-workspace
 .phpintel/index
 *.sublime-workspace
+*.sublime-workspace
+panelplanner.sublime-workspace
+*.sublime-workspace
