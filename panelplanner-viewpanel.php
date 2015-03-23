@@ -3,7 +3,7 @@
 // This page is supposed to lay out one of the pages for accepting/rejecting a panel.
 	global $wpdb;
 
-	function showPanel($panelID) {
+	function panel_planner_show_panel($panelID) {
 		$panel = $wpdb->get_row( 'SELECT panelName FROM panel_planner where panelID = '.$panelID, ARRAY_A );
 		if ($panel != null){
 			echo "<head><title>Viewing Panel ".$panelname."</title></head>";

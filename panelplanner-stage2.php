@@ -82,7 +82,7 @@ function panelplanner_build_form_stage2(){
     return $toReturn;
 }
 
-function save_input(){
+function panel_planner_save_input_stage2(){
 
     try{
         $db_conn = new PDO("mysql:host=$servername;dbname=myDB", $username, $password);
