@@ -215,3 +215,8 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+.phpintel/850cf4a6f576aa9a856602fb775b01e3
+*.sublime-workspace
+panelplanner.sublime-workspace
+.phpintel/index
+*.sublime-workspace
