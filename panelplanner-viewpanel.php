@@ -9,15 +9,15 @@
 			echo "<head><title>Viewing Panel ".$panelname."</title></head>";
 			echo "<body>";
 			echo "<h1>Panel ".$panelname."</h1><br>";
-			echo "Stage: ".$stage"<br><br>";
+			echo "Stage: ".$stage."<br><br>";
 			echo "Panel Submission #: ".$panelID."<br><br>";
 			echo "<h1>Panel ".$panelname."</h1><br><br>";
 			echo "Panel Submission #: ".$panelID."<br><br>";
-			echo "Panelist Name: ".$panelistFirstname." ".$panelistLastname"<br>";
+			echo "Panelist Name: ".$panelistFirstname." ".$panelistLastname."<br>";
 			echo "Panelist Email: ".$panelistEmail."<br>";
 			echo "Panelist Age: ".$panelistAge."<br><br>";
 			if ($hasCopanelist){
-			echo "CoPanelist Name: ".$copanelistFirstname." ".$copanelistLastname"<br>";
+			echo "CoPanelist Name: ".$copanelistFirstname." ".$copanelistLastname."<br>";
 			echo "CoPanelist Email: ".$copanelistEmail."<br>";
 			echo "CoPanelist Age: ".$copanelistAge."<br><br>";
 			}
