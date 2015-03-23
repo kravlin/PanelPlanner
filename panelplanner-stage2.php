@@ -4,8 +4,6 @@ function panelplanner_build_form_stage2(){
     //Begin Javascript
     $toReturn = "";
 
-
-
     $toReturn .= '<script type="text/Javascript">';
     $toReturn .= 'function show_hide(element1, element2) {';
     $toReturn .= '    if (document.getElementById(element2).checked){';
