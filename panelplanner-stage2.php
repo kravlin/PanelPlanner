@@ -81,7 +81,6 @@ function panelplanner_build_form_stage2(){
     
     return $toReturn;
 }
-}
 
 function save_input(){
 
