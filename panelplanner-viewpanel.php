@@ -34,7 +34,7 @@
 				echo '<p><input type="submit" name="pp-submitted" value="Accept"/></p>';
 				echo '<p><input type="submit" name="pp-submitted" value="Reject"/></p>';
 				echo '</form>'
-			}else if($stage == 2){
+			}elseif($stage == 2){
 				echo "";
 			}
 
