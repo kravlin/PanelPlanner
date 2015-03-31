@@ -28,12 +28,12 @@ include dirname(__FILE__) .'/panelplanner-viewcampaign.php';
 include dirname(__FILE__) .'/panelplanner-viewpanel.php';
 
 function panel_planner_build_form_stage1(){
-    $toreturn = file_get_contents(dirname(__FILE__)."/panelplanner-stage1.php");
+    $toreturn = file_get_contents(dirname(__FILE__).'/panelplanner-stage1.php');
     return $toReturn;
 }
 
 function panel_planner_build_form_stage2(){
-    $toreturn = file_get_contents(dirname(__FILE__)."/panelplanner-stage1.php");
+    $toreturn = file_get_contents(dirname(__FILE__).'/panelplanner-stage1.php');
     return $toReturn;
 }
 
