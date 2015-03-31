@@ -33,7 +33,7 @@ function panel_planner_build_form_stage1(){
 }
 
 function panel_planner_build_form_stage2(){
-    $toreturn = file_get_contents(dirname(__FILE__).'/panelplanner-stage1.php');
+    $toreturn = file_get_contents(dirname(__FILE__).'/panelplanner-stage2.php');
     return $toReturn;
 }
 
@@ -71,8 +71,8 @@ function panel_planner_activate(){
 	'post_date' => '2012-08-20 15:10:30'
 	);
 
-
 	$post_id = wp_insert_post($my_page);
+
 	$my_page = array(
 	'post_title' => 'Panel Proposal - Stage 2',
 	'post_content' => panel_planner_build_form_stage2(),

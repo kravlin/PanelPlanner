@@ -1,79 +1,79 @@
 <?php
 
-//response generation
-
-function panel_planner_save_input_stage1(){
-
-    try{
-    $db_conn = new PDO("mysql:host=$servername;dbname=myDB", $username, $password);
-        $db_conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "Connected successfully";
-    }
-    catch(PDOException $e){
-        echo "Connection failed: " . $e->getMessage();
-    }
-
-    //Prepare statements for insertion of panelists and panels
+    //response generation
     
-    $panelist_query = $db_conn->prepare("INSERT INTO panelists (firstName, lastName, emailAddress, age) VALUES (:firstname, :lastname, :email, :age)");
-    $panelist_query->bindParam(':firstname', $firstName);
-    $panelist_query->bindParam(':lastname', $lastName);
-    $panelist_query->bindParam(':email', $email);
-    $panelist_query->bindParam(':age', $age);
-
-    $panel_query = $db_conn->prepare("INSERT INTO panel (panelTitle, panelDesc, panelOutline) VALUES (:paneltitle, :paneldescription, :paneloutline)");
-    $panel_query->bindParam(':paneltitle', $panelTitle);
-    $panel_query->bindParam(':paneldescription', $panelDescription);
-    $panel_query->bindParam(':paneloutline', $panelOutline);
-
-    //Insert new copanelist
-
-    $firstName = sanitize_text_field( $_POST["pp-first-name"]);
-    $lastName = sanitize_text_field( $_POST["pp-last-name"]);
-    $panelist_email = sanitize_email( $_POST["pp-email"]);
-    $email = $panelist_email;
-    $age = sanitize_text_field( $_POST["pp-age"]);
-
-    $panelistSuccess = $panelist_query->execute();
-    $copanelist_success = true;
-    $panelistID = $db_conn->lastInsertID();
-    $copanelistID = 0;
-
-    //What if they have a copanelist
+    function panel_planner_save_input_stage1(){
     
-    if(isset( $_POST['pp-hasCopanelist'] ) ){
-        $firstName = sanitize_text_field( $_POST["pp-first-name2"]);
-        $lastName = sanitize_text_field( $_POST["pp-last-name2"]);
-        $email = sanitize_email( $_POST["pp-email2"]);
-        $age = sanitize_text_field( $_POST["pp-age2"]);
-
-        $copanelist_success = $panelist_query->execute();
-        $copanelistID = $db_conn->lastInsertID();
+        try{
+        $db_conn = new PDO("mysql:host=$servername;dbname=myDB", $username, $password);
+            $db_conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            echo "Connected successfully";
+        }
+        catch(PDOException $e){
+            echo "Connection failed: " . $e->getMessage();
+        }
+    
+        //Prepare statements for insertion of panelists and panels
+        
+        $panelist_query = $db_conn->prepare("INSERT INTO panelists (firstName, lastName, emailAddress, age) VALUES (:firstname, :lastname, :email, :age)");
+        $panelist_query->bindParam(':firstname', $firstName);
+        $panelist_query->bindParam(':lastname', $lastName);
+        $panelist_query->bindParam(':email', $email);
+        $panelist_query->bindParam(':age', $age);
+    
+        $panel_query = $db_conn->prepare("INSERT INTO panel (panelTitle, panelDesc, panelOutline) VALUES (:paneltitle, :paneldescription, :paneloutline)");
+        $panel_query->bindParam(':paneltitle', $panelTitle);
+        $panel_query->bindParam(':paneldescription', $panelDescription);
+        $panel_query->bindParam(':paneloutline', $panelOutline);
+    
+        //Insert new copanelist
+    
+        $firstName = sanitize_text_field( $_POST["pp-first-name"]);
+        $lastName = sanitize_text_field( $_POST["pp-last-name"]);
+        $panelist_email = sanitize_email( $_POST["pp-email"]);
+        $email = $panelist_email;
+        $age = sanitize_text_field( $_POST["pp-age"]);
+    
+        $panelistSuccess = $panelist_query->execute();
+        $copanelist_success = true;
+        $panelistID = $db_conn->lastInsertID();
+        $copanelistID = 0;
+    
+        //What if they have a copanelist
+        
+        if(isset( $_POST['pp-hasCopanelist'] ) ){
+            $firstName = sanitize_text_field( $_POST["pp-first-name2"]);
+            $lastName = sanitize_text_field( $_POST["pp-last-name2"]);
+            $email = sanitize_email( $_POST["pp-email2"]);
+            $age = sanitize_text_field( $_POST["pp-age2"]);
+    
+            $copanelist_success = $panelist_query->execute();
+            $copanelistID = $db_conn->lastInsertID();
+        }
+    
+        //Store the panel information
+    
+        $panelTitle = sanitize_text_field( $_POST["pp-title"]);
+        $panelDescription = esc_textarea( $_POST["pp-description"]);
+        $panelOutline = esc_textarea( $_POST["pp-outline"]);
+    
+        $panelSuccess = $panel_query->execute();
+    
+        //Close the connection
+    
+        $conn->close();
+    
+        if($panelistSuccess && $copanelistSuccess && $panelSuccess){
+            echo "Your panel submission has been recieved. An email has been sent to ".$email."<br />";
+            echo "If you have any questions or concerns, please send an email to josh.sorenson@ndkdenver.org";
+        }else{
+            echo "There was an issue with your panel submission. (Probably on our side)<br />";
+            echo "please send an email to josh.sorenson@ndkdenver.org and we'll get it sorted out.";
+        }
+    
     }
-
-    //Store the panel information
-
-    $panelTitle = sanitize_text_field( $_POST["pp-title"]);
-    $panelDescription = esc_textarea( $_POST["pp-description"]);
-    $panelOutline = esc_textarea( $_POST["pp-outline"]);
-
-    $panelSuccess = $panel_query->execute();
-
-    //Close the connection
-
-    $conn->close();
-
-    if($panelistSuccess && $copanelistSuccess && $panelSuccess){
-        echo "Your panel submission has been recieved. An email has been sent to ".$email."<br />";
-        echo "If you have any questions or concerns, please send an email to josh.sorenson@ndkdenver.org";
-    }else{
-        echo "There was an issue with your panel submission. (Probably on our side)<br />";
-        echo "please send an email to josh.sorenson@ndkdenver.org and we'll get it sorted out.";
-    }
-
-}
 ?>
-<html>
+
 <script type="text/Javascript">
     function show_hide(element1, element2)
         if (document.getElementById(element2).checked){
@@ -83,29 +83,29 @@ function panel_planner_save_input_stage1(){
             document.getElementById(element1).style.display = "none";
         }
     }
-    </script>
+</script>
     
-    <!-- End Javascript / Begin Basic styling for errors -->
+<!-- End Javascript / Begin Basic styling for errors -->
     
-    <style type="text/css">
+<style type="text/css">
 
-    .error{
-        padding: 5px 9px;
-        border: 1px solid red;
-        color: red;
-        border-radius: 3px;
-    }
-    
-    .success{
-        padding: 5px 9px;
-        border: 1px solid green;
-        color: green;
-        border-radius: 3px;
-    }
-      form span{
-        color: red;
-      }
-    </style>
+.error{
+    padding: 5px 9px;
+    border: 1px solid red;
+    color: red;
+    border-radius: 3px;
+}
+
+.success{
+    padding: 5px 9px;
+    border: 1px solid green;
+    color: green;
+    border-radius: 3px;
+}
+  form span{
+    color: red;
+  }
+</style>
 <!-- End errors -->
 
     <?php get_header(); ?> 
