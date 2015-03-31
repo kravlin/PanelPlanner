@@ -36,6 +36,7 @@ class panel_planner_stage_1{
 	}
 
 	static public function panel_planner_stage_1_form() {
+		echo "herpdaderp";
     	echo file_get_contents(dirname(__FILE__).'/pp_stage1.php');
 	}
 
@@ -57,6 +58,11 @@ class panel_planner_stage_2{
 		ob_start();
 		$this->panel_planner_stage_2_process();
 		ob_get_clean();
+	}
+
+	static public function panel_planner_stage_2_form() {
+		echo "derpdaherp";
+    	echo file_get_contents(dirname(__FILE__).'/pp_stage2.php');
 	}
 	
 	public function panel_planner_stage_2_process(){
