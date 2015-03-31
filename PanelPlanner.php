@@ -26,7 +26,7 @@
 
 class panel_planner_stage_1{
 	function __construct(){
-		add_shortcode('panel_planner_stage_1', array($this, 'panel_planner_stage_1'));
+		add_shortcode('panel_planner_1', array($this, 'panel_planner_stage_1'));
 	}
 	
 	public function panel_planner_stage_1(){
@@ -50,7 +50,7 @@ class panel_planner_stage_1{
 class panel_planner_stage_2{
 
 	function __construct(){
-		add_shortcode('panel_planner_stage_2', array($this, 'panel_planner_stage_2'));
+		add_shortcode('panel_planner_2', array($this, 'panel_planner_stage_2'));
 	}
 	
 	public function panel_planner_stage_2(){
@@ -109,7 +109,7 @@ function panel_planner_activate(){
 	'post_date' => '2012-08-20 15:10:30'
 	);
 
-	$post_id = wp_insert_post($my_page);
+	//$post_id = wp_insert_post($my_page);
 
 	$my_page = array(
 	'post_title' => 'Panel Proposal - Stage 2',
@@ -119,7 +119,7 @@ function panel_planner_activate(){
 	'post_author' => 2,
 	'post_date' => '2012-08-20 15:10:30'
 	);
-	$post_id = wp_insert_post($my_page);
+	//$post_id = wp_insert_post($my_page);
 
 	
 }
