@@ -26,7 +26,7 @@
 
 class panel_planner_stage_1{
 	function __construct(){
-		add_shortcode('panel_planner_stage_1', array($this, panel_planner_stage_1));
+		add_shortcode('panel_planner_stage_1', array($this, 'panel_planner_stage_1'));
 	}
 	
 	public function panel_planner_stage_1(){
@@ -50,7 +50,7 @@ class panel_planner_stage_1{
 class panel_planner_stage_2{
 
 	function __construct(){
-		add_shortcode('panel_planner_stage_2', array($this, panel_planner_stage_2));
+		add_shortcode('panel_planner_stage_2', array($this, 'panel_planner_stage_2'));
 	}
 	
 	public function panel_planner_stage_2(){
