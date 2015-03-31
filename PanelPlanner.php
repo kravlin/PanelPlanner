@@ -29,6 +29,21 @@ include dirname(__FILE__) .'/panelplanner-stage2.php';
 include dirname(__FILE__) .'/panelplanner-viewcampaign.php';
 include dirname(__FILE__) .'/panelplanner-viewpanel.php';
 
+function panel_planner_build_form_stage1(){
+    //Begin Javascript
+    $file = fopen("panelplanner-stage1.php", "r") or die ("Unable to open panelplanner-stage1.php!");
+    $toreturn = fread($file,filesize("panelplanner-stage1.php"));
+    fclose($file);
+    return $toReturn;
+}
+
+function panel_planner_build_form_stage2(){
+    //Begin Javascript
+    $file = fopen("panelplanner-stage2.php", "r") or die ("Unable to open panelplanner-stage2.php!");
+    $toreturn = fread($file,filesize("panelplanner-stage2.php"));
+    fclose($file);
+    return $toReturn;
+}
 
 function panel_planner_menu(){
 	add_options_page('Panel Planner Settings','Panel Planner Settings', 'manage_options','panelplanner-options.php','panel_planner_gen_options_page');
@@ -59,7 +74,7 @@ function panel_planner_activate(){
 	$post_id = wp_insert_post($my_page);
 	$my_page = array(
 	'post_title' => 'Panel Submission - Stage 2',
-	'post_content' => 'This is a new page. You can add any content you want here, including shortcodes.',
+	'post_content' => panel_planner_build_form_stage2(),
 	'post_status' => 'private',
 	'post_type' => 'page',
 	'post_author' => 2,

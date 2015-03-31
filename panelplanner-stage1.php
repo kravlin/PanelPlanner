@@ -1,111 +1,11 @@
 <?php
-function panel_planner_build_form_stage1(){
-    
-    //Begin Javascript
-    $toReturn = "";
-    
-    $toReturn .= '<script type="text/Javascript">';
-    $toReturn .= 'function show_hide(element1, element2) {';
-    $toReturn .= '    if (document.getElementById(element2).checked){';
-    $toReturn .= '        document.getElementById(element1).style.display = "";';       
-    $toReturn .= '   }';
-    $toReturn .= '    else{';
-    $toReturn .= '        document.getElementById(element1).style.display = "none";';
-    $toReturn .= '    }';
-    $toReturn .= '}';
-    $toReturn .= '</script>';
-    
-    //End Javascript
-    
-    $toReturn .='<?php get_header(); ?>';
-    $toReturn .='<div id="primary" class="site-content">';
-    $toReturn .='<div id="content" role="main">';
-    $toReturn .='<?php while ( have_posts() ) : the_post(); ?>';
-    $toReturn .='<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>';
-    $toReturn .='<header class="entry-header">';
-    $toReturn .='<h1 class="entry-title"><?php the_title(); ?></h1>';
-    $toReturn .='</header>';
-    $toReturn .='<div class="entry-content">';
-    $toReturn .='<?php the_content(); ?>';
-    
 
-    $toReturn .= '<form action="panelplanner-stage1.php" method="post">';
-
-    //Begin Panelist
-    $toReturn .= '<p>';
-    $toReturn .= 'First Name (required) <br />';
-    $toReturn .= '<input type="text" name="pp-first-name" pattern="[a-zA-Z0-9 ]+" value="' . ( isset( $_POST["pp-first-name"] ) ? esc_attr( $_POST["pp-first-name"] ) : '' ) . '" size="40" />';
-    $toReturn .= '</p>';
-    $toReturn .= '<p>';
-    $toReturn .= 'Last Name (required) <br />';
-    $toReturn .= '<input type="text" name="pp-last-name" pattern="[a-zA-Z0-9 ]+" value="' . ( isset( $_POST["pp-last-name"] ) ? esc_attr( $_POST["pp-last-name"] ) : '' ) . '" size="40" />';
-    $toReturn .= '</p>';
-    $toReturn .= '<p>';
-    $toReturn .= 'Email Address (required) <br />';
-    $toReturn .= '<input type="email" name="pp-email" value="' . ( isset( $_POST["pp-email"] ) ? esc_attr( $_POST["pp-email"] ) : '' ) . '" size="40" />';
-    $toReturn .= '</p>';
-    $toReturn .= '<p>';
-    $toReturn .= 'Age (required) <br />';
-    $toReturn .= '<input type="text" name="pp-age" pattern="[0-9]+" value="' . ( isset( $_POST["pp-age"] ) ? esc_attr( $_POST["pp-age"] ) : '' ) . '" size="40" />';
-    $toReturn .= '</p>';
-    //End Panelist
-    
-    $toReturn .= '<p>';
-    $toReturn .= '<input type="checkbox" checked="false" id="pp-hasCopanelist" onchange="javascript:show_hide(\'CoPanelist\',\'pp-hasCopanelist\');"/> I have a CoPanelist.';
-    $toReturn .= '</p>';
-
-    //Begin Copanelist
-    $toReturn .= '<div id="CoPanelist" style="display: none" >'; 
-    $toReturn .= '<p>';
-    $toReturn .= 'First Name (required) <br />';
-    $toReturn .= '<input type="text" name="pp-first-name2" pattern="[a-zA-Z0-9 ]+" value="' . ( isset( $_POST["pp-first-name2"] ) ? esc_attr( $_POST["pp-first-name2"] ) : '' ) . '" size="40" />';
-    $toReturn .= '</p>';
-    $toReturn .= '<p>';
-    $toReturn .= 'Last Name (required) <br />';
-    $toReturn .= '<input type="text" name="pp-last-name2" pattern="[a-zA-Z0-9 ]+" value="' . ( isset( $_POST["pp-last-name2"] ) ? esc_attr( $_POST["pp-last-name2"] ) : '' ) . '" size="40" />';
-    $toReturn .= '</p>';
-    $toReturn .= '<p>';
-    $toReturn .= 'Email Address (required) <br />';
-    $toReturn .= '<input type="email" name="pp-email2" value="' . ( isset( $_POST["pp-email2"] ) ? esc_attr( $_POST["pp-email2"] ) : '' ) . '" size="40" />';
-    $toReturn .= '</p>';
-    $toReturn .= '<p>';
-    $toReturn .= 'Age (required) <br />';
-    $toReturn .= '<input type="text" name="pp-age2" pattern="[0-9]+" value="' . ( isset( $_POST["pp-age2"] ) ? esc_attr( $_POST["pp-age2"] ) : '' ) . '" size="40" />';
-    $toReturn .= '</p>';
-    $toReturn .= '</div>';
-    //End Copanelist
-
-    //Begin Panel
-    $toReturn .= '<p>';
-    $toReturn .= 'Panel Title (required) <br />';
-    $toReturn .= '<input type="text" name="pp-title" value="' . ( isset( $_POST["pp-title"] ) ? esc_attr( $_POST["pp-title"] ) : '' ) . '" size="40" />';
-    $toReturn .= '</p>';
-    $toReturn .= 'Short Panel Description (required) <br />';
-    $toReturn .= '<textarea rows="10" cols="35" name="pp-description">' . ( isset( $_POST["pp-description"] ) ? esc_attr( $_POST["pp-description"] ) : '' ) . '</textarea>';
-    $toReturn .= '</p>';
-    $toReturn .= '<p>';
-    $toReturn .= 'Detailed Panel outline (required) <br />';
-    $toReturn .= '<textarea rows="10" cols="35" name="pp-outline">' . ( isset( $_POST["pp-outline"] ) ? esc_attr( $_POST["pp-outline"] ) : '' ) . '</textarea>';
-    $toReturn .= '</p>';
-    $toReturn .= '<p><input type="submit" name="pp-submitted" value="Send"/></p>';
-    $toReturn .= '</form>';
-    //End Panel
-    
-    $toReturn .='</div><!-- .entry-content -->';
-    $toReturn .='</article><!-- #post -->';
-    $toReturn .='<?php endwhile; // end of the loop. ?>';
-    $toReturn .='</div><!-- #content -->';
-    $toReturn .='</div><!-- #primary -->';
-    $toReturn .='<?php get_sidebar(); ?>';
-    $toReturn .='<?php get_footer(); ?>';
-    
-    return $toReturn;
-}
+//response generation
 
 function panel_planner_save_input_stage1(){
 
     try{
-        $db_conn = new PDO("mysql:host=$servername;dbname=myDB", $username, $password);
+    $db_conn = new PDO("mysql:host=$servername;dbname=myDB", $username, $password);
         $db_conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         echo "Connected successfully";
     }
@@ -172,6 +72,123 @@ function panel_planner_save_input_stage1(){
     }
 
 }
-function panel_planner_send_mail_stage1(){
+?>
+<html>
+<script type="text/Javascript">
+    function show_hide(element1, element2)
+        if (document.getElementById(element2).checked){
+            document.getElementById(element1).style.display = "";      
+       }
+        else{
+            document.getElementById(element1).style.display = "none";
+        }
+    }
+    </script>
+    
+    <!-- End Javascript / Begin Basic styling for errors -->
+    
+    <style type="text/css">
 
-}
+    .error{
+        padding: 5px 9px;
+        border: 1px solid red;
+        color: red;
+        border-radius: 3px;
+    }
+    
+    .success{
+        padding: 5px 9px;
+        border: 1px solid green;
+        color: green;
+        border-radius: 3px;
+    }
+      form span{
+        color: red;
+      }
+    </style>
+<!-- End errors -->
+
+    <?php get_header(); ?> 
+    <div id="primary" class="site-content">
+    <div id="content" role="main">
+    <?php while ( have_posts() ) : the_post(); ?>
+    <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+    <header class="entry-header">
+    <h1 class="entry-title"><?php the_title(); ?></h1>
+    </header>
+    <div class="entry-content">
+    <?php the_content(); ?>
+
+    <form action="panelplanner-stage1.php" method="post">
+
+    <!-- Begin Panelist -->
+
+    <p>
+    First Name (required) <br />
+    <input type="text" name="pp-first-name" pattern="[a-zA-Z0-9 ]+" value="' . ( isset( $_POST["pp-first-name"] ) ? esc_attr( $_POST["pp-first-name"] ) : '' ) . '" size="40" />
+    </p>
+    <p>
+    Last Name (required) <br />
+    <input type="text" name="pp-last-name" pattern="[a-zA-Z0-9 ]+" value="' . ( isset( $_POST["pp-last-name"] ) ? esc_attr( $_POST["pp-last-name"] ) : '' ) . '" size="40" />
+    </p>
+    <p>
+    Email Address (required) <br />
+    <input type="email" name="pp-email" value="' . ( isset( $_POST["pp-email"] ) ? esc_attr( $_POST["pp-email"] ) : '' ) . '" size="40" />
+    </p>
+    <p>
+    Age (required) <br />
+    <input type="text" name="pp-age" pattern="[0-9]+" value="' . ( isset( $_POST["pp-age"] ) ? esc_attr( $_POST["pp-age"] ) : '' ) . '" size="40" />
+    </p>
+
+    <!-- End Panelist -->
+    
+    <p>
+    <input type="checkbox" checked="false" id="pp-hasCopanelist" onchange="javascript:show_hide(\'CoPanelist\',\'pp-hasCopanelist\');"/> I have a CoPanelist.
+    </p>
+
+    <!-- Begin Copanelist -->
+    
+    <div id="CoPanelist" style="display: none" >
+    <p>
+    First Name (required) <br />
+    <input type="text" name="pp-first-name2" pattern="[a-zA-Z0-9 ]+" value="' . ( isset( $_POST["pp-first-name2"] ) ? esc_attr( $_POST["pp-first-name2"] ) : '' ) . '" size="40" />
+    </p>
+    <p>
+    Last Name (required) <br />
+    <input type="text" name="pp-last-name2" pattern="[a-zA-Z0-9 ]+" value="' . ( isset( $_POST["pp-last-name2"] ) ? esc_attr( $_POST["pp-last-name2"] ) : '' ) . '" size="40" />
+    </p>
+    <p>
+    Email Address (required) <br />
+    <input type="email" name="pp-email2" value="' . ( isset( $_POST["pp-email2"] ) ? esc_attr( $_POST["pp-email2"] ) : '' ) . '" size="40" />
+    </p>
+    <p>
+    Age (required) <br />
+    <input type="text" name="pp-age2" pattern="[0-9]+" value="' . ( isset( $_POST["pp-age2"] ) ? esc_attr( $_POST["pp-age2"] ) : '' ) . '" size="40" />
+    </p>
+    </div>
+
+    <!-- End Copanelist / Begin Panel -->
+
+    <p>
+    Panel Title (required) <br />
+    <input type="text" name="pp-title" value="' . ( isset( $_POST["pp-title"] ) ? esc_attr( $_POST["pp-title"] ) : '' ) . '" size="40" />
+    </p>
+    Short Panel Description (required) <br />
+    <textarea rows="10" cols="35" name="pp-description">' . ( isset( $_POST["pp-description"] ) ? esc_attr( $_POST["pp-description"] ) : '' ) . '</textarea>';
+    </p>
+    <p>
+    Detailed Panel outline (required) <br />
+    <textarea rows="10" cols="35" name="pp-outline">' . ( isset( $_POST["pp-outline"] ) ? esc_attr( $_POST["pp-outline"] ) : '' ) . '</textarea>';
+    </p>
+    <p><input type="submit" name="pp-submitted" value="Send"/></p>
+    </form>
+
+    </div><!-- .entry-content -->
+    </article><!-- #post -->
+    <?php endwhile; // end of the loop. ?>
+    </div><!-- #content -->
+    </div><!-- #primary -->
+    <?php get_sidebar(); ?>
+    <?php get_footer(); ?>
+    
+    <!-- End Panel -->
