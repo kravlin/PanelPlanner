@@ -143,9 +143,9 @@ function panel_planner_uninstall(){
 /** Main method for running Panel Planner */
 new panel_planner_stage_1;
 new panel_planner_stage_2;
-add_action( 'admin_menu', 'panel_planner_menu');
-register_activation_hook( __FILE__, 'panel_planner_activate');
-register_deactivation_hook(__FILE__, 'panel_planner_deactivate');
-register_uninstall_hook(__FILE__, 'panel_planner_uninstall');
+//add_action( 'admin_menu', 'panel_planner_menu');
+//register_activation_hook( __FILE__, 'panel_planner_activate');
+//register_deactivation_hook(__FILE__, 'panel_planner_deactivate');
+//register_uninstall_hook(__FILE__, 'panel_planner_uninstall');
 
 ?>
