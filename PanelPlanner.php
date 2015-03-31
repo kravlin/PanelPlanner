@@ -27,13 +27,8 @@
 include dirname(__FILE__) .'/panelplanner-viewcampaign.php';
 include dirname(__FILE__) .'/panelplanner-viewpanel.php';
 
-function panel_planner_build_form_stage1(){
-    $toreturn = file_get_contents(dirname(__FILE__).'/panelplanner-stage1.php');
-    return $toReturn;
-}
-
-function panel_planner_build_form_stage2(){
-    $toreturn = file_get_contents(dirname(__FILE__).'/panelplanner-stage2.php');
+function panel_planner_build_form($fname){
+    $toreturn = file_get_contents(dirname(__FILE__).'/'.$fname);
     return $toReturn;
 }
 
@@ -64,7 +59,7 @@ function panel_planner_activate(){
 
 	$my_page = array(
 	'post_title' => 'Propose a Panel',
-	'post_content' => panel_planner_build_form_stage1(),
+	'post_content' => panel_planner_build_form('panelplanner-stage1.php'),
 	'post_status' => 'publish',
 	'post_type' => 'page',
 	'post_author' => 2,
@@ -75,7 +70,7 @@ function panel_planner_activate(){
 
 	$my_page = array(
 	'post_title' => 'Panel Proposal - Stage 2',
-	'post_content' => panel_planner_build_form_stage2(),
+	'post_content' => panel_planner_build_form('panelplanner-stage2.php'),
 	'post_status' => 'private',
 	'post_type' => 'page',
 	'post_author' => 2,
