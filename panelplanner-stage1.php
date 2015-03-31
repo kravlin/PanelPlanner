@@ -1,8 +1,19 @@
 <?php
 
-    //response generation
-    
-    function panel_planner_save_input_stage1(){
+    $response = "";
+    //function to generate response
+    function my_contact_form_generate_response($type, $message){
+
+        global $response;
+
+        if($type == "success"){
+           $response = "<div class='success'>{$message}</div>"; 
+        } 
+        else{
+            $response = "<div class='error'>{$message}</div>";
+        } 
+/**
+    function panel_planner_check_input(){
     
         try{
         $db_conn = new PDO("mysql:host=$servername;dbname=myDB", $username, $password);
@@ -72,6 +83,7 @@
         }
     
     }
+    *//
 ?>
 
 <script type="text/Javascript">
