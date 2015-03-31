@@ -28,18 +28,12 @@ include dirname(__FILE__) .'/panelplanner-viewcampaign.php';
 include dirname(__FILE__) .'/panelplanner-viewpanel.php';
 
 function panel_planner_build_form_stage1(){
-    //Begin Javascript
-    $file = fopen(dirname(__FILE__)."/panelplanner-stage1.php", "r") or die ("Unable to open panelplanner-stage1.php!");
-    $toreturn = fread($file,filesize(dirname(__FILE__)."/panelplanner-stage1.php"));
-    fclose($file);
+    $toreturn = file_get_contents(dirname(__FILE__)."/panelplanner-stage1.php");
     return $toReturn;
 }
 
 function panel_planner_build_form_stage2(){
-    //Begin Javascript
-    $file = fopen(dirname(__FILE__)."/panelplanner-stage2.php", "r") or die ("Unable to open panelplanner-stage2.php!");
-    $toreturn = fread($file,filesize(dirname(__FILE__)."/panelplanner-stage2.php"));
-    fclose($file);
+    $toreturn = file_get_contents(dirname(__FILE__)."/panelplanner-stage1.php");
     return $toReturn;
 }
 
