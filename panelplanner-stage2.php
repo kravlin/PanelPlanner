@@ -1,4 +1,4 @@
-<?php
+
 <script type="text/Javascript">
     function show_hide(element1, element2)
         if (document.getElementById(element2).checked){
@@ -118,7 +118,7 @@
     <?php get_footer(); ?>
     
     <!-- End Panel -->
-
+<?php
 function panel_planner_save_input_stage2(){
 
     try{
