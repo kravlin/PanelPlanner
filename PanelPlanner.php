@@ -26,6 +26,7 @@
 
 //For Debugging Purposes
 define('WP_DEBUG', true);
+define('WP_DEBUG_DISPLAY', true);
 
 include dirname(__FILE__) .'/panelplanner-viewcampaign.php';
 include dirname(__FILE__) .'/panelplanner-viewpanel.php';
