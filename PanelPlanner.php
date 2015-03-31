@@ -31,7 +31,7 @@ class panel_planner_stage_1{
 	
 	public function panel_planner_stage_1(){
 		ob_start();
-		this->panel_planner_stage_1_process();
+		$this->panel_planner_stage_1_process();
 		ob_get_clean();
 	}
 
@@ -40,7 +40,7 @@ class panel_planner_stage_1{
 	}
 
 	public function panel_planner_stage_1_process(){
-		
+
         self::panel_planner_stage_1_form();
 	}
 
@@ -55,12 +55,13 @@ class panel_planner_stage_2{
 	
 	public function panel_planner_stage_2(){
 		ob_start();
-		this->panel_planner_stage_2_process();
+		$this->panel_planner_stage_2_process();
 		ob_get_clean();
 	}
 	
 	public function panel_planner_stage_2_process(){
-
+		
+		self::panel_planner_stage_2_form();
 	}
 }
 
@@ -132,6 +133,8 @@ function panel_planner_uninstall(){
 }
 
 /** Main method for running Panel Planner */
+new panel_planner_stage_1;
+new panel_planner_stage_2;
 add_action( 'admin_menu', 'panel_planner_menu');
 register_activation_hook( __FILE__, 'panel_planner_activate');
 register_deactivation_hook(__FILE__, 'panel_planner_deactivate');
