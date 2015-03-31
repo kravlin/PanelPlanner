@@ -26,6 +26,7 @@
 
 class panel_planner_stage_1{
 	function __construct(){
+		trigger_error('panel planner 1 running', E_USER_WARNING );
 		add_shortcode('panel_planner_1', array($this, 'panel_planner_stage_1'));
 	}
 	
@@ -37,7 +38,7 @@ class panel_planner_stage_1{
 
 	static public function panel_planner_stage_1_form() {
 		echo "herpdaderp";
-    	echo file_get_contents(dirname(__FILE__).'/pp_stage1.php');
+    	//echo file_get_contents(dirname(__FILE__).'/pp_stage1.php');
 	}
 
 	public function panel_planner_stage_1_process(){
