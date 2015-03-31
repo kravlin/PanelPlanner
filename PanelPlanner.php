@@ -28,7 +28,7 @@ include dirname(__FILE__) .'/panelplanner-viewcampaign.php';
 include dirname(__FILE__) .'/panelplanner-viewpanel.php';
 
 function panel_planner_build_form($fname){
-    $toreturn = file_get_contents(dirname(__FILE__).'/'.$fname);
+    $toReturn = file_get_contents(dirname(__FILE__).'/'.$fname);
     return $toReturn;
 }
 
