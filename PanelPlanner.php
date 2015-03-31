@@ -24,6 +24,46 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 **/
 
+class panel_planner_stage_1{
+	function __construct(){
+		add_shortcode('panel_planner_stage_1', array($this, panel_planner_stage_1));
+	}
+	
+	public function panel_planner_stage_1(){
+		ob_start();
+		this->panel_planner_stage_1_process();
+		ob_get_clean();
+	}
+
+	static public function panel_planner_stage_1_form() {
+    	echo file_get_contents(dirname(__FILE__).'/pp_stage1.php');
+	}
+
+	public function panel_planner_stage_1_process(){
+		
+        self::panel_planner_stage_1_form();
+	}
+
+
+}
+
+class panel_planner_stage_2{
+
+	function __construct(){
+		add_shortcode('panel_planner_stage_2', array($this, panel_planner_stage_2));
+	}
+	
+	public function panel_planner_stage_2(){
+		ob_start();
+		this->panel_planner_stage_2_process();
+		ob_get_clean();
+	}
+	
+	public function panel_planner_stage_2_process(){
+
+	}
+}
+
 include dirname(__FILE__) .'/panelplanner-viewcampaign.php';
 include dirname(__FILE__) .'/panelplanner-viewpanel.php';
 
@@ -35,6 +75,8 @@ function panel_planner_build_form($fname){
 function panel_planner_menu(){
 	add_options_page('Panel Planner Settings','Panel Planner Settings', 'manage_options','panelplanner-options.php','panel_planner_gen_options_page');
 }
+
+
 
 function panel_planner_activate(){
 	remove_role("panel_planner"); //This is here in case the following code changes. As otherwise it will not overwrite the old settings.
