@@ -24,23 +24,21 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 **/
 
-include dirname(__FILE__) .'/panelplanner-stage1.php';
-include dirname(__FILE__) .'/panelplanner-stage2.php';
 include dirname(__FILE__) .'/panelplanner-viewcampaign.php';
 include dirname(__FILE__) .'/panelplanner-viewpanel.php';
 
 function panel_planner_build_form_stage1(){
     //Begin Javascript
-    $file = fopen("panelplanner-stage1.php", "r") or die ("Unable to open panelplanner-stage1.php!");
-    $toreturn = fread($file,filesize("panelplanner-stage1.php"));
+    $file = fopen("/panelplanner-stage1.php", "r") or die ("Unable to open panelplanner-stage1.php!");
+    $toreturn = fread($file,filesize("/panelplanner-stage1.php"));
     fclose($file);
     return $toReturn;
 }
 
 function panel_planner_build_form_stage2(){
     //Begin Javascript
-    $file = fopen("panelplanner-stage2.php", "r") or die ("Unable to open panelplanner-stage2.php!");
-    $toreturn = fread($file,filesize("panelplanner-stage2.php"));
+    $file = fopen("/panelplanner-stage2.php", "r") or die ("Unable to open panelplanner-stage2.php!");
+    $toreturn = fread($file,filesize("/panelplanner-stage2.php"));
     fclose($file);
     return $toReturn;
 }
@@ -57,40 +55,38 @@ function panel_planner_activate(){
 		'delete_posts' => false,
 		) 
 	);
+
+	// This is useful later. Not useful at this point.
+	/**
 	if( null !== $result ){
 		echo "Panel Planner role created.";
 	}else{
 		echo "Panel Planner role already exists";
 	}
 	$custom_capability = 'Approve Panels';
+	**/
+
+	// Making the stage 1 page.
+
 	$my_page = array(
-	'post_title' => 'Panel Submission',
+	'post_title' => 'Propose a Panel',
 	'post_content' => panel_planner_build_form_stage1(),
 	'post_status' => 'publish',
 	'post_type' => 'page',
 	'post_author' => 2,
 	'post_date' => '2012-08-20 15:10:30'
 	);
+
+
 	$post_id = wp_insert_post($my_page);
 	$my_page = array(
-	'post_title' => 'Panel Submission - Stage 2',
+	'post_title' => 'Panel Proposal - Stage 2',
 	'post_content' => panel_planner_build_form_stage2(),
 	'post_status' => 'private',
 	'post_type' => 'page',
 	'post_author' => 2,
 	'post_date' => '2012-08-20 15:10:30'
 	);
-
-	$post_id = wp_insert_post($my_page);
-	$my_page = array(
-	'post_title' => 'Panel Management',
-	'post_content' => 'This is a new page. You can add any content you want here, including shortcodes.',
-	'post_status' => 'private',
-	'post_type' => 'page',
-	'post_author' => 2,
-	'post_date' => '2012-08-20 15:10:30'
-	);
-
 	$post_id = wp_insert_post($my_page);
 
 	
