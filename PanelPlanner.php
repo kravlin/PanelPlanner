@@ -31,10 +31,8 @@ class panel_planner_stage_1{
 	}
 	
 	public function panel_planner_stage_1(){
-		ob_start();
 		trigger_error('panel planner 1 shortcode Hit', E_USER_WARNING );
 		$this->panel_planner_stage_1_process();
-		ob_get_clean();
 	}
 
 	static public function panel_planner_stage_1_form() {
