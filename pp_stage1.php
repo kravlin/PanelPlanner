@@ -64,11 +64,11 @@ Panel Title (required) <br />
 <input type="text" name="pp-title" size="40" />
 </p>
 Short Panel Description (required) <br />
-<textarea rows="10" cols="35" name="pp-description" />
+<textarea rows="10" cols="35" name="pp-description">Please place a short description of your panel here. Similar to one you'd see in the program.</textarea>
 </p>
 <p>
 Detailed Panel outline (required) <br />
-<textarea rows="10" cols="35" name="pp-outline" />
+<textarea rows="10" cols="35" name="pp-outline">Outline your panel here, what are you going to talk about? how long do you expect the different parts to last?</textarea>
 </p>
 <p><input type="submit" name="pp-submitted" value="Send"/></p>
 </form>
