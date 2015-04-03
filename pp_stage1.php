@@ -33,7 +33,7 @@ Age (required) <br />
 <!-- End Panelist -->
 
 <p>
-<input type="checkbox" checked="false" id="pp-hasCopanelist" onchange="javascript:show_hide(\'CoPanelist\',\'pp-hasCopanelist\');"/> I have a CoPanelist.
+<input type="checkbox" checked="false" id="pp-hasCopanelist" onchange="javascript:show_hide('pp-hasCopanelist');"/> I have a CoPanelist.
 </p>
 
 <!-- Begin Copanelist -->
@@ -64,11 +64,11 @@ Panel Title (required) <br />
 <input type="text" name="pp-title" size="40" />
 </p>
 Short Panel Description (required) <br />
-<textarea rows="10" cols="35" name="pp-description"</textarea>';
+<textarea rows="10" cols="35" name="pp-description"</textarea>
 </p>
 <p>
 Detailed Panel outline (required) <br />
-<textarea rows="10" cols="35" name="pp-outline"</textarea>';
+<textarea rows="10" cols="35" name="pp-outline"</textarea>
 </p>
 <p><input type="submit" name="pp-submitted" value="Send"/></p>
 </form>
