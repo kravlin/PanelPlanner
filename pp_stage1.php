@@ -9,7 +9,7 @@
     }
 </script>
 
-<form action="'.$_SERVER['REQUEST_URI']." method="post">
+<form action="' . $_SERVER['REQUEST_URI'] . '" method="post">
 
 <!-- Begin Panelist -->
 
