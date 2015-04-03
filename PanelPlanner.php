@@ -69,9 +69,6 @@ class panel_planner_stage_1{
 
 }
 
-
-}
-
 class panel_planner_stage_2{
 
 	function __construct(){
