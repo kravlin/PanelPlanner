@@ -41,7 +41,7 @@ class panel_planner_stage_1{
 
 	public function panel_planner_stage_1_process(){
 		if ( isset($_POST['form-submitted']) ) {
-			$this->validate_form(
+			$this->pp_panel_1_validate_form(
 				$_POST['pp-first-name'], $_POST['pp-last-name'],
 				$_POST['pp-email'], $_POST['pp-age'],
 				$_POST['pp-first-name2'], $_POST['pp-last-name2'],
@@ -57,7 +57,7 @@ class panel_planner_stage_1{
 				}
 			}
 	 	}
-		$this->save_input($_POST['pp-first-name'], $_POST['pp-last-name'],
+		$this->pp_panel_1_save_input($_POST['pp-first-name'], $_POST['pp-last-name'],
 				$_POST['pp-email'], $_POST['pp-age'],
 				$_POST['pp-first-name2'], $_POST['pp-last-name2'],
 				$_POST['pp-email2'], $_POST['pp-age2'],
@@ -65,7 +65,12 @@ class panel_planner_stage_1{
 				$_POST['pp-outline']);
     	self::panel_planner_stage_1_form();
 	}
+	private function pp_panel_1_validate_form(){
+		
+	}
+	private function pp_panel_1_save_input(){
 
+	}
 
 }
 
