@@ -64,11 +64,11 @@ Panel Title (required) <br />
 <input type="text" name="pp-title" size="40" />
 </p>
 Short Panel Description (required) <br />
-<textarea rows="10" cols="35" name="pp-description"</textarea>
+<textarea rows="10" cols="35" name="pp-description" />
 </p>
 <p>
 Detailed Panel outline (required) <br />
-<textarea rows="10" cols="35" name="pp-outline"</textarea>
+<textarea rows="10" cols="35" name="pp-outline" />
 </p>
 <p><input type="submit" name="pp-submitted" value="Send"/></p>
 </form>
