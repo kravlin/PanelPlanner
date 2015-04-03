@@ -40,9 +40,34 @@ class panel_planner_stage_1{
 	}
 
 	public function panel_planner_stage_1_process(){
-
-        self::panel_planner_stage_1_form();
+		if ( isset($_POST['form-submitted']) ) {
+			$this->validate_form(
+				$_POST['pp-first-name'], $_POST['pp-last-name'],
+				$_POST['pp-email'], $_POST['pp-age'],
+				$_POST['pp-first-name2'], $_POST['pp-last-name2'],
+				$_POST['pp-email2'], $_POST['pp-age2'],
+				$_POST['pp-title'], $_POST['pp-description'],
+				$_POST['pp-outline']);
+			if(is_array($this->form_errors)) {
+				foreach($this->form_errors as $error) {
+					echo '<div>';
+					echo '<strong>ERROR</strong>';
+					echo $error . '<br/>';
+					echo '</div>';
+				}
+			}
+	 	}
+		$this->save_input($_POST['pp-first-name'], $_POST['pp-last-name'],
+				$_POST['pp-email'], $_POST['pp-age'],
+				$_POST['pp-first-name2'], $_POST['pp-last-name2'],
+				$_POST['pp-email2'], $_POST['pp-age2'],
+				$_POST['pp-title'], $_POST['pp-description'],
+				$_POST['pp-outline']);
+    	self::panel_planner_stage_1_form();
 	}
+
+
+}
 
 
 }
