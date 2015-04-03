@@ -36,8 +36,7 @@ class panel_planner_stage_1{
 	}
 
 	static public function panel_planner_stage_1_form() {
-		echo "herpdaderp";
-    	//echo file_get_contents(dirname(__FILE__).'/pp_stage1.php');
+    	echo file_get_contents(dirname(__FILE__).'/pp_stage1.php');
 	}
 
 	public function panel_planner_stage_1_process(){
