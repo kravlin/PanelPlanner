@@ -1,3 +1,15 @@
+<?php
+class panel_planner_stage_1{
+	function __construct(){
+		add_shortcode('panel_planner_1', array($this, 'panel_planner_stage_1'));
+	}
+	
+	public function panel_planner_stage_1(){
+		$this->panel_planner_stage_1_process();
+	}
+
+	static public function panel_planner_stage_1_form() {
+    echo	<<<EOT
 <script type="text/Javascript">
     function show_hide(element1, element2) {
         if (document.getElementById(element2).checked){
@@ -72,3 +84,41 @@ Detailed Panel outline (required) <br />
 </p>
 <p><input type="submit" name="pp-submitted" value="Send"/></p>
 </form>
+EOT;
+	}
+
+	public function panel_planner_stage_1_process(){
+		if ( isset($_POST['pp-submitted']) ) {
+			$this->pp_panel_1_validate_form(
+				$_POST['pp-first-name'], $_POST['pp-last-name'],
+				$_POST['pp-email'], $_POST['pp-age'],
+				$_POST['pp-first-name2'], $_POST['pp-last-name2'],
+				$_POST['pp-email2'], $_POST['pp-age2'],
+				$_POST['pp-title'], $_POST['pp-description'],
+				$_POST['pp-outline']);
+			if(is_array($this->form_errors)) {
+				foreach($this->form_errors as $error) {
+					echo '<div>';
+					echo '<strong>ERROR</strong>';
+					echo $error . '<br/>';
+					echo '</div>';
+				}
+			}
+	 	}
+		$this->pp_panel_1_save_input($_POST['pp-first-name'], $_POST['pp-last-name'],
+				$_POST['pp-email'], $_POST['pp-age'],
+				$_POST['pp-first-name2'], $_POST['pp-last-name2'],
+				$_POST['pp-email2'], $_POST['pp-age2'],
+				$_POST['pp-title'], $_POST['pp-description'],
+				$_POST['pp-outline']);
+    	self::panel_planner_stage_1_form();
+	}
+	private function pp_panel_1_validate_form(){
+		
+	}
+	private function pp_panel_1_save_input(){
+
+	}
+
+}
+?>

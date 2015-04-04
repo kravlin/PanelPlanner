@@ -26,12 +26,10 @@
 
 class panel_planner_stage_1{
 	function __construct(){
-		trigger_error('panel planner 1 started', E_USER_WARNING );
 		add_shortcode('panel_planner_1', array($this, 'panel_planner_stage_1'));
 	}
 	
 	public function panel_planner_stage_1(){
-		trigger_error('panel planner 1 shortcode Hit', E_USER_WARNING );
 		$this->panel_planner_stage_1_process();
 	}
 
