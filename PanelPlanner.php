@@ -23,54 +23,9 @@
     along with this program; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 **/
-
-class panel_planner_stage_1{
-	function __construct(){
-		add_shortcode('panel_planner_1', array($this, 'panel_planner_stage_1'));
-	}
-	
-	public function panel_planner_stage_1(){
-		$this->panel_planner_stage_1_process();
-	}
-
-	static public function panel_planner_stage_1_form() {
-    	echo file_get_contents(dirname(__FILE__).'/pp_stage1.php');
-	}
-
-	public function panel_planner_stage_1_process(){
-		if ( isset($_POST['pp-submitted']) ) {
-			$this->pp_panel_1_validate_form(
-				$_POST['pp-first-name'], $_POST['pp-last-name'],
-				$_POST['pp-email'], $_POST['pp-age'],
-				$_POST['pp-first-name2'], $_POST['pp-last-name2'],
-				$_POST['pp-email2'], $_POST['pp-age2'],
-				$_POST['pp-title'], $_POST['pp-description'],
-				$_POST['pp-outline']);
-			if(is_array($this->form_errors)) {
-				foreach($this->form_errors as $error) {
-					echo '<div>';
-					echo '<strong>ERROR</strong>';
-					echo $error . '<br/>';
-					echo '</div>';
-				}
-			}
-	 	}
-		$this->pp_panel_1_save_input($_POST['pp-first-name'], $_POST['pp-last-name'],
-				$_POST['pp-email'], $_POST['pp-age'],
-				$_POST['pp-first-name2'], $_POST['pp-last-name2'],
-				$_POST['pp-email2'], $_POST['pp-age2'],
-				$_POST['pp-title'], $_POST['pp-description'],
-				$_POST['pp-outline']);
-    	self::panel_planner_stage_1_form();
-	}
-	private function pp_panel_1_validate_form(){
-		
-	}
-	private function pp_panel_1_save_input(){
-
-	}
-
-}
+include dirname(__FILE__) .'/panelplanner_stage1.php';
+include dirname(__FILE__) .'/panelplanner-viewcampaign.php';
+include dirname(__FILE__) .'/panelplanner-viewpanel.php';
 
 class panel_planner_stage_2{
 
@@ -94,9 +49,6 @@ class panel_planner_stage_2{
 		self::panel_planner_stage_2_form();
 	}
 }
-
-include dirname(__FILE__) .'/panelplanner-viewcampaign.php';
-include dirname(__FILE__) .'/panelplanner-viewpanel.php';
 
 function panel_planner_build_form($fname){
     $toReturn = file_get_contents(dirname(__FILE__).'/'.$fname);
