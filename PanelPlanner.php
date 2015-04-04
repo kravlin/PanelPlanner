@@ -40,7 +40,7 @@ class panel_planner_stage_1{
 	}
 
 	public function panel_planner_stage_1_process(){
-		if ( isset($_POST['form-submitted']) ) {
+		if ( isset($_POST['pp-submitted']) ) {
 			$this->pp_panel_1_validate_form(
 				$_POST['pp-first-name'], $_POST['pp-last-name'],
 				$_POST['pp-email'], $_POST['pp-age'],
