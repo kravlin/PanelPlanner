@@ -92,7 +92,7 @@ function panel_planner_menu(){
 
 function panel_planner_activate(){
 
-	error_log("Starting activation of the plugin");
+	error_log("Starting activation of the plugin\n", 3, "/var/log/php_errors.log");
 
 	install_database();
 
