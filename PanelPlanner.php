@@ -54,7 +54,7 @@ function install_database(){
 
 	//Create Panelists Table
 	
-	error_log("creating panelists table");
+	trigger_error("creating panelists table");
 	$create_panelists = "CREATE TABLE ".$wpdb->prefix."panelPlanner_panelists (
 id int AUTO_INCREMENT PRIMARY KEY,
 firstName varchar(20) NOT NULL,
@@ -64,11 +64,11 @@ age int NOT NULL
 )".$charset_collate.";";
 
 	dbDelta( $create_panelists );
-	error_log("panelists table should be created");
+	trigger_error("panelists table should be created", E_WARNING);
 
 	//Create Panels Table
 
-	error_log("creating panel table");
+	trigger_error("creating panel table", E_WARNING);
 	$create_panels = "CREATE TABLE ".$wpdb->prefix."panelPlanner_panels (
 id mediumint(9) AUTO_INCREMENT PRIMARY KEY,
 panelistID mediumint(9) NOT NULL,
@@ -80,7 +80,7 @@ approvalStage int NOT NULL
 )".$charset_collate.";";
 
 	dbDelta( $create_panels );
-	error_log("panel table should be created");
+	trigger_error("panel table should be created", E_WARNING);
 
 	add_option( 'panelplanner_db_version' , $panelplanner_db_version);
 }
@@ -92,7 +92,7 @@ function panel_planner_menu(){
 
 function panel_planner_activate(){
 
-	error_log("Starting activation of the plugin\n", 3, "/var/log/php_errors.log");
+	trigger_error("Starting activation of the plugin", E_WARNING);
 
 	install_database();
 
