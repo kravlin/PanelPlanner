@@ -82,6 +82,7 @@
 		}
 	
 		public function panel_planner_stage_1_process(){
+			trigger_error("Plugin be runnin", E_WARNING);
 			if ( isset($_POST['pp-submitted']) ) {
 				$this->panel_planner_stage_1_validate_form(
 					$_POST['pp-first-name'], $_POST['pp-last-name'],
