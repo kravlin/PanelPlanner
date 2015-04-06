@@ -44,12 +44,8 @@ function panel_planner_build_form($fname){
 }
 **/
 
-function panel_planner_menu(){
-	add_options_page('Panel Planner Settings','Panel Planner Settings', 'manage_options','panelplanner-options.php','panel_planner_gen_options_page');
-}
+function install_database(){
 
-
-function panel_planner_activate(){
 	require_once( ABSPATH . 'wp-admin/includes/upgrade.php');
 
 	//Create Database Tables
@@ -62,7 +58,7 @@ function panel_planner_activate(){
 
 	$tablename = $wpdb->prefix . "panelPlanner_panelists";
 	$create_panelists = "CREATE TABLE ".$tablename." (
-		id mediumint(9) NOT NULL AUTO_INCREMENT PRIMARY,
+		id int AUTO_INCREMENT PRIMARY KEY,
 		firstName varchar(20) NOT NULL,
 		lastName varchar(20) NOT NULL,
 		email varchar(50) NOT NULL,
@@ -75,7 +71,7 @@ function panel_planner_activate(){
 
 	$tablename = $wpdb->prefix . "panelPlanner_panels";
 	$create_panels = "CREATE TABLE ".$tablename." (
-		id mediumint(9) NOT NULL AUTO_INCREMENT PRIMARY,
+		id mediumint(9) AUTO_INCREMENT PRIMARY KEY,
 		panelistID mediumint(9) NOT NULL,
 		copanlistID mediumint(9),
 		title varchar(50) NOT NULL,
@@ -86,6 +82,15 @@ function panel_planner_activate(){
 	dbDelta( $create_panels );
 
 	add_option( 'panelplanner_db_version' , $panelplanner_db_version);
+}
+
+function panel_planner_menu(){
+	add_options_page('Panel Planner Settings','Panel Planner Settings', 'manage_options','panelplanner-options.php','panel_planner_gen_options_page');
+}
+
+
+function panel_planner_activate(){
+
 
 	remove_role("panel_planner"); //This is here in case the following code changes. As otherwise it will not overwrite the old settings.
 	/**
