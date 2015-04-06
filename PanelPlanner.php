@@ -34,6 +34,7 @@ include dirname(__FILE__) .'/panelplanner-viewpanel.php';
 //Global Variables!
 
 global $wpdb;
+global $panelplanner_db_version;
 
 
 /**
@@ -54,6 +55,7 @@ function panel_planner_activate(){
 	//Create Database Tables
 
 	global $wpdb;
+	global $panelplanner_db_version;
 	$charset_collate = $wpdb->get_charset_collate();
 
 	//Create Panelists Table
@@ -72,7 +74,7 @@ function panel_planner_activate(){
 	//Create Panels Table
 
 	$tablename = $wpdb->prefix . "panelPlanner_panels";
-	$create_panelists = "CREATE TABLE ".$tablename." (
+	$create_panels = "CREATE TABLE ".$tablename." (
 		id mediumint(9) NOT NULL AUTO_INCREMENT PRIMARY,
 		panelistID mediumint(9) NOT NULL,
 		copanlistID mediumint(9),
@@ -81,7 +83,9 @@ function panel_planner_activate(){
 		outline varchar(500) NOT NULL,
 		approvalStage int NOT NULL
 		)".$charset_collate.";";
-	dbDelta( $create_panelists );
+	dbDelta( $create_panels );
+
+	add_option( 'panelplanner_db_version' , $panelplanner_db_version);
 
 	remove_role("panel_planner"); //This is here in case the following code changes. As otherwise it will not overwrite the old settings.
 	/**
