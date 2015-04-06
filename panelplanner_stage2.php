@@ -1,3 +1,5 @@
+<?php
+
 class panel_planner_stage_2{
 
     function __construct(){
@@ -20,3 +22,5 @@ class panel_planner_stage_2{
         self::panel_planner_stage_2_form();
     }
 }
+
+?>
