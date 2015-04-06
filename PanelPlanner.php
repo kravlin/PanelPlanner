@@ -83,16 +83,6 @@ function panel_planner_activate(){
 		)".$charset_collate.";";
 	dbDelta( $create_panelists );
 
-	//Create Settings Table
-
-	$tablename = $wpdb->prefix . "panelPlanner_settings";
-	$create_panelists = "CREATE TABLE ".$tablename." (
-		setting varcchar(50) NOT NULL PRIMARY,
-		value varchar(500) NOT NULL,
-		)".$charset_collate.";";
-	dbDelta( $create_panelists );
-
-
 	remove_role("panel_planner"); //This is here in case the following code changes. As otherwise it will not overwrite the old settings.
 	/**
 	add_role ("panel_planner", "Panel Planner", array( //I'd love to set this to user level 0, but that's depricated.
