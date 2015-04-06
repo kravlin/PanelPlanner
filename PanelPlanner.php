@@ -92,6 +92,8 @@ function panel_planner_menu(){
 
 function panel_planner_activate(){
 
+	error_log("Starting activation of the plugin");
+
 	install_database();
 
 	remove_role("panel_planner"); //This is here in case the following code changes. As otherwise it will not overwrite the old settings.
