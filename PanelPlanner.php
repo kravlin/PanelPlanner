@@ -59,7 +59,8 @@ id int AUTO_INCREMENT PRIMARY KEY,
 firstName varchar(20) NOT NULL,
 lastName varchar(20) NOT NULL,
 email varchar(50) NOT NULL,
-age int NOT NULL);";
+age int NOT NULL
+)".$charset_collate.";";
 
 	dbDelta( $create_panelists );
 
@@ -72,7 +73,8 @@ copanlistID mediumint(9),
 title varchar(50) NOT NULL,
 description varchar(500) NOT NULL,
 outline varchar(500) NOT NULL,
-approvalStage int NOT NULL);";
+approvalStage int NOT NULL
+)".$charset_collate.";";
 
 	dbDelta( $create_panels );
 
