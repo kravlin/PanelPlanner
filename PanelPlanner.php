@@ -54,29 +54,28 @@ function install_database(){
 
 	//Create Panelists Table
 
-	$tablename = $wpdb->prefix . "panelPlanner_panelists";
-	$create_panelists = "CREATE TABLE ".$tablename." (
-		id int AUTO_INCREMENT PRIMARY KEY,
-		firstName varchar(20) NOT NULL,
-		lastName varchar(20) NOT NULL,
-		email varchar(50) NOT NULL,
-		age int NOT NULL
-		)".$charset_collate.";";
+	$create_panelists = "CREATE TABLE ".$wpdb->prefix."panelPlanner_panelists (
+id int AUTO_INCREMENT PRIMARY KEY,
+firstName varchar(20) NOT NULL,
+lastName varchar(20) NOT NULL,
+email varchar(50) NOT NULL,
+age int NOT NULL
+)".$charset_collate.";";
 
 	dbDelta( $create_panelists );
 
 	//Create Panels Table
 
-	$tablename = $wpdb->prefix . "panelPlanner_panels";
-	$create_panels = "CREATE TABLE ".$tablename." (
-		id mediumint(9) AUTO_INCREMENT PRIMARY KEY,
-		panelistID mediumint(9) NOT NULL,
-		copanlistID mediumint(9),
-		title varchar(50) NOT NULL,
-		description varchar(500) NOT NULL,
-		outline varchar(500) NOT NULL,
-		approvalStage int NOT NULL
-		)".$charset_collate.";";
+	$create_panels = "CREATE TABLE ".$wpdb->prefix."panelPlanner_panels (
+id mediumint(9) AUTO_INCREMENT PRIMARY KEY,
+panelistID mediumint(9) NOT NULL,
+copanlistID mediumint(9),
+title varchar(50) NOT NULL,
+description varchar(500) NOT NULL,
+outline varchar(500) NOT NULL,
+approvalStage int NOT NULL
+)".$charset_collate.";";
+
 	dbDelta( $create_panels );
 
 	add_option( 'panelplanner_db_version' , $panelplanner_db_version);
