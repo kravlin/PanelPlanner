@@ -94,7 +94,7 @@
 					foreach($this->form_errors as $error) {
 						echo '<div>';
 						echo '<strong>ERROR</strong>';
-						echo $error . '<br/>';
+						echo ' '. $error . '<br/>';
 						echo '</div>';
 					}
 				}
