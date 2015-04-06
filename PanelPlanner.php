@@ -33,8 +33,6 @@ include dirname(__FILE__) .'/panelplanner-viewpanel.php';
 
 //Global Variables!
 
-global $wpdb;
-global $panelplanner_db_version;
 
 
 /**
@@ -51,7 +49,7 @@ function install_database(){
 	//Create Database Tables
 
 	global $wpdb;
-	global $panelplanner_db_version;
+	$panelplanner_db_version = "1.0";
 	$charset_collate = $wpdb->get_charset_collate();
 
 	//Create Panelists Table
