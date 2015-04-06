@@ -53,7 +53,8 @@ function install_database(){
 	$charset_collate = $wpdb->get_charset_collate();
 
 	//Create Panelists Table
-
+	
+	error_log("creating panelists table");
 	$create_panelists = "CREATE TABLE ".$wpdb->prefix."panelPlanner_panelists (
 id int AUTO_INCREMENT PRIMARY KEY,
 firstName varchar(20) NOT NULL,
@@ -63,9 +64,11 @@ age int NOT NULL
 )".$charset_collate.";";
 
 	dbDelta( $create_panelists );
+	error_log("panelists table should be created");
 
 	//Create Panels Table
 
+	error_log("creating panel table");
 	$create_panels = "CREATE TABLE ".$wpdb->prefix."panelPlanner_panels (
 id mediumint(9) AUTO_INCREMENT PRIMARY KEY,
 panelistID mediumint(9) NOT NULL,
@@ -77,6 +80,7 @@ approvalStage int NOT NULL
 )".$charset_collate.";";
 
 	dbDelta( $create_panels );
+	error_log("panel table should be created");
 
 	add_option( 'panelplanner_db_version' , $panelplanner_db_version);
 }
@@ -89,7 +93,6 @@ function panel_planner_menu(){
 function panel_planner_activate(){
 
 	install_database();
-
 
 	remove_role("panel_planner"); //This is here in case the following code changes. As otherwise it will not overwrite the old settings.
 	/**
