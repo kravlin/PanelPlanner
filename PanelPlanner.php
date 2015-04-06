@@ -23,46 +23,78 @@
     along with this program; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 **/
+
+//Includes!
+
 include dirname(__FILE__) .'/panelplanner_stage1.php';
+include dirname(__FILE__) .'/panelplanner_stage2.php';
 include dirname(__FILE__) .'/panelplanner-viewcampaign.php';
 include dirname(__FILE__) .'/panelplanner-viewpanel.php';
 
-class panel_planner_stage_2{
+//Global Variables!
 
-	function __construct(){
-		add_shortcode('panel_planner_2', array($this, 'panel_planner_stage_2'));
-	}
-	
-	public function panel_planner_stage_2(){
-		ob_start();
-		$this->panel_planner_stage_2_process();
-		ob_get_clean();
-	}
+global $wpdb;
 
-	static public function panel_planner_stage_2_form() {
-		echo "derpdaherp";
-    	echo file_get_contents(dirname(__FILE__).'/pp_stage2.php');
-	}
-	
-	public function panel_planner_stage_2_process(){
-		
-		self::panel_planner_stage_2_form();
-	}
-}
 
+/**
 function panel_planner_build_form($fname){
     $toReturn = file_get_contents(dirname(__FILE__).'/'.$fname);
     return $toReturn;
 }
+**/
 
 function panel_planner_menu(){
 	add_options_page('Panel Planner Settings','Panel Planner Settings', 'manage_options','panelplanner-options.php','panel_planner_gen_options_page');
 }
 
 
-
 function panel_planner_activate(){
+	require_once( ABSPATH . 'wp-admin/includes/upgrade.php');
+
+	//Create Database Tables
+
+	global $wpdb;
+	$charset_collate = $wpdb->get_charset_collate();
+
+	//Create Panelists Table
+
+	$tablename = $wpdb->prefix . "panelPlanner_panelists";
+	$create_panelists = "CREATE TABLE ".$tablename." (
+		id mediumint(9) NOT NULL AUTO_INCREMENT PRIMARY,
+		firstName varchar(20) NOT NULL,
+		lastName varchar(20) NOT NULL,
+		email varchar(50) NOT NULL,
+		age int NOT NULL
+		)".$charset_collate.";";
+
+	dbDelta( $create_panelists );
+
+	//Create Panels Table
+
+	$tablename = $wpdb->prefix . "panelPlanner_panels";
+	$create_panelists = "CREATE TABLE ".$tablename." (
+		id mediumint(9) NOT NULL AUTO_INCREMENT PRIMARY,
+		panelistID mediumint(9) NOT NULL,
+		copanlistID mediumint(9),
+		title varchar(50) NOT NULL,
+		description varchar(500) NOT NULL,
+		outline varchar(500) NOT NULL,
+		approvalStage int NOT NULL
+		)".$charset_collate.";";
+	dbDelta( $create_panelists );
+
+	//Create Settings Table
+
+	$tablename = $wpdb->prefix . "panelPlanner_settings";
+	$create_panelists = "CREATE TABLE ".$tablename." (
+		setting varcchar(50) NOT NULL PRIMARY,
+		value varchar(500) NOT NULL,
+		)".$charset_collate.";";
+	dbDelta( $create_panelists );
+
+
 	remove_role("panel_planner"); //This is here in case the following code changes. As otherwise it will not overwrite the old settings.
+	/**
 	add_role ("panel_planner", "Panel Planner", array( //I'd love to set this to user level 0, but that's depricated.
 		'read' => false,
 		'edit_posts' => false, 
@@ -71,7 +103,7 @@ function panel_planner_activate(){
 	);
 
 	// This is useful later. Not useful at this point.
-	/**
+
 	if( null !== $result ){
 		echo "Panel Planner role created.";
 	}else{
