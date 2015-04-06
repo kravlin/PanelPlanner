@@ -113,7 +113,7 @@ function panel_planner_activate(){
 		echo "Panel Planner role already exists";
 	}
 	$custom_capability = 'Approve Panels';
-	**/
+	
 
 	// Making the stage 1 page.
 
@@ -137,7 +137,7 @@ function panel_planner_activate(){
 	'post_date' => '2012-08-20 15:10:30'
 	);
 	//$post_id = wp_insert_post($my_page);
-
+**/
 	
 }
 
@@ -152,9 +152,9 @@ function panel_planner_uninstall(){
 /** Main method for running Panel Planner */
 new panel_planner_stage_1;
 new panel_planner_stage_2;
-//add_action( 'admin_menu', 'panel_planner_menu');
-//register_activation_hook( __FILE__, 'panel_planner_activate');
-//register_deactivation_hook(__FILE__, 'panel_planner_deactivate');
-//register_uninstall_hook(__FILE__, 'panel_planner_uninstall');
+add_action( 'admin_menu', 'panel_planner_menu');
+register_activation_hook( __FILE__, 'panel_planner_activate');
+register_deactivation_hook(__FILE__, 'panel_planner_deactivate');
+register_uninstall_hook(__FILE__, 'panel_planner_uninstall');
 
 ?>
