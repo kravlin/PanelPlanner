@@ -147,7 +147,7 @@
     		$tableName = $wpdb->prefix . "panelplanner_panelists";
 
     		$wpdb->query($wpdb->replace(
-    			"$tablename",
+    			$tableName,
     			array(
     				'firstName' => $fname,
     				'lastName' => $lname,
@@ -169,7 +169,7 @@
     		$tableName = $wpdb->prefix . "panelplanner_panels";
 
     		$wpdb->insert(
-    			$tablename,
+    			$tableName,
     			array(
     				'panelistID' => $panelistID,
     				'copanelistID' => $copanelistID,
