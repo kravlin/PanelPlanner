@@ -100,7 +100,7 @@
 					}
 				}
 		 	}
-			$this->pp_panel_1_save_input($_POST['pp-first-name'], $_POST['pp-last-name'],
+			$this->panelplanner_panel_1_save_input($_POST['pp-first-name'], $_POST['pp-last-name'],
 					$_POST['pp-email'], $_POST['pp-age'],
 					$_POST['pp-first-name2'], $_POST['pp-last-name2'],
 					$_POST['pp-email2'], $_POST['pp-age2'],
