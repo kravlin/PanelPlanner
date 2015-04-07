@@ -142,18 +142,6 @@
     	    }
     	}
 
-
-		private function panelplanner_panel_1_save_input($fname, $lname, $email, $age, $fname2, $lname2, $email2, $age2, $title, $desc, $outline){
-			$table_name = $wpdb->prefix . "panelplanner_panelists";
-
-			$panelistID = panelplanner_insert_panelist($fname, $lname, $email, $age);
-			$copanelistID = panelplanner_insert_panelist($fname2, $lname2, $email2, $age2);
-
-			$table_name = $wpdb->prefix . "panelplanner_panels";
-
-			$panelID = panelplanner_insert_panel($panelistID, $copanelistID, $title, $desc, $outline);
-		}
-
     	private function panelplanner_insert_panelist($fname,$lname,$email,$age){
     		global $wpdb;
     		$tableName = $wpdb->prefix . "panelplanner_panelists";
@@ -199,5 +187,18 @@
     		);
     		return $wpdb->insert_id;
     	}
+
+		private function panelplanner_panel_1_save_input($fname, $lname, $email, $age, $fname2, $lname2, $email2, $age2, $title, $desc, $outline){
+			$table_name = $wpdb->prefix . "panelplanner_panelists";
+
+			$panelistID = panelplanner_insert_panelist($fname, $lname, $email, $age);
+			$copanelistID = panelplanner_insert_panelist($fname2, $lname2, $email2, $age2);
+
+			$table_name = $wpdb->prefix . "panelplanner_panels";
+
+			$panelID = panelplanner_insert_panel($panelistID, $copanelistID, $title, $desc, $outline);
+		}
+
+
 	}
 ?>
