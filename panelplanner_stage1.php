@@ -156,7 +156,7 @@
     			$email
     		) );
     		error_log("Grabbing panelist number: $id");
-    		if($id != NULL){
+    		if($id == NULL){
     			$id = $wpdb->insert(
     				$tableName,
     				array(
