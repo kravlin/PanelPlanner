@@ -145,23 +145,34 @@
     	private function panelplanner_insert_panelist($fname,$lname,$email,$age){
     		global $wpdb;
     		$tableName = $wpdb->prefix . "panelPlanner_panelists";
-
-    		$wpdb->replace(
-    			$tableName,
-    			array(
-    				'firstName' => $fname,
-    				'lastName' => $lname,
-    				'email' => $email,
-    				'age' => $age
-    			),
-    			array(
-    				'%s',
-    				'%s',
-    				'%s',
-    				'%d'
-    			)
-    		);
-    		return $wpdb->insert_id;
+    		$id = $wpdb->get_var( $wpdb->prepare(
+    			"SELECT id FROM ".$tablename."
+    			WHERE firstName = %s AND
+    			lastName = %s AND
+    			email = %s
+    			",
+    			$fname,
+    			$lname,
+    			$email
+    		) );
+    		if($id != NULL){
+    			$id = $wpdb->insert(
+    				$tableName,
+    				array(
+    					'firstName' => $fname,
+    					'lastName' => $lname,
+    					'email' => $email,
+    					'age' => $age
+    				),
+    				array(
+    					'%s',
+    					'%s',
+    					'%s',
+    					'%d'
+    				)
+    			);
+    		}
+    		return $id;
     	}
 
     	private function panelplanner_insert_panel($panelistID,$copanelistID,$title,$desc,$outline){
