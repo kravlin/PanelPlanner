@@ -84,7 +84,7 @@
 		public function panel_planner_stage_1_process(){
 			error_log("Plugin be runnin");
 			if ( isset($_POST['pp-submitted']) ) {
-				$this->panel_planner_stage_1_validate_form(
+				$this->panelplanner_stage_1_validate_form(
 					$_POST['pp-first-name'], $_POST['pp-last-name'],
 					$_POST['pp-email'], $_POST['pp-age'],
 					$_POST['pp-first-name2'], $_POST['pp-last-name2'],
@@ -98,21 +98,33 @@
 						echo ' '. $error . '<br/>';
 						echo '</div>';
 					}
+					self::panel_planner_stage_1_form();
 				}
+				if ( count($this->form_errors) == 0 ){
+					$panelID = $this->panelplanner_panel_1_save_input($_POST['pp-first-name'], $_POST['pp-last-name'],
+						$_POST['pp-email'], $_POST['pp-age'],
+						$_POST['pp-first-name2'], $_POST['pp-last-name2'],
+						$_POST['pp-email2'], $_POST['pp-age2'],
+						$_POST['pp-title'], $_POST['pp-description'],
+						$_POST['pp-outline']);
+					$this->panelplanner_panel_1_email($_POST['pp-first-name'], $_POST['pp-last-name'],
+						$_POST['pp-email'], $_POST['pp-age'],
+						$panelID, $_POST['pp-title'], $_POST['pp-description'],
+						$_POST['pp-outline']);
+				}
+
 		 	}
-			$this->panelplanner_panel_1_save_input($_POST['pp-first-name'], $_POST['pp-last-name'],
-					$_POST['pp-email'], $_POST['pp-age'],
-					$_POST['pp-first-name2'], $_POST['pp-last-name2'],
-					$_POST['pp-email2'], $_POST['pp-age2'],
-					$_POST['pp-title'], $_POST['pp-description'],
-					$_POST['pp-outline']);
-    		self::panel_planner_stage_1_form();
+			else{
+				self::panel_planner_stage_1_form();
+			}
+    					
+
 		}
 	
 		// This method is going to get really ugly REALLY fast.
 		// Upgrade Plans? Make seperate auth messages. But that comes with custom campaigns.
 	
-		private function panel_planner_stage_1_validate_form($fname, $lname, $email, $age, $fname2, $lname2, $email2, $age2, $title, $desc, $outline){
+		private function panelplanner_stage_1_validate_form($fname, $lname, $email, $age, $fname2, $lname2, $email2, $age2, $title, $desc, $outline){
 		    if ( empty($fname) ){
     		   	array_push( $this->form_errors, 'First name cannot be left empty' );
 		    }
@@ -229,9 +241,11 @@
 			$table_name = $wpdb->prefix . "panelplanner_panels";
 
 			$panelID = $this->panelplanner_insert_panel($panelistID, $copanelistID, $title, $desc, $outline);
+
+			return $panelID;
 		}
 
-		private function panelplanner_panel_1_form_email($fname, $lname, $email, $age, $panelID, $title, $description, $outline){
+		private function panelplanner_panel_1_email($fname, $lname, $email, $age, $panelID, $title, $description, $outline){
 				$subject = "panel submission #".$panelID." has come in!";
 				$headers = "From: Panel Submission <donotrespond@ndkdenver.org>";
 				$message = "A new panel submission has come in. Details below \n\n".
