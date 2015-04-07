@@ -144,7 +144,7 @@
 
     	private function panelplanner_insert_panelist($fname,$lname,$email,$age){
     		global $wpdb;
-    		$tableName = $wpdb->prefix . "panelplanner_panelists";
+    		$tableName = $wpdb->prefix . "panelPlanner_panelists";
 
     		$wpdb->query($wpdb->replace(
     			$tableName,
@@ -166,7 +166,7 @@
 
     	private function panelplanner_insert_panel($panelistID,$copanelistID,$title,$desc,$outline){
     		global $wpdb;
-    		$tableName = $wpdb->prefix . "panelplanner_panels";
+    		$tableName = $wpdb->prefix . "panelPlanner_panels";
 
     		$wpdb->insert(
     			$tableName,
