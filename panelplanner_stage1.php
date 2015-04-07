@@ -146,7 +146,7 @@
     		global $wpdb;
     		$tableName = $wpdb->prefix . "panelPlanner_panelists";
 
-    		$wpdb->query($wpdb->replace(
+    		$wpdb->replace(
     			$tableName,
     			array(
     				'firstName' => $fname,
@@ -160,31 +160,48 @@
     				'%s',
     				'%d'
     			)
-    		) );
+    		);
     		return $wpdb->insert_id;
     	}
 
     	private function panelplanner_insert_panel($panelistID,$copanelistID,$title,$desc,$outline){
     		global $wpdb;
     		$tableName = $wpdb->prefix . "panelPlanner_panels";
-
-    		$wpdb->insert(
-    			$tableName,
-    			array(
-    				'panelistID' => $panelistID,
-    				'copanelistID' => $copanelistID,
-    				'title' => $title,
-    				'description' => $desc,
-    				'outline' => $outline
-    			),
-    			array(
-    				'%d',
-    				'%d',
-    				'%s',
-    				'%s',
-    				'%s'
-    			)
-    		);
+    		if($copanelistID != 0){
+    			$wpdb->insert(
+    				$tableName,
+    				array(
+    					'panelistID' => $panelistID,
+    					'copanelistID' => $copanelistID,
+    					'title' => $title,
+    					'description' => $desc,
+    					'outline' => $outline
+    				),
+    				array(
+    					'%d',
+    					'%d',
+    					'%s',
+    					'%s',
+    					'%s'
+    				)
+    			);    			
+    		}else{
+    			$wpdb->insert(
+    				$tableName,
+    				array(
+    					'panelistID' => $panelistID,
+    					'title' => $title,
+    					'description' => $desc,
+    					'outline' => $outline
+    				),
+    				array(
+    					'%d',
+    					'%s',
+    					'%s',
+    					'%s'
+    				)
+    			);    		    			
+    		}
     		return $wpdb->insert_id;
     	}
 
