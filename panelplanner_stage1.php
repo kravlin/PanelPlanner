@@ -44,10 +44,10 @@
 			echo '</p>';
 			echo '<!-- End Panelist -->';
 			echo '<p>';
-			echo '<input type="checkbox" checked="false" id="pp-hasCopanelist" onchange="javascript:show_hide("pp-hasCopanelist");"/> I have a CoPanelist.';
-			echo '</p>';
-			echo '<!-- Begin Copanelist -->';
-			echo '<div id="CoPanelist" style="display: none" >';
+//			echo '<input type="checkbox" checked="false" id="pp-hasCopanelist" onchange="javascript:show_hide("pp-hasCopanelist");"/> I have a CoPanelist.';
+//			echo '</p>';
+//			echo '<!-- Begin Copanelist -->';
+//			echo '<div id="CoPanelist" style="display: none" >';
 			echo '<p>';
 			echo 'First Name (required) <br />';
 			echo '<input type="text" name="pp-first-name2" pattern="[a-zA-Z0-9 ]+" size="40" />';
@@ -64,7 +64,7 @@
 			echo 'Age (required) <br />';
 			echo '<input type="text" name="pp-age2" pattern="[0-9]+" size="40" />';
 			echo '</p>';
-			echo '</div>';
+//			echo '</div>';
 			echo '<!-- End Copanelist / Begin Panel -->';
 			echo '<p>';
 			echo 'Panel Title (required) <br />';
