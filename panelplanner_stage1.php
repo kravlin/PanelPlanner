@@ -146,7 +146,7 @@
     		global $wpdb;
     		$tableName = $wpdb->prefix . "panelPlanner_panelists";
     		$id = $wpdb->get_var( $wpdb->prepare(
-    			"SELECT id FROM ".$tablename."
+    			"SELECT id FROM ".$tableName."
     			WHERE firstName = %s AND
     			lastName = %s AND
     			email = %s
