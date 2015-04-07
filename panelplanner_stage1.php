@@ -116,7 +116,7 @@
 		    if ( empty($fname) ){
     		   	array_push( $this->form_errors, 'First name cannot be left empty' );
 		    }
-		    if ( empty($flname) ){
+		    if ( empty($lname) ){
 				array_push( $this->form_errors, 'Last name cannot be left empty' );
 			}
 			if ( empty($email) ){
@@ -157,7 +157,7 @@
     		) );
     		error_log("Grabbing panelist number: $id");
     		if($id == NULL){
-    			$id = $wpdb->insert(
+    			$wpdb->insert(
     				$tableName,
     				array(
     					'firstName' => $fname,
@@ -172,6 +172,7 @@
     					'%d'
     				)
     			);
+    			$id = $wpdb->insert_id;
     		}
     		return $id;
     	}
@@ -228,6 +229,45 @@
 			$table_name = $wpdb->prefix . "panelplanner_panels";
 
 			$panelID = $this->panelplanner_insert_panel($panelistID, $copanelistID, $title, $desc, $outline);
+		}
+
+		private function panelplanner_panel_1_form_email($fname, $lname, $email, $age, $panelID, $title, $description, $outline){
+				$subject = "panel submission #".$panelID." has come in!";
+				$headers = "From: Panel Submission <donotrespond@ndkdenver.org>";
+				$message = "A new panel submission has come in. Details below \n\n".
+				"Submitted by: ".$fname." ".$lname."\n".
+				"Contact Email".$email."\n".
+				"Age".$age."\n".
+				"Title: ".$title."\n".
+				"Description: ".$description."\n".
+				"Outline: ".$outline; 
+				if( wp_mail($email, $subject, $message, $headers)){
+					$subject = "Your panel submission #".$panelID."  has been recieved ";
+					$headers = "From: Panel Submission <donotrespond@ndkdenver.org>";
+					$message = "Dear ".$fname." ".$lname.",\n\n".
+					"Thank you for submitting your panel for NDK2015.\n\n".
+					"Title: $title\n".
+					"Your panel submission number is: ".$panelID."\n\n".
+					"Panel submissions end on June 28th at 6:00pm.\n If you'd like to submit more panel ideas, please do so before the deadline.\n".
+					"We should get back to you shortly after the submission deadline ends.\n".
+					"If you have any questions or suggestions on the submission process, please contact josh.sorenson@ndkdenver.org\n\n".
+					"Thanks,\n".
+					"NDK Panel Department Staff";
+					if( wp_mail($email, $subject, $message, $headers)){
+						echo 'Thank you for submitting your panel idea.<br>';
+						echo "Your submission is number #".$panelID."<br>";
+						echo "A confirmation email has been sent to your email account.";
+						echo "Please email josh.sorenson@ndkdenver.org if you have any questions";
+					}
+					else{
+						echo "Sorry, something went wrong with your panel submission.<br>";
+						echo "Please contact josh.sorenson@ndkdenver.org and reference the below panel application number."."<br>";
+						echo "PanelID: ".$panelID."<br><br>";
+						echo "Sorry about that :(";
+					}
+				}
+
+
 		}
 
 
