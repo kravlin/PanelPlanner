@@ -189,6 +189,8 @@
     	}
 
 		private function panelplanner_panel_1_save_input($fname, $lname, $email, $age, $fname2, $lname2, $email2, $age2, $title, $desc, $outline){
+			global $wpdb;
+
 			$table_name = $wpdb->prefix . "panelplanner_panelists";
 
 			$panelistID = $this->panelplanner_insert_panelist($fname, $lname, $email, $age);
