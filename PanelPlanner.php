@@ -54,7 +54,7 @@ function install_database(){
 
 	//Create Panelists Table
 	
-	trigger_error("creating panelists table");
+	error_log("creating panelists table");
 	$create_panelists = "CREATE TABLE ".$wpdb->prefix."panelPlanner_panelists (
 id int AUTO_INCREMENT PRIMARY KEY,
 firstName varchar(20) NOT NULL,
@@ -76,7 +76,8 @@ copanlistID mediumint(9),
 title varchar(50) NOT NULL,
 description varchar(500) NOT NULL,
 outline varchar(500) NOT NULL,
-approvalStage int NOT NULL
+approvalStage int NOT NULL,
+rejectionReason varchar(500) NOT NULL
 )".$charset_collate.";";
 
 	dbDelta( $create_panels );
@@ -156,5 +157,4 @@ add_action( 'admin_menu', 'panel_planner_menu');
 register_activation_hook( __FILE__, 'panel_planner_activate');
 register_deactivation_hook(__FILE__, 'panel_planner_deactivate');
 register_uninstall_hook(__FILE__, 'panel_planner_uninstall');
-
 ?>
