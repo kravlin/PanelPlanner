@@ -72,7 +72,7 @@ age int NOT NULL
 	$create_panels = "CREATE TABLE ".$wpdb->prefix."panelPlanner_panels (
 id mediumint(9) AUTO_INCREMENT PRIMARY KEY,
 panelistID mediumint(9) NOT NULL,
-copanlistID mediumint(9),
+copanelistID mediumint(9),
 title varchar(50) NOT NULL,
 description varchar(500) NOT NULL,
 outline varchar(500) NOT NULL,
