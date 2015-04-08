@@ -116,7 +116,7 @@
 						$_POST['pp-first-name'], $_POST['pp-last-name'],
 						$_POST['pp-email'], $_POST['pp-age'],
 						$panelID, $_POST['pp-title'], $_POST['pp-description'],
-						$_POST['pp-outline']);
+						$_POST['pp-outline'],'josh.sorenson@ndkdenver.org');
 				}
 				error_log("Reading Input Correct");
 
@@ -269,7 +269,7 @@
 			return $panelID;
 		}
 
-		private function panelplanner_panel_1_email($fname, $lname, $email, $age, $panelID, $title, $description, $outline){
+		private function panelplanner_panel_1_email($fname, $lname, $email, $age, $panelID, $title, $description, $outline, $staffEmail){
 				$subject = "panel submission #".$panelID." has come in!";
 				$headers = "From: Panel Submission <donotrespond@ndkdenver.org>";
 				$message = "A new panel submission has come in. Details below \n\n".
@@ -279,7 +279,7 @@
 				"Title: ".$title."\n".
 				"Description: ".$description."\n".
 				"Outline: ".$outline; 
-				if( wp_mail($email, $subject, $message, $headers)){
+				if( wp_mail($staffEmail, $subject, $message, $headers)){
 					$subject = "Your panel submission #".$panelID."  has been recieved ";
 					$headers = "From: Panel Submission <donotrespond@ndkdenver.org>";
 					$message = "Dear ".$fname." ".$lname.",\n\n".
