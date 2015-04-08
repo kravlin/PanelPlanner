@@ -17,10 +17,10 @@
 			echo '<script type="text/Javascript">
     		function show_hide(element1, element2) {
     		    if (document.getElementById(element2).checked){
-    		        document.getElementById(element1).style.display = "";
+    		        document.getElementById(element1).style.display = "none";
     		    }
     		    else{
-    		        document.getElementById(element1).style.display = "none";
+    		        document.getElementById(element1).style.display = "";
     		    }
 
     		}';
@@ -45,10 +45,10 @@
 			echo '</p>';
 			echo '<!-- End Panelist -->';
 			echo '<p>';
-			echo '<input type="checkbox" id="pp-hasCopanelist" onchange="javascript:show_hide("CoPanelist","pp-hasCopanelist");"/> I have a CoPanelist.';
+			echo '<input type="checkbox" id="pp-hasCopanelist" onchange="javascript:show_hide("pp-CoPanelist","pp-hasCopanelist");"/> I don\'t have a CoPanelist.';
 			echo '</p>';
 			echo '<!-- Begin Copanelist -->';
-			echo '<div id="CoPanelist" style="display: none" >';
+			echo '<div id="pp-CoPanelist">';
 			echo '<p>';
 			echo 'First Name (required) <br />';
 			echo '<input type="text" name="pp-first-name2" value="'. ( isset( $_POST["pp-first-name2"] ) ? esc_attr( $_POST["pp-first-name2"] ) : '' ) .'" pattern="[a-zA-Z0-9 ]+" size="40" />';
@@ -124,13 +124,10 @@
 			else{
 				self::panel_planner_stage_1_form();
 			}
-    					
-
 		}
 	
 		// This method is going to get really ugly REALLY fast.
-		// Upgrade Plans? Make seperate auth messages. But that comes with custom campaigns.
-	
+		// Upgrade Plans? Make seperate auth messages. But that comes with custom campaigns.	
 		private function panelplanner_stage_1_validate_form($fname, $lname, $email, $age, $fname2, $lname2, $email2, $age2, $title, $desc, $outline){
 		    if ( empty($fname) ){
     		   	array_push( $this->form_errors, 'First name cannot be left empty' );
