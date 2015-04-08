@@ -118,6 +118,7 @@
 						$panelID, $_POST['pp-title'], $_POST['pp-description'],
 						$_POST['pp-outline']);
 				}
+				error_log("Reading Input Correct");
 
 		 	}
 			else{
