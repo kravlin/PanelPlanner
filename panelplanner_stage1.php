@@ -45,7 +45,7 @@
 			echo '</p>';
 			echo '<!-- End Panelist -->';
 			echo '<p>';
-			echo '<input type="checkbox" checked="false" id="pp-hasCopanelist" onchange="javascript:show_hide("CoPanelist","pp-hasCopanelist");"/> I have a CoPanelist.';
+			echo '<input type="checkbox" id="pp-hasCopanelist" onchange="javascript:show_hide("CoPanelist","pp-hasCopanelist");"/> I have a CoPanelist.';
 			echo '</p>';
 			echo '<!-- Begin Copanelist -->';
 			echo '<div id="CoPanelist" style="display: none" >';
@@ -154,9 +154,22 @@
     	 	if ( !is_email($email) ) {
     	     	array_push( $this->form_errors, 'Panelist email is not valid' );
     	    }
-    	    if ( !is_email($email2) ) {
-    	     	array_push( $this->form_errors, 'Copanelist email is not valid' );
+    	    if($fname2 != NULL){
+    	    	if ( empty($fname2) ){
+    		   		array_push( $this->form_errors, 'Copanelist first name cannot be left empty' );
+		    	}
+		    	if ( empty($lname2) ){
+					array_push( $this->form_errors, 'Copanelist last name cannot be left empty' );
+				}
+    	    	if ( !is_email($email2) ) {
+    	     		array_push( $this->form_errors, 'Copanelist email is not valid' );
+    	    	}
+    	    	if ( empty($age2) ){
+    				array_push( $this->form_errors, 'Copanelist age cannot be left empty' );
+    			}
+
     	    }
+
     	}
 
     	private function panelplanner_insert_panelist($fname,$lname,$email,$age){
