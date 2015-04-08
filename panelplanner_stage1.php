@@ -24,7 +24,7 @@
     		    }
 
     		}';
-			echo '</script>\n';
+			echo '</script>';
 			echo '<form action="' . $_SERVER['REQUEST_URI'] . '" method="post">';
 			echo '<!-- Begin Panelist -->';
 			echo '<p>';
@@ -72,11 +72,11 @@
 			echo '<input type="text" name="pp-title" value="'. ( isset( $_POST["pp-title"] ) ? esc_attr( $_POST["pp-title"] ) : '' ) .'" size="40" />';
 			echo '</p>';
 			echo 'Short Panel Description (required) <br />';
-			echo '<textarea rows="10" cols="35" name="pp-description" >'. ( isset( $_POST["pp-description"] ) ? esc_attr( $_POST["pp-description"] ) : 'Please place a short description of your panel here. Similar to one you\'d see in the program.' ) .'</textarea>';
+			echo '<textarea rows="10" cols="35" name="pp-description" >'. ( isset( $_POST["pp-description"] ) ? esc_attr( $_POST["pp-description"] ) : 'Please place a short description of your panel here. Similar to one you would see in the program.' ) .'</textarea>';
 			echo '</p>';
 			echo '<p>';
 			echo 'Detailed Panel outline (required) <br />';
-			echo '<textarea rows="10" cols="35" name="pp-outline">'. ( isset( $_POST["pp-outline"] ) ? esc_attr( $_POST["pp-outline"] ) : 'Outline your panel here, what are you going to talk about? how long do you expect the different parts to last?' ) .'</textarea>';	
+			echo '<textarea rows="10" cols="35" name="pp-outline">'. ( isset( $_POST["pp-outline"] ) ? esc_attr( $_POST["pp-outline"] ) : 'Outline your panel here, what are you going to talk about? How long do you expect the different parts to last?' ) .'</textarea>';	
 			echo '</p>';
 			echo '<p><input type="submit" name="pp-submitted" value="Send"/></p>';
 			echo '</form>';
@@ -103,7 +103,7 @@
 					self::panel_planner_stage_1_form();
 				}
 				elseif ( count($this->form_errors) == 0 ){
-
+					error_log("No Errors detected in form. Saving input");
 					$panelID = $this->panelplanner_panel_1_save_input(
 						$_POST['pp-first-name'], $_POST['pp-last-name'],
 						$_POST['pp-email'], $_POST['pp-age'],
@@ -239,14 +239,17 @@
 			global $wpdb;
 
 			$table_name = $wpdb->prefix . "panelplanner_panelists";
-
+			error_log("Saving Panelist");
 			$panelistID = $this->panelplanner_insert_panelist($fname, $lname, $email, $age);
-			$copanelistID = $this->panelplanner_insert_panelist($fname2, $lname2, $email2, $age2);
-
+			if( $_POST['pp-hasCopanelist'] ){
+				error_log("Saving Copanelist");
+				$copanelistID = $this->panelplanner_insert_panelist($fname2, $lname2, $email2, $age2);
+			}else{
+				error_log("No CoPanelist");
+			}
 			$table_name = $wpdb->prefix . "panelplanner_panels";
-
+			error_log("Saving Panel");
 			$panelID = $this->panelplanner_insert_panel($panelistID, $copanelistID, $title, $desc, $outline);
-
 			return $panelID;
 		}
 
