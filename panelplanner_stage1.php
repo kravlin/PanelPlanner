@@ -256,6 +256,7 @@
 			$table_name = $wpdb->prefix . "panelplanner_panelists";
 			error_log("Saving Panelist");
 			$panelistID = $this->panelplanner_insert_panelist($fname, $lname, $email, $age);
+			$copanelistID = 0;
 			if( $_POST['pp-hasCopanelist'] ){
 				error_log("Saving Copanelist");
 				$copanelistID = $this->panelplanner_insert_panelist($fname2, $lname2, $email2, $age2);
