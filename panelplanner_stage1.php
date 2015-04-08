@@ -93,7 +93,7 @@
 					$_POST['pp-title'], $_POST['pp-description'],
 					$_POST['pp-outline']);
 				error_log("Number of errors: ".count($this->form_errors));
-				if(is_array($this->form_errors)) {
+				if( count($this->form_errors) != 0 ) {
 					foreach($this->form_errors as $error) {
 						error_log("Errors found in panel submission.");
 						echo '<div>';
@@ -101,7 +101,6 @@
 						echo ' '. $error . '<br/>';
 						echo '</div>';
 					}
-					error_log("Number of errors: ".count($this->form_errors));
 					self::panel_planner_stage_1_form();
 				}
 				elseif ( count($this->form_errors) == 0 ){
