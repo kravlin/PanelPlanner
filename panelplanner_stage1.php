@@ -45,7 +45,7 @@
 			echo '</p>';
 			echo '<!-- End Panelist -->';
 			echo '<p>';
-			echo '<input onchange="javascript:show_hide(\'pp-CoPanelist\',\'pp-hasCopanelist\');" type="checkbox" id="pp-hasCopanelist" /> I don\'t have a CoPanelist.';
+			echo '<input onchange="javascript:show_hide(\'pp-CoPanelist\',\'pp-hasCopanelist\');" type="checkbox" id="pp-hasCopanelist" autocomplete="off" /> I don\'t have a CoPanelist.';
 			echo '</p>';
 			echo '<!-- Begin Copanelist -->';
 			echo '<div id="pp-CoPanelist">';
