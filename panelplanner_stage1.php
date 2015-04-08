@@ -101,6 +101,7 @@
 						echo ' '. $error . '<br/>';
 						echo '</div>';
 					}
+					error_log("Number of errors: ".count($this->form_errors));
 					self::panel_planner_stage_1_form();
 				}
 				elseif ( count($this->form_errors) == 0 ){
