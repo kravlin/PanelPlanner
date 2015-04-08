@@ -84,7 +84,7 @@
 	
 		public function panel_planner_stage_1_process(){
 			if ( isset($_POST['pp-submitted']) ) {
-				error_log("Panel Submission Accepted");
+				error_log("Panel Submission Started");
 				$this->panelplanner_stage_1_validate_form(
 					$_POST['pp-first-name'], $_POST['pp-last-name'],
 					$_POST['pp-email'], $_POST['pp-age'],
@@ -92,6 +92,7 @@
 					$_POST['pp-email2'], $_POST['pp-age2'],
 					$_POST['pp-title'], $_POST['pp-description'],
 					$_POST['pp-outline']);
+				error_log("Number of errors: ".count($this->form_errors));
 				if(is_array($this->form_errors)) {
 					foreach($this->form_errors as $error) {
 						error_log("Errors found in panel submission.");
