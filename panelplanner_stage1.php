@@ -100,14 +100,16 @@
 					}
 					self::panel_planner_stage_1_form();
 				}
-				if ( count($this->form_errors) == 0 ){
-					$panelID = $this->panelplanner_panel_1_save_input($_POST['pp-first-name'], $_POST['pp-last-name'],
+				elseif ( count($this->form_errors) == 0 ){
+					$panelID = $this->panelplanner_panel_1_save_input(
+						$_POST['pp-first-name'], $_POST['pp-last-name'],
 						$_POST['pp-email'], $_POST['pp-age'],
 						$_POST['pp-first-name2'], $_POST['pp-last-name2'],
 						$_POST['pp-email2'], $_POST['pp-age2'],
 						$_POST['pp-title'], $_POST['pp-description'],
 						$_POST['pp-outline']);
-					$this->panelplanner_panel_1_email($_POST['pp-first-name'], $_POST['pp-last-name'],
+					$this->panelplanner_panel_1_email(
+						$_POST['pp-first-name'], $_POST['pp-last-name'],
 						$_POST['pp-email'], $_POST['pp-age'],
 						$panelID, $_POST['pp-title'], $_POST['pp-description'],
 						$_POST['pp-outline']);
