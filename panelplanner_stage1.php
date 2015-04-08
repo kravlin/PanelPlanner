@@ -22,68 +22,69 @@
     		    else{
     		        document.getElementById(element1).style.display = "none";
     		    }
+
     		}';
-			echo '</script>';
+			echo '</script>\n';
 			echo '<form action="' . $_SERVER['REQUEST_URI'] . '" method="post">';
 			echo '<!-- Begin Panelist -->';
 			echo '<p>';
 			echo 'First Name (required) <br />';
-			echo '<input type="text" name="pp-first-name" pattern="[a-zA-Z0-9 ]+" size="40" />';
+			echo '<input type="text" name="pp-first-name" value='. ( isset( $_POST["pp-first-name"] ) ? esc_attr( $_POST["pp-first-name"] ) : '' ) .' pattern="[a-zA-Z0-9 ]+" size="40" />';
 			echo '</p>';
 			echo '<p>';
 			echo 'Last Name (required) <br />';
-			echo '<input type="text" name="pp-last-name" pattern="[a-zA-Z0-9 ]+" size="40" />';
+			echo '<input type="text" name="pp-last-name" value='. ( isset( $_POST["pp-last-name"] ) ? esc_attr( $_POST["pp-last-name"] ) : '' ) .' pattern="[a-zA-Z0-9 ]+" size="40" />';
 			echo '</p>';
 			echo '<p>';
 			echo 'Email Address (required) <br />';
-			echo '<input type="email" name="pp-email" size="40" />';
+			echo '<input type="email" name="pp-email" value='. ( isset( $_POST["pp-email"] ) ? esc_attr( $_POST["pp-email"] ) : '' ) .' size="40" />';
 			echo '</p>';
 			echo '<p>';
 			echo 'Age (required) <br />';
-			echo '<input type="text" name="pp-age" pattern="[0-9]+" size="40" />';
+			echo '<input type="text" name="pp-age" value='. ( isset( $_POST["pp-age"] ) ? esc_attr( $_POST["pp-age"] ) : '' ) .' pattern="[0-9]+" size="40" />';
 			echo '</p>';
 			echo '<!-- End Panelist -->';
 			echo '<p>';
-//			echo '<input type="checkbox" checked="false" id="pp-hasCopanelist" onchange="javascript:show_hide("pp-hasCopanelist");"/> I have a CoPanelist.';
-//			echo '</p>';
-//			echo '<!-- Begin Copanelist -->';
-//			echo '<div id="CoPanelist" style="display: none" >';
+			echo '<input type="checkbox" checked="false" id="pp-hasCopanelist" onchange="javascript:show_hide("CoPanelist","pp-hasCopanelist");"/> I have a CoPanelist.';
+			echo '</p>';
+			echo '<!-- Begin Copanelist -->';
+			echo '<div id="CoPanelist" style="display: none" >';
 			echo '<p>';
 			echo 'First Name (required) <br />';
-			echo '<input type="text" name="pp-first-name2" pattern="[a-zA-Z0-9 ]+" size="40" />';
+			echo '<input type="text" name="pp-first-name2" value='. ( isset( $_POST["pp-first-name2"] ) ? esc_attr( $_POST["pp-first-name2"] ) : '' ) .' pattern="[a-zA-Z0-9 ]+" size="40" />';
 			echo '</p>';
 			echo '<p>';
 			echo 'Last Name (required) <br />';
-			echo '<input type="text" name="pp-last-name2" pattern="[a-zA-Z0-9 ]+" size="40" />';
+			echo '<input type="text" name="pp-last-name2" value='. ( isset( $_POST["pp-last-name2"] ) ? esc_attr( $_POST["pp-last-name2"] ) : '' ) .' pattern="[a-zA-Z0-9 ]+" size="40" />';
 			echo '</p>';
 			echo '<p>';
 			echo 'Email Address (required) <br />';
-			echo '<input type="email" name="pp-email2"  size="40" />';
+			echo '<input type="email" name="pp-email2" value='. ( isset( $_POST["pp-email2"] ) ? esc_attr( $_POST["pp-email2"] ) : '' ) .' size="40" />';
 			echo '</p>';
 			echo '<p>';
 			echo 'Age (required) <br />';
-			echo '<input type="text" name="pp-age2" pattern="[0-9]+" size="40" />';
+			echo '<input type="text" name="pp-age2" value='. ( isset( $_POST["pp-age2"] ) ? esc_attr( $_POST["pp-age2"] ) : '' ) .' pattern="[0-9]+" size="40" />';
 			echo '</p>';
-//			echo '</div>';
+			echo '</div>';
 			echo '<!-- End Copanelist / Begin Panel -->';
 			echo '<p>';
 			echo 'Panel Title (required) <br />';
-			echo '<input type="text" name="pp-title" size="40" />';
+			echo '<input type="text" name="pp-title" value='. ( isset( $_POST["pp-title"] ) ? esc_attr( $_POST["pp-title"] ) : '' ) .' size="40" />';
 			echo '</p>';
 			echo 'Short Panel Description (required) <br />';
-			echo '<textarea rows="10" cols="35" name="pp-description">Please place a short description of your panel here. Similar to one you\'d see in the program.</textarea>';
+			echo '<textarea rows="10" cols="35"  value='. ( isset( $_POST["pp-description"] ) ? esc_attr( $_POST["pp-description"] ) : 'Please place a short description of your panel here. Similar to one you\'d see in the program.' ) .' name="pp-description" / >';
 			echo '</p>';
 			echo '<p>';
 			echo 'Detailed Panel outline (required) <br />';
-			echo '<textarea rows="10" cols="35" name="pp-outline">Outline your panel here, what are you going to talk about? how long do you expect the different parts to last?</textarea>';	
+			echo '<textarea rows="10" cols="35"  value='. ( isset( $_POST["pp-outline"] ) ? esc_attr( $_POST["pp-outline"] ) : 'Outline your panel here, what are you going to talk about? how long do you expect the different parts to last?' ) .' name="pp-outline" />';	
 			echo '</p>';
 			echo '<p><input type="submit" name="pp-submitted" value="Send"/></p>';
 			echo '</form>';
 		}
 	
 		public function panel_planner_stage_1_process(){
-			error_log("Plugin be runnin");
 			if ( isset($_POST['pp-submitted']) ) {
+				error_log("Panel Submission Accepted");
 				$this->panelplanner_stage_1_validate_form(
 					$_POST['pp-first-name'], $_POST['pp-last-name'],
 					$_POST['pp-email'], $_POST['pp-age'],
@@ -93,6 +94,7 @@
 					$_POST['pp-outline']);
 				if(is_array($this->form_errors)) {
 					foreach($this->form_errors as $error) {
+						error_log("Errors found in panel submission.");
 						echo '<div>';
 						echo '<strong>ERROR</strong>';
 						echo ' '. $error . '<br/>';
@@ -101,6 +103,7 @@
 					self::panel_planner_stage_1_form();
 				}
 				elseif ( count($this->form_errors) == 0 ){
+
 					$panelID = $this->panelplanner_panel_1_save_input(
 						$_POST['pp-first-name'], $_POST['pp-last-name'],
 						$_POST['pp-email'], $_POST['pp-age'],
@@ -169,7 +172,7 @@
     			$lname,
     			$email
     		) );
-    		error_log("Grabbing panelist number: $id");
+
     		if($id == NULL){
     			$wpdb->insert(
     				$tableName,
@@ -282,8 +285,6 @@
 						echo "Sorry about that :(";
 					}
 				}
-
-
 		}
 
 
