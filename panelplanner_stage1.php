@@ -72,11 +72,11 @@
 			echo '<input type="text" name="pp-title" value="'. ( isset( $_POST["pp-title"] ) ? esc_attr( $_POST["pp-title"] ) : '' ) .'" size="40" />';
 			echo '</p>';
 			echo 'Short Panel Description (required) <br />';
-			echo '<textarea rows="10" cols="35"  value="'. ( isset( $_POST["pp-description"] ) ? esc_attr( $_POST["pp-description"] ) : 'Please place a short description of your panel here. Similar to one you\'d see in the program.' ) .'" name="pp-description" / >';
+			echo '<textarea rows="10" cols="35" name="pp-description" >'. ( isset( $_POST["pp-description"] ) ? esc_attr( $_POST["pp-description"] ) : 'Please place a short description of your panel here. Similar to one you\'d see in the program.' ) .'</textarea>';
 			echo '</p>';
 			echo '<p>';
 			echo 'Detailed Panel outline (required) <br />';
-			echo '<textarea rows="10" cols="35"  value="'. ( isset( $_POST["pp-outline"] ) ? esc_attr( $_POST["pp-outline"] ) : 'Outline your panel here, what are you going to talk about? how long do you expect the different parts to last?' ) .'" name="pp-outline" />';	
+			echo '<textarea rows="10" cols="35" name="pp-outline">'. ( isset( $_POST["pp-outline"] ) ? esc_attr( $_POST["pp-outline"] ) : 'Outline your panel here, what are you going to talk about? how long do you expect the different parts to last?' ) .'</textarea>';	
 			echo '</p>';
 			echo '<p><input type="submit" name="pp-submitted" value="Send"/></p>';
 			echo '</form>';
