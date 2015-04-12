@@ -138,7 +138,7 @@
 						$_POST['pp-first-name'], $_POST['pp-last-name'],
 						$_POST['pp-email'], $_POST['pp-age'],
 						$panelID, $_POST['pp-title'], $_POST['pp-description'],
-						$_POST['pp-outline'],'josh.sorenson@ndkdenver.org');
+						$_POST['pp-outline'],'events@ndkdenver.org');
 				}
 				error_log("Reading Input Correct");
 
