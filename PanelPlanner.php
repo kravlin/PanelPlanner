@@ -28,8 +28,6 @@
 
 include dirname(__FILE__) .'/panelplanner_stage1.php';
 include dirname(__FILE__) .'/panelplanner_stage2.php';
-include dirname(__FILE__) .'/panelplanner-viewcampaign.php';
-include dirname(__FILE__) .'/panelplanner-viewpanel.php';
 
 //Global Variables!
 
