@@ -27,6 +27,7 @@
 			echo '</script>';
 			echo '<form action="' . $_SERVER['REQUEST_URI'] . '" method="post">';
 			echo '<!-- Begin Panelist -->';
+			echo '<div class="form-group">';
 			echo '<p>';
 			echo 'First Name (required) <br />';
 			echo '<input type="text" name="pp-first-name" value="'. ( isset( $_POST["pp-first-name"] ) ? esc_attr( $_POST["pp-first-name"] ) : '' ) .'" pattern="[a-zA-Z0-9 ]+" size="40" />';
@@ -43,12 +44,13 @@
 			echo 'Age (required) <br />';
 			echo '<input type="text" name="pp-age" value="'. ( isset( $_POST["pp-age"] ) ? esc_attr( $_POST["pp-age"] ) : '' ) .'" pattern="[0-9]+" size="40" />';
 			echo '</p>';
+			echo '</div>';
 			echo '<!-- End Panelist -->';
 			echo '<p>';
 			echo '<input onchange="javascript:show_hide(\'pp-CoPanelist\',\'pp-hasCopanelist\');" type="checkbox" id="pp-hasCopanelist" autocomplete="off" /> I don\'t have a CoPanelist.';
 			echo '</p>';
 			echo '<!-- Begin Copanelist -->';
-			echo '<div id="pp-CoPanelist">';
+			echo '<div id="pp-CoPanelist" class="form-group">';
 			echo '<p>';
 			echo 'Copanelist First Name (required) <br />';
 			echo '<input type="text" name="pp-first-name2" value="'. ( isset( $_POST["pp-first-name2"] ) ? esc_attr( $_POST["pp-first-name2"] ) : '' ) .'" pattern="[a-zA-Z0-9 ]+" size="40" />';
@@ -67,6 +69,7 @@
 			echo '</p>';
 			echo '</div>';
 			echo '<!-- End Copanelist / Begin Panel -->';
+			echo '<div class="form-group">';
 			echo '<p>';
 			echo 'Panel Title (required) <br />';
 			echo '<input type="text" name="pp-title" value="'. ( isset( $_POST["pp-title"] ) ? esc_attr( $_POST["pp-title"] ) : '' ) .'" size="40" />';
@@ -76,6 +79,7 @@
 			echo '<p>';
 			echo 'Detailed Panel outline (required) <br />';
 			echo '<textarea rows="10" cols="35" name="pp-outline">'. ( isset( $_POST["pp-outline"] ) ? esc_attr( $_POST["pp-outline"] ) : 'Outline your panel here, what are you going to talk about? How long do you expect the different parts to last?' ) .'</textarea>';	
+			echo '</div>';
 			echo '</p>';
 			echo '<p><input type="submit" name="pp-submitted" value="Send"/></p>';
 			echo '</form>';
@@ -99,7 +103,7 @@
 			if ( isset($_POST['pp-guidelines-accept']) ) {
 				self::panel_planner_stage_1_form();
 			} 
-			if ( isset($_POST['pp-submitted']) ) {
+			elseif ( isset($_POST['pp-submitted']) ) {
 				error_log("Panel Submission Started");
 				$this->panelplanner_stage_1_validate_form(
 					$_POST['pp-first-name'], $_POST['pp-last-name'],
