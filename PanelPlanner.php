@@ -28,8 +28,6 @@
 
 include dirname(__FILE__) .'/panelplanner_stage1.php';
 include dirname(__FILE__) .'/panelplanner_stage2.php';
-include dirname(__FILE__) .'/panelplanner-viewcampaign.php';
-include dirname(__FILE__) .'/panelplanner-viewpanel.php';
 
 //Global Variables!
 
@@ -74,8 +72,8 @@ id mediumint(9) AUTO_INCREMENT PRIMARY KEY,
 panelistID mediumint(9) NOT NULL,
 copanelistID mediumint(9),
 title varchar(50) NOT NULL,
-description varchar(500) NOT NULL,
-outline varchar(500) NOT NULL,
+description varchar(5000) NOT NULL,
+outline varchar(5000) NOT NULL,
 approvalStage int NOT NULL,
 rejectionReason varchar(500) NOT NULL
 )".$charset_collate.";";
