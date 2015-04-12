@@ -302,9 +302,8 @@
 					"Thank you for submitting your panel idea.\n".
 					"Panels Staff has received your proposal and will review it before giving you an answer on whether it's been accepted.\n".
 					"They may have some final questions about or suggestions for your panel, so be prepared to respond to any messages.\n".
-					"Please note that your panel hasn not yet been accepted. Panels will only be accepted after we've had a chance to review everyone's submitted panels.\n".
-					"You'll receive another e-mail letting you know whether your panel was accepted. Thank you for your patience.\n\n";
-					"Thank you for submitting your panel for NDK2015.\n\n".
+					"Please note that your panel hasn not yet been accepted. Panels will only be accepted after we've had a chance to review all submitted panels.\n\n".
+					"Thank you for your patience, and thank you for your interest in running a panel at NDK2015\n".
 					"NDK Panel Staff";
 					if( wp_mail($email, $subject, $message, $headers)){
 						echo 'Thank you for submitting your panel idea.<br>';
