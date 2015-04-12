@@ -31,7 +31,7 @@
 			echo '<!-- Begin Panelist -->';
 			echo '<div class="form-group">';
 			echo '<label for="pp-first-name">First Name (required) </label>';
-			echo '<br>';
+			echo '<br><br>';
 			echo '<input type="text" name="pp-first-name" id="pp-first-name" value="'. ( isset( $_POST["pp-first-name"] ) ? esc_attr( $_POST["pp-first-name"] ) : '' ) .'" pattern="[a-zA-Z0-9 ]+" size="40" />';
 			echo '</div>';
 			echo '<div class="form-group">';
@@ -107,7 +107,7 @@
 			echo '<br>';
 			echo 'If you\'ve read the <a href="/ndk-events/panels/guidelines">Panel Guidelines</a>, fleshed out your panel idea, and are ready to submit a detailed proposal, please continue.<br><br>';
 			echo '<form action="' . $_SERVER['REQUEST_URI'] . '" method="post">';
-			echo '<br><p><input type="submit" name="pp-guidelines-accept" value="Accept" class="btn btn-primary"/></p>';
+			echo '<br><p><input type="submit" name="pp-guidelines-accept" value="Accept"/></p>';
 			echo '</form>';
 		}
 		public function panel_planner_stage_1_process(){
