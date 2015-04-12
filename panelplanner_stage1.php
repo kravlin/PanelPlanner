@@ -25,22 +25,28 @@
 
     		}';
 			echo '</script>';
+			echo '<h1>Panel Submission Form</h1>';
+			echo '<p>Please fill out the following form if you wish to host a panel at Nan Desu Kan.</p>';
 			echo '<form action="' . $_SERVER['REQUEST_URI'] . '" method="post" role="form">';
 			echo '<!-- Begin Panelist -->';
 			echo '<div class="form-group">';
 			echo '<label for="pp-first-name">First Name (required) </label>';
+			echo '<br>';
 			echo '<input type="text" name="pp-first-name" id="pp-first-name" value="'. ( isset( $_POST["pp-first-name"] ) ? esc_attr( $_POST["pp-first-name"] ) : '' ) .'" pattern="[a-zA-Z0-9 ]+" size="40" />';
 			echo '</div>';
 			echo '<div class="form-group">';
 			echo '<label for="pp-last-name">Last Name (required) </label>';
+			echo '<br>';
 			echo '<input type="text" name="pp-last-name" value="'. ( isset( $_POST["pp-last-name"] ) ? esc_attr( $_POST["pp-last-name"] ) : '' ) .'" pattern="[a-zA-Z0-9 ]+" size="40" />';
 			echo '</div>';
 			echo '<div class="form-group">';
 			echo '<label for="pp-email">Email Address (required) </label>';
+			echo '<br>';
 			echo '<input type="email" name="pp-email" value="'. ( isset( $_POST["pp-email"] ) ? esc_attr( $_POST["pp-email"] ) : '' ) .'" size="40" />';
 			echo '</div>';
 			echo '<div class="form-group">';
 			echo '<label for="pp-age">Age (required) </label>';
+			echo '<br>';
 			echo '<input type="text" name="pp-age" value="'. ( isset( $_POST["pp-age"] ) ? esc_attr( $_POST["pp-age"] ) : '' ) .'" pattern="[0-9]+" size="40" />';
 			echo '</div>';
 			
@@ -51,37 +57,45 @@
 			echo '<!-- Begin Copanelist -->';
 			echo '<div id="pp-CoPanelist" class="form-group">';
 			echo '<label for="pp-first-name2">Copanelist First Name (required) </label>';
+			echo '<br>';
 			echo '<input type="text" name="pp-first-name2" value="'. ( isset( $_POST["pp-first-name2"] ) ? esc_attr( $_POST["pp-first-name2"] ) : '' ) .'" pattern="[a-zA-Z0-9 ]+" size="40" />';
 			echo '</div>';
 			echo '<div class="form-group">';
 			echo '<label for="pp-last-name2">Copanelist Last Name (required) </label>';
+			echo '<br>';
 			echo '<input type="text" name="pp-last-name2" value="'. ( isset( $_POST["pp-last-name2"] ) ? esc_attr( $_POST["pp-last-name2"] ) : '' ) .'" pattern="[a-zA-Z0-9 ]+" size="40" />';
 			echo '</div>';
 			echo '<div class="form-group">';
 			echo '<label for="pp-email2">Copanelist Email Address (required) </label>';
+			echo '<br>';
 			echo '<input type="email" name="pp-email2" value="'. ( isset( $_POST["pp-email2"] ) ? esc_attr( $_POST["pp-email2"] ) : '' ) .'" size="40" />';
 			echo '</div>';
 			echo '<div class="form-group">';
 			echo '<label for="pp-age2">Copanelist Age (required) </label>';
+			echo '<br>';
 			echo '<input type="text" name="pp-age2" value="'. ( isset( $_POST["pp-age2"] ) ? esc_attr( $_POST["pp-age2"] ) : '' ) .'" pattern="[0-9]+" size="40" />';
 			echo '</div>';
 			echo '<!-- End Copanelist / Begin Panel -->';
 			echo '<div class="form-group">';
 			echo '<label for="pp-title">Panel Title (required) </label>';
+			echo '<br>';
 			echo '<input type="text" name="pp-title" value="'. ( isset( $_POST["pp-title"] ) ? esc_attr( $_POST["pp-title"] ) : '' ) .'" size="40" />';
 			echo '</div>';
 			echo '<div class="form-group">';
 			echo '<label for="pp-description">Short Description (example for Program Guide)</label>';
+			echo '<br>';
 			echo '<textarea rows="10" cols="35" name="pp-description" >'. ( isset( $_POST["pp-description"] ) ? esc_attr( $_POST["pp-description"] ) : 'Please place a short description of your panel here. Similar to one you would see in the program.' ) .'</textarea>';
 			echo '</div>';
 			echo '<div class="form-group">';
 			echo '<label for="pp-outline">Detailed Panel outline (required) </label>';
+			echo '<br>';
 			echo '<textarea rows="10" cols="35" name="pp-outline">'. ( isset( $_POST["pp-outline"] ) ? esc_attr( $_POST["pp-outline"] ) : 'Outline your panel here, what are you going to talk about? How long do you expect the different parts to last?' ) .'</textarea>';	
 			echo '</div>';
 			echo '<input type="submit" name="pp-submitted" value="Send"/>';
 			echo '</form>';
 		}
 		static public function panel_planner_disclaimer() {
+			echo '<h1>Panel Submission Form</h1>';
 			echo 'Thank you for your interest in running a panel (or other activity) at Nan Desu Kan 2015. We look forward to reading your proposal.<br>';
 			echo '<br>';
 			echo 'If you haven\'t yet done so, please take this time to go read the <a href="/ndk-events/panels/guidelines">Panel Guidelines</a>.<br><br>';
@@ -93,7 +107,7 @@
 			echo '<br>';
 			echo 'If you\'ve read the <a href="/ndk-events/panels/guidelines">Panel Guidelines</a>, fleshed out your panel idea, and are ready to submit a detailed proposal, please continue.<br><br>';
 			echo '<form action="' . $_SERVER['REQUEST_URI'] . '" method="post">';
-			echo '<p><input type="submit" name="pp-guidelines-accept" value="Accept"/></p>';
+			echo '<br><p><input type="submit" name="pp-guidelines-accept" value="Accept" class="btn btn-primary"/></p>';
 			echo '</form>';
 		}
 		public function panel_planner_stage_1_process(){
