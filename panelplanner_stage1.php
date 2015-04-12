@@ -25,7 +25,7 @@
 
     		}';
 			echo '</script>';
-			echo '<form action="' . $_SERVER['REQUEST_URI'] . '" method="post">';
+			echo '<form action="' . $_SERVER['REQUEST_URI'] . '" method="post" class="form">';
 			echo '<!-- Begin Panelist -->';
 			echo '<div class="form-group">';
 			echo '<label for="pp-first-name">First Name (required) </label>';
@@ -69,6 +69,9 @@
 			echo '<div class="form-group">';
 			echo '<label for="pp-title">Panel Title (required) </label>';
 			echo '<input type="text" name="pp-title" value="'. ( isset( $_POST["pp-title"] ) ? esc_attr( $_POST["pp-title"] ) : '' ) .'" size="40" />';
+			echo '</div>';
+			echo '<div class="form-group">';
+			echo '<label for="pp-description">Short Description (example for Program Guide)</label>';
 			echo '<textarea rows="10" cols="35" name="pp-description" >'. ( isset( $_POST["pp-description"] ) ? esc_attr( $_POST["pp-description"] ) : 'Please place a short description of your panel here. Similar to one you would see in the program.' ) .'</textarea>';
 			echo '</div>';
 			echo '<div class="form-group">';
