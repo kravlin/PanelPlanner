@@ -297,7 +297,7 @@
 				"Outline: ".$outline; 
 				if( wp_mail($staffEmail, $subject, $message, $headers)){
 					$subject = "Your panel submission #".$panelID."  has been recieved ";
-					$headers = "From: Panel Submission <donotreplyndkdenver.org>";
+					$headers = "From: Panel Submission <donotreply@ndkdenver.org>";
 					$message = "Dear ".$fname." ".$lname.",\n\n".
 					"Thank you for submitting your panel idea.\n".
 					"Panels Staff has received your proposal and will review it before giving you an answer on whether it's been accepted.\n".
@@ -307,8 +307,8 @@
 					"NDK Panel Staff";
 					if( wp_mail($email, $subject, $message, $headers)){
 						echo 'Thank you for submitting your panel idea.<br>';
-						echo "Your submission is number # ".$panelID."<br>";
-						echo "A confirmation email has been sent to your email account.";
+						echo "Your submission is number # ".$panelID.".  <br>";
+						echo "A confirmation email has been sent to your email account. ";
 						echo "Please email josh.sorenson@ndkdenver.org if you have any questions";
 					}
 					else{
