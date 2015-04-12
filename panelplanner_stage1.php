@@ -51,7 +51,8 @@
 			echo '<input onchange="javascript:show_hide(\'pp-CoPanelist\',\'pp-hasCopanelist\');" type="checkbox" id="pp-hasCopanelist" autocomplete="off" /> I don\'t have a CoPanelist.';
 			echo '</div>';
 			echo '<!-- Begin Copanelist -->';
-			echo '<div id="pp-CoPanelist" class="form-group">';
+			echo '<div id="pp-CoPanelist">';
+			echo '<div class="form-group">';
 			echo '<label for="pp-first-name2">Copanelist First Name (required) </label>';
 			echo '<input class="form-control" type="text" name="pp-first-name2" value="'. ( isset( $_POST["pp-first-name2"] ) ? esc_attr( $_POST["pp-first-name2"] ) : '' ) .'" pattern="[a-zA-Z0-9 ]+" size="40" />';
 			echo '</div>';
@@ -66,6 +67,7 @@
 			echo '<div class="form-group">';
 			echo '<label for="pp-age2">Copanelist Age (required) </label>';
 			echo '<input class="form-control" type="text" name="pp-age2" value="'. ( isset( $_POST["pp-age2"] ) ? esc_attr( $_POST["pp-age2"] ) : '' ) .'" pattern="[0-9]+" size="40" />';
+			echo '</div>';
 			echo '</div>';
 			echo '<!-- End Copanelist / Begin Panel -->';
 			echo '<div class="form-group">';
