@@ -29,7 +29,7 @@
 			echo '<!-- Begin Panelist -->';
 			echo '<div class="form-group">';
 			echo '<label for="pp-first-name">First Name (required) </label>';
-			echo '<input type="text" name="pp-first-name" value="'. ( isset( $_POST["pp-first-name"] ) ? esc_attr( $_POST["pp-first-name"] ) : '' ) .'" pattern="[a-zA-Z0-9 ]+" size="40" />';
+			echo '<input type="text" name="pp-first-name" id="pp-first-name" value="'. ( isset( $_POST["pp-first-name"] ) ? esc_attr( $_POST["pp-first-name"] ) : '' ) .'" pattern="[a-zA-Z0-9 ]+" size="40" />';
 			echo '</div>';
 			echo '<div class="form-group">';
 			echo '<label for="pp-last-name">Last Name (required) </label>';
