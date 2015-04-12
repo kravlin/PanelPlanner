@@ -25,7 +25,7 @@
 
     		}';
 			echo '</script>';
-			echo '<form action="' . $_SERVER['REQUEST_URI'] . '" method="post" class="form">';
+			echo '<form action="' . $_SERVER['REQUEST_URI'] . '" method="post" role="form">';
 			echo '<!-- Begin Panelist -->';
 			echo '<div class="form-group">';
 			echo '<label for="pp-first-name">First Name (required) </label>';
