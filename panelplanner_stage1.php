@@ -85,16 +85,16 @@
 			echo '</form>';
 		}
 		static public function panel_planner_disclaimer() {
-			echo 'Thank you for your interest in running a panel (or other activity) at Nan Desu Kan 2013. We look forward to reading your proposal.<br>';
+			echo 'Thank you for your interest in running a panel (or other activity) at Nan Desu Kan 2015. We look forward to reading your proposal.<br>';
 			echo '<br>';
-			echo 'If you haven\'t yet done so, please take this time to go read the <a href="/activities/panels/guidelines">Panel Guidelines</a>.<br>';
+			echo 'If you haven\'t yet done so, please take this time to go read the <a href="/ndk-events/panels/guidelines">Panel Guidelines</a>.<br><br>';
 			echo 'All prospective panelists <strong>must</strong> read and understand these guidelines before they submit proposals. Failure to understand the guidelines could result in the rejection of your proposal.<br>';
 			echo '<br>';
 			echo 'If you aren\'t prepared to submit a detailed proposal just yet, please take your time to flesh out your panel idea. We\'d rather see a strong proposal later on than a weak one earlier on.<br>';
 			echo '<br>';
-			echo 'Please don\'t delay too long, however. The deadline to submit the detailed proposal for your panel is <strong>, June 28</strong>at 10:00 PM MST. This form will be disabled after that time and all panels not submitted by that point will be rejected <strong>without exception</strong>. You must also be pre-registered for NDK (or be on NDK Staff) before submitting this form. If you haven\'t pre-registered, please <a href="/registration">do so now</a>. We\'ll be checking submissions against our pre-registration records.<br>';
+			echo 'Please don\'t delay too long, however. The deadline to submit the detailed proposal for your panel is <strong>, June 28 </strong>at 10:00 PM MST. This form will be disabled after that time and all panels not submitted by that point will be rejected <strong>without exception</strong>. You must also be pre-registered for NDK (or be on NDK Staff) before submitting this form. If you haven\'t pre-registered, please <a href="/registration">do so now</a>. We\'ll be checking submissions against our pre-registration records.<br>';
 			echo '<br>';
-			echo 'If you\'ve read the <a href="/activities/panels/guidelines">Panel Guidelines</a>, fleshed out your panel idea, and are ready to submit a detailed proposal, please continue.<br>';
+			echo 'If you\'ve read the <a href="/ndk-events/panels/guidelines">Panel Guidelines</a>, fleshed out your panel idea, and are ready to submit a detailed proposal, please continue.<br><br>';
 			echo '<form action="' . $_SERVER['REQUEST_URI'] . '" method="post">';
 			echo '<p><input type="submit" name="pp-guidelines-accept" value="Accept"/></p>';
 			echo '</form>';
@@ -145,7 +145,7 @@
 				self::panel_planner_disclaimer();
 			}
 		}
-	
+
 		// This method is going to get really ugly REALLY fast.
 		// Upgrade Plans? Make seperate auth messages. But that comes with custom campaigns.	
 		private function panelplanner_stage_1_validate_form($fname, $lname, $email, $age, $fname2, $lname2, $email2, $age2, $title, $desc, $outline){
@@ -287,7 +287,7 @@
 
 		private function panelplanner_panel_1_email($fname, $lname, $email, $age, $panelID, $title, $description, $outline, $staffEmail){
 				$subject = "panel submission #".$panelID." has come in!";
-				$headers = "From: Panel Submission <donotrespond@ndkdenver.org>";
+				$headers = "From: Panel Submission <donotreply@ndkdenver.org>";
 				$message = "A new panel submission has come in. Details below \n\n".
 				"Submitted by: ".$fname." ".$lname."\n".
 				"Contact Email: ".$email."\n".
@@ -297,13 +297,13 @@
 				"Outline: ".$outline; 
 				if( wp_mail($staffEmail, $subject, $message, $headers)){
 					$subject = "Your panel submission #".$panelID."  has been recieved ";
-					$headers = "From: Panel Submission <donotrespond@ndkdenver.org>";
+					$headers = "From: Panel Submission <donotreplyndkdenver.org>";
 					$message = "Dear ".$fname." ".$lname.",\n\n".
 					"Thank you for submitting your panel idea.\n".
 					"Panels Staff has received your proposal and will review it before giving you an answer on whether it's been accepted.\n".
-					"He may have some final questions about or suggestions for your panel, however, so be prepared to respond to any messages about your panel.\n".
-					"Please note that <strong>your panel hasn't yet been accepted</strong>. Panels will only be accepted after we've had a chance to review everyone's submitted panels.\n".
-					"You'll receive another e-mail letting you know whether your panel was accepted. Thank you for your patience.\n";
+					"They may have some final questions about or suggestions for your panel, so be prepared to respond to any messages.\n".
+					"Please note that your panel hasn not yet been accepted. Panels will only be accepted after we've had a chance to review everyone's submitted panels.\n".
+					"You'll receive another e-mail letting you know whether your panel was accepted. Thank you for your patience.\n\n";
 					"Thank you for submitting your panel for NDK2015.\n\n".
 					"NDK Panel Staff";
 					if( wp_mail($email, $subject, $message, $headers)){
