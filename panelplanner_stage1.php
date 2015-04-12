@@ -81,16 +81,16 @@
 			echo '</form>';
 		}
 		static public function panel_planner_disclaimer() {
-			echo "Thank you for your interest in running a panel (or other activity) at Nan Desu Kan 2013. We look forward to reading your proposal.<br>";
-			echo "<br>";
-			echo "If you haven't yet done so, please take this time to go read the <a href="/activities/panels/guidelines">Panel Guidelines</a>.<br>";
-			echo "All prospective panelists <strong>must</strong> read and understand these guidelines before they submit proposals. Failure to understand the guidelines could result in the rejection of your proposal.<br>";
-			echo "<br>"
-			echo "If you aren't prepared to submit a detailed proposal just yet, please take your time to flesh out your panel idea. We'd rather see a strong proposal later on than a weak one earlier on.<br>";
-			echo "<br>";
-			echo "Please don't delay too long, however. The deadline to submit the detailed proposal for your panel is <strong>, June 28</strong>at 10:00 PM MST. This form will be disabled after that time and all panels not submitted by that point will be rejected <strong>without exception</strong>. You must also be pre-registered for NDK (or be on NDK Staff) before submitting this form. If you haven't pre-registered, please <a href="/registration">do so now</a>. We'll be checking submissions against our pre-registration records.<br>";
-			echo "<br>";
-			echo "If you've read the <a href="/activities/panels/guidelines">Panel Guidelines</a>, fleshed out your panel idea, and are ready to submit a detailed proposal, please continue.<br>";
+			echo 'Thank you for your interest in running a panel (or other activity) at Nan Desu Kan 2013. We look forward to reading your proposal.<br>';
+			echo '<br>';
+			echo 'If you haven\'t yet done so, please take this time to go read the <a href="/activities/panels/guidelines">Panel Guidelines</a>.<br>';
+			echo 'All prospective panelists <strong>must</strong> read and understand these guidelines before they submit proposals. Failure to understand the guidelines could result in the rejection of your proposal.<br>';
+			echo '<br>';
+			echo 'If you aren\'t prepared to submit a detailed proposal just yet, please take your time to flesh out your panel idea. We\'d rather see a strong proposal later on than a weak one earlier on.<br>';
+			echo '<br>';
+			echo 'Please don\'t delay too long, however. The deadline to submit the detailed proposal for your panel is <strong>, June 28</strong>at 10:00 PM MST. This form will be disabled after that time and all panels not submitted by that point will be rejected <strong>without exception</strong>. You must also be pre-registered for NDK (or be on NDK Staff) before submitting this form. If you haven\'t pre-registered, please <a href="/registration">do so now</a>. We\'ll be checking submissions against our pre-registration records.<br>';
+			echo '<br>';
+			echo 'If you\'ve read the <a href="/activities/panels/guidelines">Panel Guidelines</a>, fleshed out your panel idea, and are ready to submit a detailed proposal, please continue.<br>';
 			echo '<form action="' . $_SERVER['REQUEST_URI'] . '" method="post">';
 			echo '<p><input type="submit" name="pp-guidelines-accept" value="Accept"/></p>';
 			echo '</form>';
