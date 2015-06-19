@@ -11,6 +11,24 @@
 			$this->panel_planner_stage_1_process();
 		}
 	
+		static public function panel_planner_stage_2_form() {
+			echo '<script type="text/Javascript">
+    		function show_hide(element1, element2) {
+    		    if (document.getElementById(element2).checked){
+    		        document.getElementById(element1).style.display = "none";
+    		    }
+    		    else{
+    		        document.getElementById(element1).style.display = "";
+    		    }
+
+    		}';
+    		echo '</script>';
+			echo '<form action="' . $_SERVER['REQUEST_URI'] . '" method="post">';
+			echo '<p><input type="submit" name="pp-submitted" value="Send"/></p>';
+			echo '</form>';
+
+		}
+
 		//This is a really terrible method. No likey.
 		//Too long, too much that's just...defined.
 		static public function panel_planner_stage_1_form() {
