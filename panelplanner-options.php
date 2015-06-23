@@ -26,7 +26,7 @@ function panel_planner_display_panels(){
 		echo "</tr>";
 	}
 	echo "</table>";
-	echo '<textarea class="form-control" rows="10" cols="35" name="pp-denial-reason"><br>';
+	echo '<textarea class="form-control" rows="10" cols="35" name="pp-denial-reason"></textarea><br>';
 	echo '<input type="submit" name="pp-accepted" value="accept"/>';
 	echo '<input type="submit" name="pp-deny" value="deny"/>';
 
