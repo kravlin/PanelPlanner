@@ -11,7 +11,7 @@ function panel_planner_gen_options_page(){
 			self::panel_planner_deny_panel();
 		} 	
 	}
-		$stage = 1;
+		$stage = 0;
 		echo panel_planner_display_panels($stage);
 }
 
