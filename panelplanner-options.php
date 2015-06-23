@@ -15,7 +15,7 @@ function panel_planner_display_panels(){
 	$tableName = $wpdb->prefix . "panelPlanner_panels";
 	$panels = $wpdb->get_results('SELECT * from '.$tableName);
 	foreach($panels as $panel){
-		echo $panel->title."\n";
+		echo $panel->title."<br>";
 	}
 	echo "DERPDERPDERP\n";
 }
