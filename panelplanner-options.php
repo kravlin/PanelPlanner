@@ -15,9 +15,29 @@ function panel_planner_display_panels(){
 	$tableName = $wpdb->prefix . "panelPlanner_panels";
 	$panels = $wpdb->get_results('SELECT * from '.$tableName);
 	foreach($panels as $panel){
-		echo $panel->title."<br>";
+		panel_planner_print_panel($panel);
 	}
 	echo "DERPDERPDERP\n";
+}
+/*id mediumint(9) AUTO_INCREMENT PRIMARY KEY,
+panelistID mediumint(9) NOT NULL,
+copanelistID mediumint(9),
+title varchar(50) NOT NULL,
+description varchar(5000) NOT NULL,
+outline varchar(5000) NOT NULL,
+approvalStage int NOT NULL,
+rejectionReason varchar(500) NOT NULL
+*/
+//I know tables are a SHITTY way to do this, and are like the cardinal sin of web design, but it's fast and dirty.
+function panel_planner_print_panel($panel){
+	$tableName = $wpdb->prefix . "panelPlanner_panelists";
+	echo "<td>".$panel->id."</td>";
+	echo "<td>".$panel->title."</td>";
+	echo "<td>".$panel->description."</td>";
+	global $wpdb;
+	$panelist = $wpdb->get_row("SELECT * FROM ".$tableName." WHERE id = ".$panel->panelistID);
+	echo "<td>".$panelist->firstName." ".$panelist->lastName."</td>";
+
 }
 
 function panel_planner_accept_panel(){
