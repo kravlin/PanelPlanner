@@ -11,6 +11,7 @@ function panel_planner_gen_options_page(){
 			self::panel_planner_deny_panel();
 		} 	
 	}
+		$stage = 1;
 		echo panel_planner_display_panels($stage);
 }
 
@@ -19,7 +20,7 @@ function panel_planner_display_panels($stage){
 	echo "<br><br>";
 	echo '<form action="' . $_SERVER['REQUEST_URI'] . '" method="post" role="form">';
 	$tableName = $wpdb->prefix . "panelPlanner_panels";
-	$panels = $wpdb->get_results('SELECT * from '.$tableName);
+	$panels = $wpdb->get_results('SELECT * from '.$tableName.' WHERE approvalStage = %d', $stage);
 	echo "<table>";
 	echo "<td><b>Panel ID</b></td>";
 	echo "<td><b>Panel Title</b></td>";
@@ -60,12 +61,40 @@ function panel_planner_print_panel($panel){
 
 }
 
-function panel_planner_accept_panel(){
-	echo "SlurpSlurpSlurp\n";
+function panel_planner_accept_panel($panelID){
+	global $wpdb;
+    $tableName = $wpdb->prefix . "panelPlanner_panels";
+    $wpdb->update( 
+    	$tableName,
+    	array(
+    		'approvalStage' => '2'
+    	),
+    	array(
+    		'ID' => $panelID
+    	), 
+    	array(
+    		'%d'
+    	), 
+    	array('%d'),
+    );
 }
 
 function panel_planner_deny_panel(){
-	echo "BurpBurpBurp\n";
+	global $wpdb;
+	$tableName = $wpdb->prefix . "panelPlanner_panels";
+	$wpdb->update( 
+    	$tableName,
+    	array(
+    		'approvalStage' => '2'
+    	),
+    	array(
+    		'ID' => $panelID
+    	), 
+    	array(
+    		'%d'
+    	), 
+    	array('%d'),
+    );
 }
 
 ?>
