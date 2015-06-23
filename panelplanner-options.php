@@ -14,7 +14,7 @@ function panel_planner_display_panels(){
 	global $wpdb;
 	$tableName = $wpdb->prefix . "panelPlanner_panels";
 	$panels = $wpdb->get_results( 'SELECT * from '.$tableName, OBJECT_K );
-	foreach($panel as $panels){
+	foreach($panels as $panel){
 		echo $panel;
 	}
 	echo "DERPDERPDERP\n";
