@@ -28,8 +28,8 @@ function panel_planner_display_panels(){
 		echo "</tr>";
 	}
 	echo "</table>";
-	echo '<input type="Accept" name="pp-accepted" value="accept"/>';
-	echo '<input type="Deny" name="pp-deny" value="deny"/>';
+	echo '<input type="submit" name="pp-accepted" value="accept"/>';
+	echo '<input type="submit" name="pp-deny" value="deny"/>';
 	echo "</form>";
 }
 /*id mediumint(9) AUTO_INCREMENT PRIMARY KEY,
