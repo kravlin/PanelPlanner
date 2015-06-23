@@ -13,6 +13,7 @@ function panel_planner_gen_options_page(){
 function panel_planner_display_panels(){
 	global $wpdb;
 	echo "<br><br>";
+	echo '<form action="' . $_SERVER['REQUEST_URI'] . '" method="post" role="form">';
 	$tableName = $wpdb->prefix . "panelPlanner_panels";
 	$panels = $wpdb->get_results('SELECT * from '.$tableName);
 	echo "<table>";
@@ -27,6 +28,9 @@ function panel_planner_display_panels(){
 		echo "</tr>";
 	}
 	echo "</table>";
+	echo '<input type="Accept" name="pp-accepted" value="accept"/>';
+	echo '<input type="Deny" name="pp-deny" value="deny"/>';
+	echo "</form>";
 }
 /*id mediumint(9) AUTO_INCREMENT PRIMARY KEY,
 panelistID mediumint(9) NOT NULL,
