@@ -13,9 +13,9 @@ function panel_planner_gen_options_page(){
 function panel_planner_display_panels(){
 	global $wpdb;
 	$tableName = $wpdb->prefix . "panelPlanner_panels";
-	$panels = $wpdb->get_results( 'SELECT * from '.$tableName);
+	$panels = $wpdb->get_results('SELECT * from '.$tableName.'ORDER BY id');
 	foreach($panels as $panel){
-		echo $panel;
+		echo $panel->title;
 	}
 	echo "DERPDERPDERP\n";
 }
