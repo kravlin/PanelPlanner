@@ -20,7 +20,7 @@ function panel_planner_display_panels($stage){
 	echo "<br><br>";
 	echo '<form action="' . $_SERVER['REQUEST_URI'] . '" method="post" role="form">';
 	$tableName = $wpdb->prefix . "panelPlanner_panels";
-	$panels = $wpdb->get_results('SELECT * from '.$tableName.' WHERE approvalStage = %d', $stage);
+	$panels = $wpdb->get_results('SELECT * from '.$tableName.' WHERE approvalStage = '.$stage);
 	echo "<table>";
 	echo "<td><b>Panel ID</b></td>";
 	echo "<td><b>Panel Title</b></td>";
