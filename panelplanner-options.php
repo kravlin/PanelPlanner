@@ -4,8 +4,6 @@ function panel_planner_gen_options_page(){
 	if( !current_user_can( 'manage_options') ){
 		wp_die( __( 'You do not have permission to access this page.') );
 	}
-	echo "This is the song that gets on everybody's nerves\n";
-
 	echo panel_planner_display_panels();
 
 }
@@ -30,6 +28,7 @@ function panel_planner_display_panels(){
 	echo "</table>";
 	echo '<input type="submit" name="pp-accepted" value="accept"/>';
 	echo '<input type="submit" name="pp-deny" value="deny"/>';
+	echo '<textarea class="form-control" rows="10" cols="35" name="pp-denial-reason">';
 	echo "</form>";
 }
 /*id mediumint(9) AUTO_INCREMENT PRIMARY KEY,
