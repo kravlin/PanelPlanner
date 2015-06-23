@@ -14,11 +14,13 @@ function panel_planner_display_panels(){
 	global $wpdb;
 	$tableName = $wpdb->prefix . "panelPlanner_panels";
 	$panels = $wpdb->get_results('SELECT * from '.$tableName);
+	echo "<table>";
 	foreach($panels as $panel){
 		echo "<tr>";
 		panel_planner_print_panel($panel);
 		echo "</tr>";
 	}
+	echo "</table>";
 	echo "DERPDERPDERP\n";
 }
 /*id mediumint(9) AUTO_INCREMENT PRIMARY KEY,
