@@ -78,16 +78,10 @@ function panel_planner_deny_panel(){
 	$tableName = $wpdb->prefix . "panelPlanner_panels";
 	$wpdb->update( 
     	$tableName,
-    	array(
-    		'approvalStage' => '2'
-    	),
-    	array(
-    		'ID' => $panelID
-    	), 
-    	array(
-    		'%d'
-    	), 
-    	array('%d'),
+    	array('approvalStage' => '2'),
+    	array('ID' => $panelID), 
+    	array('%d'), 
+    	array('%d')
     );
 }
 
