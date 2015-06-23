@@ -2,13 +2,19 @@
 
 function panel_planner_gen_options_page(){
 	if( !current_user_can( 'manage_options') ){
-		wp_die( __( 'You do not have permission to access this page.') );
+		wp_die( __( 'You do not have permission to access this page.') );	
+	}else{
+		if ( isset($_POST['pp-accept']) ) {
+			self::panel_planner_accept_panel();
+		} 	
+		elseif ( isset($_POST['pp-deny']) ) {
+			self::panel_planner_deny_panel();
+		} 	
 	}
-	echo panel_planner_display_panels();
-
+		echo panel_planner_display_panels($stage);
 }
 
-function panel_planner_display_panels(){
+function panel_planner_display_panels($stage){
 	global $wpdb;
 	echo "<br><br>";
 	echo '<form action="' . $_SERVER['REQUEST_URI'] . '" method="post" role="form">';
@@ -26,8 +32,8 @@ function panel_planner_display_panels(){
 		echo "</tr>";
 	}
 	echo "</table>";
-	echo '<textarea class="form-control" rows="10" cols="35" name="pp-denial-reason"></textarea><br>';
-	echo '<input type="submit" name="pp-accepted" value="accept"/>';
+	echo '<textarea class="form-control" rows="10" cols="35" name="pp-denial-reason" placeholder="Denial Reason"></textarea><br>';
+	echo '<input type="submit" name="pp-accept" value="accept"/>';
 	echo '<input type="submit" name="pp-deny" value="deny"/>';
 
 	echo "</form>";
