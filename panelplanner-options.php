@@ -12,16 +12,21 @@ function panel_planner_gen_options_page(){
 
 function panel_planner_display_panels(){
 	global $wpdb;
+	echo "<br><br>";
 	$tableName = $wpdb->prefix . "panelPlanner_panels";
 	$panels = $wpdb->get_results('SELECT * from '.$tableName);
 	echo "<table>";
+	echo "<td><b>Panel ID</b></td>";
+	echo "<td><b>Panel Title</b></td>";
+	echo "<td><b>Description</b></td>";
+	echo "<td><b>Panelist Name</b></td>";
+	echo "<td><b>Select Panel</b></td>";
 	foreach($panels as $panel){
 		echo "<tr>";
 		panel_planner_print_panel($panel);
 		echo "</tr>";
 	}
 	echo "</table>";
-	echo "DERPDERPDERP\n";
 }
 /*id mediumint(9) AUTO_INCREMENT PRIMARY KEY,
 panelistID mediumint(9) NOT NULL,
@@ -41,6 +46,7 @@ function panel_planner_print_panel($panel){
 	echo "<td>".$panel->description."</td>";
 	$panelist = $wpdb->get_row("SELECT * FROM ".$tableName." WHERE id = ".$panel->panelistID);
 	echo "<td>".$panelist->firstName." ".$panelist->lastName."</td>";
+	echo '<td><input type="radio" name="'.$panel->id.'" value="'.$panel->id.'"><br>';
 
 }
 
