@@ -8,7 +8,7 @@ function panel_planner_gen_options_page(){
 			panel_planner_accept_panel($_POST['pp-currentPanel']);
 		} 	
 		elseif ( isset($_POST['pp-deny']) ) {
-			panel_planner_deny_panel($_POST['pp-currentPanel'], $_POST['pp-denial-reason'];
+			panel_planner_deny_panel($_POST['pp-currentPanel'], $_POST['pp-denial-reason']);
 		} 	
 	}
 		$stage = 0;
