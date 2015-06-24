@@ -5,10 +5,10 @@ function panel_planner_gen_options_page(){
 		wp_die( __( 'You do not have permission to access this page.') );	
 	}else{
 		if ( isset($_POST['pp-accept']) ) {
-			self::panel_planner_accept_panel();
+			panel_planner_accept_panel();
 		} 	
 		elseif ( isset($_POST['pp-deny']) ) {
-			self::panel_planner_deny_panel();
+			panel_planner_deny_panel();
 		} 	
 	}
 		$stage = 0;
@@ -66,7 +66,7 @@ function panel_planner_accept_panel($panelID){
     $tableName = $wpdb->prefix . "panelPlanner_panels";
     $wpdb->update( 
     	$tableName,
-    	array( 'approvalStage' => '2' ),
+    	array( 'approvalStage' => '1' ),
     	array( 'ID' => $panelID ), 
     	array( '%d' ), 
     	array( '%d' )
@@ -83,9 +83,9 @@ function panel_planner_deny_panel($panelID, $rejectionReason){
     	),
     	array('ID' => $panelID), 
     	array('%d',
-    		'%s'), 
-    	array('%d',
-    		'%s')
+    		'%s'
+    	), 
+    	array('%d')
     );
 }
 
