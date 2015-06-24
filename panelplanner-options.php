@@ -73,15 +73,19 @@ function panel_planner_accept_panel($panelID){
     );
 }
 
-function panel_planner_deny_panel(){
+function panel_planner_deny_panel($panelID, $rejectionReason){
 	global $wpdb;
 	$tableName = $wpdb->prefix . "panelPlanner_panels";
 	$wpdb->update( 
     	$tableName,
-    	array('approvalStage' => '2'),
+    	array('approvalStage' => '-1',
+    		'rejectionReason' => $rejectionReason
+    	),
     	array('ID' => $panelID), 
-    	array('%d'), 
-    	array('%d')
+    	array('%d',
+    		'%s'), 
+    	array('%d',
+    		'%s')
     );
 }
 
