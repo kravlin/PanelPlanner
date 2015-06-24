@@ -5,10 +5,10 @@ function panel_planner_gen_options_page(){
 		wp_die( __( 'You do not have permission to access this page.') );	
 	}else{
 		if ( isset($_POST['pp-accept']) ) {
-			panel_planner_accept_panel();
+			panel_planner_accept_panel($_POST['pp-currentPanel']);
 		} 	
 		elseif ( isset($_POST['pp-deny']) ) {
-			panel_planner_deny_panel();
+			panel_planner_deny_panel($_POST['pp-currentPanel'], $_POST['pp-denial-reason'];
 		} 	
 	}
 		$stage = 0;
@@ -57,7 +57,7 @@ function panel_planner_print_panel($panel){
 	echo "<td>".$panel->description."</td>";
 	$panelist = $wpdb->get_row("SELECT * FROM ".$tableName." WHERE id = ".$panel->panelistID);
 	echo "<td>".$panelist->firstName." ".$panelist->lastName."</td>";
-	echo '<td><input type="radio" name="'.$panel->id.'" value="'.$panel->id.'"><br>';
+	echo '<td><input type="radio" name="pp-currentPanel" value="'.$panel->id.'"><br>';
 
 }
 
