@@ -90,7 +90,7 @@ panelID varchar(32)
 
 function panel_planner_add_PanelIDs(){
 	global $wpdb;
-    $tableName = $wpdb->prefix . "panelPlanner_panels";/
+    $tableName = $wpdb->prefix . "panelPlanner_panels";
     $panelID = substr(md5(microtime()),rand(0,26),32);
     $wpdb->update( 
     	$tableName,
