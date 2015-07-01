@@ -93,7 +93,7 @@ panelID varchar(32)
 function panel_planner_add_PanelIDs(){
 	global $wpdb;
     $tableName = $wpdb->prefix . "panelPlanner_panels";	
-    $panels = $wpdb->get_results('SELECT * from '.$tableName.' WHERE PanelID = NULL');
+    $panels = $wpdb->get_results('SELECT * from '.$tableName.' WHERE PanelID IS NULL');
     error_log(count($panels)." were found that needs PanelIDs");
     foreach($panels as $panel){
     	$ID = $panel->id;
