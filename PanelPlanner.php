@@ -91,19 +91,17 @@ panelID varchar(32)
 function panel_planner_add_PanelIDs(){
 	global $wpdb;
     $tableName = $wpdb->prefix . "panelPlanner_panels";	
-    $panels = $wpdb->get_results('SELECT * from '.$tableName.' WHERE approvalStage = '.$stage);
+    $panels = $wpdb->get_results('SELECT * from '.$tableName.' WHERE approvalStage = '.$stage.' AND PanelID == NULL');
     foreach($panels as $panel){
-    	if ($panel->id == NULL){
-    		$ID = $panel->id;
-    		$panelID = substr(md5(microtime()),rand(0,26),32);
-    		$wpdb->update( 
-    			$tableName,
-    			array( 'panelID' => $panelID ),
-    			array( 'ID' => $ID ), 
-    			array( '%s' ), 
-    			array( '%d' )
-    		);
-    	}
+    	$ID = $panel->id;
+    	$panelID = substr(md5(microtime()),rand(0,26),32);
+    	$wpdb->update( 
+    		$tableName,
+    		array( 'panelID' => $panelID ),
+    		array( 'ID' => $ID ), 
+    		array( '%s' ), 
+    		array( '%d' )
+    	);
     } 
 
 }
