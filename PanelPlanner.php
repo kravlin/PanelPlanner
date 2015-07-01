@@ -84,7 +84,10 @@ panelID varchar(32)
 	error_log("panel table should be created");
 
 	add_option( 'panelplanner_db_version' , $panelplanner_db_version);
+	error_log("Adding panel IDs in for stage 2");
 	panel_planner_add_PanelIDs();
+	error_log("Panel IDs added for stage 2");
+
 }
 
 function panel_planner_add_PanelIDs(){
@@ -94,6 +97,7 @@ function panel_planner_add_PanelIDs(){
     foreach($panels as $panel){
     	$ID = $panel->id;
     	$panelID = substr(md5(microtime()),rand(0,26),32);
+    	error_log("Adding panelID: ".$panelID." for panel #: ".$ID);
     	$wpdb->update( 
     		$tableName,
     		array( 'panelID' => $panelID ),
