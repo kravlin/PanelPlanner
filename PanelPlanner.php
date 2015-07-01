@@ -104,7 +104,7 @@ function panel_planner_add_PanelIDs(){
     			array( '%d' )
     		);
     	}
-    }
+    } 
 
 }
 
