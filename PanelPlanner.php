@@ -83,15 +83,13 @@ panelID varchar(32)
 	dbDelta( $create_panels );
 	error_log("panel table should be created");
 
-	panel_planner_add_PanelIDs();
-
 	add_option( 'panelplanner_db_version' , $panelplanner_db_version);
 }
 
 function panel_planner_add_PanelIDs(){
 	global $wpdb;
     $tableName = $wpdb->prefix . "panelPlanner_panels";	
-    $panels = $wpdb->get_results('SELECT * from '.$tableName.' WHERE approvalStage = '.$stage.' AND PanelID == NULL');
+    $panels = $wpdb->get_results('SELECT * from '.$tableName.' WHERE approvalStage = '.$stage.' AND PanelID = NULL');
     foreach($panels as $panel){
     	$ID = $panel->id;
     	$panelID = substr(md5(microtime()),rand(0,26),32);
