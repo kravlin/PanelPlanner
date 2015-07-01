@@ -76,13 +76,28 @@ title varchar(50) NOT NULL,
 description varchar(5000) NOT NULL,
 outline varchar(5000) NOT NULL,
 approvalStage int NOT NULL,
-rejectionReason varchar(500) NOT NULL
+rejectionReason varchar(500) NOT NULL,
+panelID varchar(32)
 )".$charset_collate.";";
 
 	dbDelta( $create_panels );
 	error_log("panel table should be created");
 
+	panel_planner_add_PanelIDs();
+
 	add_option( 'panelplanner_db_version' , $panelplanner_db_version);
+}
+
+function panel_planner_add_PanelIDs(){
+	global $wpdb;
+    $tableName = $wpdb->prefix . "panelPlanner_panels";
+    $wpdb->update( 
+    	$tableName,
+    	array( 'approvalStage' => '1' ),
+    	array( 'ID' => $panelID ), 
+    	array( '%d' ), 
+    	array( '%d' )
+    );
 }
 
 function panel_planner_menu(){
