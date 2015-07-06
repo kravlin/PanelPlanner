@@ -102,7 +102,7 @@ function panel_planner_mass_stage_email($stage){
 	foreach($panels as $panel){
 		$email = $panel->email;
 		$link = "https://ndkdenver.org/ndk-events/panels/panel-submission-form/?panelID=".$panel->panelID
-		$subject = "Your panel submission #".$panelID."  has been recieved";
+		$subject = "Panel Submission: Stage 2";
 		$headers = "From: Panel Submission <donotreply@ndkdenver.org>";
 		$message = "Dear ".$fname." ".$lname.",\n\n".
 			"Thanks again for submitting your panel idea.\n".
