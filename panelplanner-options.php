@@ -4,12 +4,15 @@ function panel_planner_gen_options_page(){
 	if( !current_user_can( 'manage_options') ){
 		wp_die( __( 'You do not have permission to access this page.') );	
 	}else{
-		if ( isset($_POST['pp-accept']) ) {
+		if( isset($_POST['pp-accept']) ) {
 			panel_planner_accept_panel($_POST['pp-currentPanel']);
 		} 	
-		elseif ( isset($_POST['pp-deny']) ) {
+		elseif( isset($_POST['pp-deny']) ) {
 			panel_planner_deny_panel($_POST['pp-currentPanel'], $_POST['pp-denial-reason']);
 		} 	
+		elseif( isset($_POST['pp-stage2'])){
+			panel_planner_mass_stage_email(1);
+		}
 	}
 		$stage = 0;
 		echo panel_planner_display_panels($stage);
@@ -36,7 +39,9 @@ function panel_planner_display_panels($stage){
 	echo '<textarea class="form-control" rows="10" cols="35" name="pp-denial-reason" placeholder="Denial Reason"></textarea><br>';
 	echo '<input type="submit" name="pp-accept" value="accept"/>';
 	echo '<input type="submit" name="pp-deny" value="deny"/>';
-
+	if(count($panels) == 0){
+		echo '<input type="submit" name="pp-stage2" value="begin stage 2"/>';
+	}
 	echo "</form>";
 }
 /*id mediumint(9) AUTO_INCREMENT PRIMARY KEY,
@@ -83,10 +88,34 @@ function panel_planner_deny_panel($panelID, $rejectionReason){
     	),
     	array('ID' => $panelID), 
     	array('%d',
-    		'%s'
+    		  '%s'
     	), 
     	array('%d')
     );
+}
+
+function panel_planner_mass_stage_email($stage){
+	global $wpdb;
+	$panelTableName = $wpdb->prefix . "panelPlanner_panels";
+	$panelistsTableName = $wpdb->prefix . "panelPlanner_panelists";	
+	$panels = $wpdb->get_results('SELECT *.'.$panelPlannersTable.', *.'.$panelTableName.' from '.$tableName.' WHERE approvalStage = '.$stage. "INNER JOIN '.$panelistsTableName.' on id.'.$panelTableName.' = panelistID.'.$panelistsTableName);
+	foreach($panels as $panel){
+		$email = $panel->email;
+		$link = "https://ndkdenver.org/ndk-events/panels/panel-submission-form/?panelID=".$panel->panelID
+		$subject = "Your panel submission #".$panelID."  has been recieved";
+		$headers = "From: Panel Submission <donotreply@ndkdenver.org>";
+		$message = "Dear ".$fname." ".$lname.",\n\n".
+			"Thanks again for submitting your panel idea.\n".
+			"In order to finish your panel submission, please finish the form at the included link.\n".
+			"Please complete the included form by $DATE\n".
+			"\n\n".$link."\n\n".
+			"Please note that your panel hasn not yet been accepted. Panels will only be accepted after we've had a chance to review all submitted panels.\n\n".
+			"Thank you for your patience, and thank you for your interest in running a panel at NDK2015\n".
+			"NDK Panel Staff";
+		}
+		wp_mail($email, $subject, $message, $headers);
+
+	}
 }
 
 ?>
