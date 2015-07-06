@@ -112,10 +112,7 @@ function panel_planner_mass_stage_email($stage){
 			"Please note that your panel hasn not yet been accepted. Panels will only be accepted after we've had a chance to review all submitted panels.\n\n".
 			"Thank you for your patience, and thank you for your interest in running a panel at NDK2015\n".
 			"NDK Panel Staff";
-		}
 		wp_mail($email, $subject, $message, $headers);
-
-	}
+	}		
 }
-
 ?>
