@@ -159,7 +159,7 @@
 				}
 				error_log("Reading Input Correct");
 		 	}
-		 	elseif(isset($_POST['pp-PanelIdent'])){
+		 	elseif(isset($_GET['pp-PanelIdent'])){
 		 		self::panel_planner_stage_2_form();
 		 	}
 		 	elseif(isset($_POST['pp-submitted-stage-2'])){
@@ -187,7 +187,6 @@
 						$_POST['pp-scheduling'],
 						$_POST['pp-panelID']
 						);
-
 					$this->panelplanner_panel_2_email(
 						$_POST['pp-guidelines-accept'],
 						$_POST['pp-scheduling'],
