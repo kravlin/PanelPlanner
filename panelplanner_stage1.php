@@ -159,7 +159,7 @@
 				}
 				error_log("Reading Input Correct");
 		 	}
-		 	elseif(isset($_POST['pp-identifier'])){
+		 	elseif(isset($_GET['pp-PanelIdent'])){
 		 		self::panel_planner_stage_2_form();
 		 	}
 		 	elseif(isset($_POST['pp-submitted-stage-2'])){
