@@ -358,11 +358,13 @@
 			$wpdb->update( 
     			$table_name,
     			array( 	'read_guidelines' => 1,
-						'scheduling' => $schedule
+						'scheduling' => $schedule,
+						'approvalStage' => 2
     			),
     			array( 'ID' => $panelID ), 
     			array( 	'%d',
-    					'%s'
+    					'%s',
+    					'%d'
     			), 
     			array( '%d' )
     		);
