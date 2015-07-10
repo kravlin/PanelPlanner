@@ -168,7 +168,7 @@
 					$_POST['pp-guidelines-accept'],
 					$_POST['pp-scheduling'],
 					$_POST['pp-panelID']
-				)
+				);
 				error_log("Number of errors: ".count($this->form_errors));
 				if( count($this->form_errors) != 0 ) {
 					foreach($this->form_errors as $error) {
