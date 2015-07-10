@@ -23,7 +23,7 @@
 			echo '</div>';
 			echo '<div class="form-group">';
 			echo '<label for="pp-panelID"></label>';
-			echo '<input class="form-control" type="hidden" name="pp-panelID" id="pp-panelID" value="'. $_POST["pp-panelID"] . ' size="40" />';
+			echo '<input class="form-control" type="hidden" name="pp-panelID" id="pp-panelID" value="'. $_POST["pp-PanelIdent"] . ' size="40" />';
 			echo '</div>';
 			echo '<p><input type="submit" name="pp-submitted-stage-2" value="Send"/></p>';			
 			echo '</form>';

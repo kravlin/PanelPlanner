@@ -78,7 +78,7 @@ outline varchar(5000) NOT NULL,
 approvalStage int NOT NULL,
 rejectionReason varchar(500) NOT NULL,
 panelID varchar(32),
-read_guidelines BOOLEAN,
+read_guidelines mediumint(9),
 scheduling varchar(5000)
 )".$charset_collate.";";
 
