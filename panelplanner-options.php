@@ -98,6 +98,7 @@ function panel_planner_mass_stage_email($stage){
 	global $wpdb;
 	$panelTableName = $wpdb->prefix . "panelPlanner_panels";
 	$panelistsTableName = $wpdb->prefix . "panelPlanner_panelists";	
+	echo $stage;
 	//SELECT * FROM wp_panelPlanner_panels LEFT JOIN wp_panelPlanner_panelists ON panelistID = wp_panelPlanner_panelists.id WHERE approvalStage = 1;
 	$panels = $wpdb->get_results('SELECT * FROM '.$panelTableName.' LEFT JOIN '.$panelistsTableName.' ON panelistID = '.$panelistsTableName.'.id WHERE approvalStage = '.$stage);
 	foreach($panels as $panel){
