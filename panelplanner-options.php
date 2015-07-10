@@ -104,11 +104,10 @@ function panel_planner_mass_stage_email($stage){
 	$panels = $wpdb->get_results( $selectString );
 	foreach($panels as $panel){
 		$email = $panel->email;
-		echo $panel->firstName;
 		$link = "https://ndkdenver.org/ndk-events/panels/panel-submission-form/?panelID=".$panel->panelID;
 		$subject = "Panel Submission: Stage 2";
 		$headers = "From: Panel Submission <donotreply@ndkdenver.org>";
-		$message = "Dear ".$panel->$firstName." ".$panel->$lastName.",\n\n".
+		$message = "Dear ".$panel->firstName." ".$panel->lastName.",\n\n".
 			"Thanks again for submitting your panel idea.\n".
 			"In order to finish your panel submission, please finish the form at the included link.\n".
 			"Please complete the included form by $DATE\n".
