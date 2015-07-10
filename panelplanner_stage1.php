@@ -196,7 +196,6 @@
 				}
 				error_log("Reading Input Correct");
 		 	}
-		 	}
 			else{
 				self::panel_planner_disclaimer();
 			}
