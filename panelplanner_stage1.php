@@ -407,7 +407,7 @@
 			$message = "A new panel submission has come in. Details below \n\n".
 			"Panel Number: ".$panelID."\n".
 			"Read and accepted the guidelines?: ".$guidelines."\n".
-			"Scheduling conflicts: ".$scheduling."\n".
+			"Scheduling conflicts: ".$scheduling."\n";
 			if( wp_mail($staffEmail, $subject, $message, $headers)){
 				$subject = "Your panel submission #".$panelID."  has been recieved ";
 				$headers = "From: Panel Submission <donotreply@ndkdenver.org>";
