@@ -77,12 +77,13 @@ description varchar(5000) NOT NULL,
 outline varchar(5000) NOT NULL,
 approvalStage int NOT NULL,
 rejectionReason varchar(500) NOT NULL,
-panelID varchar(32)
+panelID varchar(32),
+read_guidelines BOOLEAN,
+scheduling varchar(5000)
 )".$charset_collate.";";
 
 	dbDelta( $create_panels );
 	error_log("panel table should be created");
-
 	add_option( 'panelplanner_db_version' , $panelplanner_db_version);
 	error_log("Adding panel IDs in for stage 2");
 	panel_planner_add_PanelIDs();
@@ -113,7 +114,6 @@ function panel_planner_add_PanelIDs(){
 function panel_planner_menu(){
 	add_options_page('Panel Planner Settings','Panel Planner Settings', 'manage_options','panelplanner-options.php','panel_planner_gen_options_page');
 }
-
 
 function panel_planner_activate(){
 

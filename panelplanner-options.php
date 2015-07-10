@@ -98,7 +98,8 @@ function panel_planner_mass_stage_email($stage){
 	global $wpdb;
 	$panelTableName = $wpdb->prefix . "panelPlanner_panels";
 	$panelistsTableName = $wpdb->prefix . "panelPlanner_panelists";	
-	$panels = $wpdb->get_results('SELECT *.'.$panelistsTableName.', *.'.$panelTableName.' from '.$panelTableName.' WHERE approvalStage = '.$stage.' INNER JOIN '.$panelistsTableName.' on id.'.$panelTableName.' = panelistID.'.$panelistsTableName);
+	//SELECT * FROM wp_panelPlanner_panels LEFT JOIN wp_panelPlanner_panelists ON panelistID = wp_panelPlanner_panelists.id WHERE approvalStage = 1;
+	$panels = $wpdb->get_results('SELECT * FROM '.$panelTableName.' LEFT JOIN '.$panelistsTableName.' ON PanelistID = '.$panelTableName.'.id WHERE approvalStage = '.$stage);
 	foreach($panels as $panel){
 		$email = $panel->email;
 		$link = "https://ndkdenver.org/ndk-events/panels/panel-submission-form/?panelID=".$panel->panelID;

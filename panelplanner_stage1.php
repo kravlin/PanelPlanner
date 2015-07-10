@@ -12,21 +12,21 @@
 		}
 	
 		static public function panel_planner_stage_2_form() {
-			echo '<script type="text/Javascript">
-    		function show_hide(element1, element2) {
-    		    if (document.getElementById(element2).checked){
-    		        document.getElementById(element1).style.display = "none";
-    		    }
-    		    else{
-    		        document.getElementById(element1).style.display = "";
-    		    }
-
-    		}';
-    		echo '</script>';
 			echo '<form action="' . $_SERVER['REQUEST_URI'] . '" method="post">';
-			echo '<p><input type="submit" name="pp-submitted" value="Send"/></p>';
+			echo '<div class="form-group">';
+			echo '<label for="pp-guidelines-accept">I have read the Panel Guidelines. (required) </label>';
+			echo '<input class="form-control" type="checkbox" name="pp-guidelines-accept" id="pp-guidelines-accept" value="'. ( isset( $_POST["pp-guidelines-accept"] ) ? esc_attr( $_POST["pp-guidelines-accept"] ) : '' ) .' size="40" />';
+			echo '</div>';
+			echo '<div class="form-group">';
+			echo '<label for="pp-scheduling">Schedule Restrictions (required) </label>';
+			echo '<textarea class="form-control" rows="10" cols="35" name="pp-scheduling" placeholder="'. ( isset( $_POST["pp-scheduling"] ) ? esc_attr( $_POST["pp-scheduling"] ) : 'What scheduling restrictions do you have?' ) .'"></textarea>';	
+			echo '</div>';
+			echo '<div class="form-group">';
+			echo '<label for="pp-panelID"></label>';
+			echo '<input class="form-control" type="hidden" name="pp-panelID" id="pp-panelID" value="'. $_POST["pp-panelID"] . ' size="40" />';
+			echo '</div>';
+			echo '<p><input type="submit" name="pp-submitted-stage-2" value="Send"/></p>';			
 			echo '</form>';
-
 		}
 
 		//This is a really terrible method. No likey.
@@ -63,7 +63,6 @@
 			echo '<label for="pp-age">Age (required) </label>';
 			echo '<input class="form-control" type="text" name="pp-age" value="'. ( isset( $_POST["pp-age"] ) ? esc_attr( $_POST["pp-age"] ) : '' ) .'" pattern="[0-9]+" size="40" />';
 			echo '</div>';
-			
 			echo '<!-- End Panelist -->';
 			echo '<div class="form-group">';
 			echo '<input onchange="javascript:show_hide(\'pp-CoPanelist\',\'pp-hasCopanelist\');" type="checkbox" id="pp-hasCopanelist" autocomplete="off" /> I don\'t have a CoPanelist.';
@@ -159,7 +158,44 @@
 						$_POST['pp-outline'],'events@ndkdenver.org');
 				}
 				error_log("Reading Input Correct");
+		 	}
+		 	elseif(isset($_POST['pp-identifier'])){
+		 		self::panel_planner_stage_2_form();
+		 	}
+		 	elseif(isset($_POST['pp-submitted-stage-2'])){
+				error_log("Panel Submission Started");
+				$this->panelplanner_stage_2_validate_form(
+					$_POST['pp-guidelines-accept'],
+					$_POST['pp-scheduling'],
+					$_POST['pp-panelID']
+				)
+				error_log("Number of errors: ".count($this->form_errors));
+				if( count($this->form_errors) != 0 ) {
+					foreach($this->form_errors as $error) {
+						error_log("Errors found in submission.");
+						echo '<div>';
+						echo '<strong>ERROR</strong>';
+						echo ' '. $error . '<br/>';
+						echo '</div>';
+					}
+					self::panel_planner_stage_2_form();
+				}
+				elseif ( count($this->form_errors) == 0 ){
+					error_log("No Errors detected in form. Saving input");
+					$panelID = $this->panelplanner_panel_2_save_input(
+						$_POST['pp-guidelines-accept'],
+						$_POST['pp-scheduling'],
+						$_POST['pp-panelID']
+						);
 
+					$this->panelplanner_panel_2_email(
+						$_POST['pp-guidelines-accept'],
+						$_POST['pp-scheduling'],
+						$_POST['pp-panelID']
+						);
+				}
+				error_log("Reading Input Correct");
+		 	}
 		 	}
 			else{
 				self::panel_planner_disclaimer();
@@ -208,6 +244,15 @@
     			}
 
     	    }
+    	}
+
+    	private function panelplanner_stage_2_validate_form($guidelines, $scheduling){
+		    if ( empty($guidelines) ){
+    		   	array_push( $this->form_errors, 'Please read the panel guidelines' );
+		    }
+		    if ( empty($scheduling) ){
+				array_push( $this->form_errors, 'Schedule information cannot be empty' );
+			}
     	}
 
     	private function panelplanner_insert_panelist($fname,$lname,$email,$age){
@@ -305,6 +350,23 @@
 			return $panelID;
 		}
 
+		private function panelplanner_panel_2_save_input($guidelines, $schedule, $panelID){
+			global $wpdb;
+			$table_name = $wpdb->prefix . "panelplanner_panels";
+			error_log("Update Panels");
+			$wpdb->update( 
+    			$table_name,
+    			array( 	'read_guidelines' => 1,
+						'scheduling' => $schedule
+    			),
+    			array( 'ID' => $panelID ), 
+    			array( 	'%d',
+    					'%s'
+    			), 
+    			array( '%d' )
+    		);
+		}
+
 		private function panelplanner_panel_1_email($fname, $lname, $email, $age, $panelID, $title, $description, $outline, $staffEmail){
 				$subject = "panel submission #".$panelID." has come in!";
 				$headers = "From: Panel Submission <donotreply@ndkdenver.org>";
@@ -338,6 +400,38 @@
 						echo "Sorry about that :(";
 					}
 				}
+		}
+
+		private function panelplanner_panel_2_email($title, $guidelines, $scheduling, $panelID, $staffEmail){
+			$subject = "Stage Two for panel ".$panelID." is complete";
+			$headers = "From: Panel Submission <donotreply@ndkdenver.org>";
+			$message = "A new panel submission has come in. Details below \n\n".
+			"Panel Number: ".$panelID."\n".
+			"Read and accepted the guidelines?: ".$guidelines."\n".
+			"Scheduling conflicts: ".$scheduling."\n".
+			if( wp_mail($staffEmail, $subject, $message, $headers)){
+				$subject = "Your panel submission #".$panelID."  has been recieved ";
+				$headers = "From: Panel Submission <donotreply@ndkdenver.org>";
+				$message = "Dear ".$fname." ".$lname.",\n\n".
+				"Thank you for submitting your panel idea.\n".
+				"Panels Staff has received your proposal and will review it before giving you an answer on whether it's been accepted.\n".
+				"They may have some final questions about or suggestions for your panel, so be prepared to respond to any messages.\n".
+				"Please note that your panel hasn not yet been accepted. Panels will only be accepted after we've had a chance to review all submitted panels.\n\n".
+				"Thank you for your patience, and thank you for your interest in running a panel at NDK2015\n".
+				"NDK Panel Staff";
+				if( wp_mail($email, $subject, $message, $headers)){
+					echo 'Thank you for submitting your panel idea.<br>';
+					echo "Your submission is number # ".$panelID.".  <br>";
+					echo "A confirmation email has been sent to your email account. ";
+					echo "Please email josh.sorenson@ndkdenver.org if you have any questions";
+				}
+				else{
+					echo "Sorry, something went wrong with your panel submission.<br>";
+					echo "Please contact josh.sorenson@ndkdenver.org and reference the below panel application number.<br>";
+					echo "PanelID: ".$panelID."<br><br>";
+					echo "Sorry about that :(";
+				}
+			}
 		}
 
 
