@@ -185,7 +185,7 @@
 					$panelID = $this->panelplanner_panel_2_save_input(
 						$_POST['pp-guidelines-accept'],
 						$_POST['pp-scheduling'],
-						$_POST['pp-panelID']
+						$_POST['pp-panelID'],
 						);
 					$this->panelplanner_panel_2_email(
 						$_POST['pp-guidelines-accept'],
