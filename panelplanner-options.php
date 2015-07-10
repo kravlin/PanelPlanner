@@ -100,7 +100,9 @@ function panel_planner_mass_stage_email($stage){
 	$panelistsTableName = $wpdb->prefix . "panelPlanner_panelists";	
 	echo $stage;
 	//SELECT * FROM wp_panelPlanner_panels LEFT JOIN wp_panelPlanner_panelists ON panelistID = wp_panelPlanner_panelists.id WHERE approvalStage = 1;
-	$panels = $wpdb->get_results('SELECT * FROM '.$panelTableName.' LEFT JOIN '.$panelistsTableName.' ON panelistID = '.$panelistsTableName.'.id WHERE approvalStage = '.$stage );
+	$selectString = 'SELECT * FROM '.$panelTableName.' LEFT JOIN '.$panelistsTableName.' ON panelistID = '.$panelistsTableName.'.id WHERE approvalStage = '.$stage 
+	echo $selectString;
+	$panels = $wpdb->get_results( $selectString );
 	foreach($panels as $panel){
 		$email = $panel->email;
 		$link = "https://ndkdenver.org/ndk-events/panels/panel-submission-form/?panelID=".$panel->panelID;
