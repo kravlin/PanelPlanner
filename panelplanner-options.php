@@ -110,7 +110,7 @@ function panel_planner_mass_stage_email($stage){
 		$message = "Dear ".$panel->firstName." ".$panel->lastName.",\n\n".
 			"Thanks again for submitting your panel idea.\n".
 			"In order to finish your panel submission, please finish the form at the included link.\n".
-			"Please complete the included form by $DATE\n".
+			"Please complete the included form by DATE\n".
 			"\n\n".$link."\n\n".
 			"Please note that your panel hasn not yet been accepted. Panels will only be accepted after we've had a chance to review all submitted panels.\n\n".
 			"Thank you for your patience, and thank you for your interest in running a panel at NDK2015\n".
