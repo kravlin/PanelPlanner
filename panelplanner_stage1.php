@@ -23,7 +23,7 @@
 			echo '</div>';
 			echo '<div class="form-group">';
 			echo '<label for="pp-panelID"></label>';
-			echo '<input class="form-control" type="hidden" name="pp-panelID" id="pp-panelID" value="'. $_POST["pp-PanelIdent"] . ' size="40" />';
+			echo '<input class="form-control" type="hidden" name="pp-panelID" id="pp-panelID" value="'. $_GET["pp-panelID"] . ' size="40" />';
 			echo '</div>';
 			echo '<p><input type="submit" name="pp-submitted-stage-2" value="Send"/></p>';			
 			echo '</form>';
@@ -159,7 +159,7 @@
 				}
 				error_log("Reading Input Correct");
 		 	}
-		 	elseif(isset($_GET['pp-PanelIdent'])){
+		 	elseif(isset($_POST['pp-PanelIdent'])){
 		 		self::panel_planner_stage_2_form();
 		 	}
 		 	elseif(isset($_POST['pp-submitted-stage-2'])){
