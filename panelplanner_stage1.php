@@ -252,7 +252,7 @@
 				array_push( $this->form_errors, 'Schedule information cannot be empty' );
 			}
 			if ( empty($panel) ){
-				array_push( $this->form_errors, 'Error finding panel, Please contact josh.sorenson@ndkdenver.org')
+				array_push( $this->form_errors, 'Error finding panel, Please contact josh.sorenson@ndkdenver.org');
 			}
     	}
 
