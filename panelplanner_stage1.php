@@ -244,12 +244,15 @@
     	    }
     	}
 
-    	private function panelplanner_stage_2_validate_form($guidelines, $scheduling){
+    	private function panelplanner_stage_2_validate_form($guidelines, $scheduling, $panel){
 		    if ( empty($guidelines) ){
     		   	array_push( $this->form_errors, 'Please read the panel guidelines' );
 		    }
 		    if ( empty($scheduling) ){
 				array_push( $this->form_errors, 'Schedule information cannot be empty' );
+			}
+			if ( empty($panel) ){
+				array_push( $this->form_errors, 'Error finding panel, Please contact josh.sorenson@ndkdenver.org')
 			}
     	}
 
