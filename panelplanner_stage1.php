@@ -181,7 +181,7 @@
 					self::panel_planner_stage_2_form();
 				}
 				elseif ( count($this->form_errors) == 0 ){
-					error_log("No Errors detected in form. Saving input");
+					error_log("No Errors detected in form 2. Saving input");
 					$panelID = $this->panelplanner_panel_2_save_input(
 						$_POST['pp-guidelines-accept'],
 						$_POST['pp-scheduling'],
