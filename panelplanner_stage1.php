@@ -86,20 +86,24 @@
 			echo '</form>';
 		}
 		static public function panel_planner_disclaimer() {
-			echo '<h1>Panel Submission Form</h1>';
-			echo 'Thank you for your interest in running a panel (or other activity) at Nan Desu Kan 2015. We look forward to reading your proposal.<br>';
-			echo '<br>';
-			echo 'If you haven\'t yet done so, please take this time to go read the <a href="/ndk-events/panels/guidelines">Panel Guidelines</a>.<br><br>';
-			echo 'All prospective panelists <strong>must</strong> read and understand these guidelines before they submit proposals. Failure to understand the guidelines could result in the rejection of your proposal.<br>';
-			echo '<br>';
-			echo 'If you aren\'t prepared to submit a detailed proposal just yet, please take your time to flesh out your panel idea. We\'d rather see a strong proposal later on than a weak one earlier on.<br>';
-			echo '<br>';
-			echo 'Please don\'t delay too long, however. The deadline to submit the detailed proposal for your panel is <strong>, June 28 </strong>at 10:00 PM MST. This form will be disabled after that time and all panels not submitted by that point will be rejected <strong>without exception</strong>. You must also be pre-registered for NDK (or be on NDK Staff) before submitting this form. If you haven\'t pre-registered, please <a href="/registration">do so now</a>. We\'ll be checking submissions against our pre-registration records.<br>';
-			echo '<br>';
-			echo 'If you\'ve read the <a href="/ndk-events/panels/guidelines">Panel Guidelines</a>, fleshed out your panel idea, and are ready to submit a detailed proposal, please continue.<br><br>';
+			echo "<h1>Panel Submission Form</h1>";
+			echo "Thank you for your interest in running a panel (or other activity) at Nan Desu Kan ";
+			echo date('Y'); 
+			echo ". We look forward to reading your proposal.  <br>";
+			echo "<br>";
+			echo "If you haven't yet done so, please take this time to go read the <a href=\"/ndk-events/panels/guidelines\">Panel Guidelines</a>.<br><br>";
+			echo "All prospective panelists <strong>must</strong> read and understand these guidelines before they submit proposals. Failure to understand the guidelines could result in the rejection of your proposal.<br>";
+			echo "<br>";
+			echo "If you aren't prepared to submit a detailed proposal just yet, please take your time to flesh out your panel idea. We'd rather see a strong proposal later on than a weak one earlier on.<br>";
+			echo "<br>";
+			echo "Please don't delay too long, however. The deadline to submit the detailed proposal for your panel is <strong>, June 28 </strong>at 10:00 PM MST. This form will be disabled after that time and all panels not submitted by that point will be rejected <strong>without exception</strong>. You must also be pre-registered for NDK (or be on NDK Staff) before submitting this form. If you haven't pre-registered, please <a href=\"/registration\">do so now</a>. We'll be checking submissions against our pre-registration records.<br>";
+			echo "<br>";
+			echo "If you've read the <a href=\"/ndk-events/panels/guidelines\">Panel Guidelines</a>, fleshed out your panel idea, and are ready to submit a detailed proposal, please continue.<br><br>";
 			echo '<form action="' . $_SERVER['REQUEST_URI'] . '" method="post">';
-			echo '<br><p><input type="submit" name="pp-guidelines-accept" value="Accept"/></p>';
-			echo '</form>';
+			echo "<br><p>";
+			echo '<input type="submit" name="pp-guidelines-accept" value="Accept"/>';
+			echo "</p>";
+			echo "</form>";
 		}
 		public function panel_planner_stage_1_process(){
 			if ( isset($_POST['pp-guidelines-accept']) ) {
@@ -213,13 +217,15 @@
     					'firstName' => $fname,
     					'lastName' => $lname,
     					'email' => $email,
-    					'age' => $age
+    					'age' => $age,
+    					'datetime_created' => current_time('mysql')
     				),
     				array(
     					'%s',
     					'%s',
     					'%s',
-    					'%d'
+    					'%d',
+    					'%s'
     				)
     			);
     			$id = $wpdb->insert_id;
@@ -238,11 +244,13 @@
     					'copanelistID' => $copanelistID,
     					'title' => $title,
     					'description' => $desc,
-    					'outline' => $outline
+    					'outline' => $outline,
+    					'datetime_created' => current_time('mysql')
     				),
     				array(
     					'%d',
     					'%d',
+    					'%s',
     					'%s',
     					'%s',
     					'%s'
@@ -255,10 +263,12 @@
     					'panelistID' => $panelistID,
     					'title' => $title,
     					'description' => $desc,
-    					'outline' => $outline
+    					'outline' => $outline,
+    					'datetime_created' => current_time('mysql')
     				),
     				array(
     					'%d',
+    					'%s',
     					'%s',
     					'%s',
     					'%s'
@@ -305,7 +315,7 @@
 					"Panels Staff has received your proposal and will review it before giving you an answer on whether it's been accepted.\n".
 					"They may have some final questions about or suggestions for your panel, so be prepared to respond to any messages.\n".
 					"Please note that your panel hasn not yet been accepted. Panels will only be accepted after we've had a chance to review all submitted panels.\n\n".
-					"Thank you for your patience, and thank you for your interest in running a panel at NDK2015\n".
+					"Thank you for your patience, and thank you for your interest in running a panel at NDK" . $date('Y') . "\n".
 					"NDK Panel Staff";
 					if( wp_mail($email, $subject, $message, $headers)){
 						echo 'Thank you for submitting your panel idea.<br>';
@@ -316,7 +326,7 @@
 					else{
 						echo "Sorry, something went wrong with your panel submission.<br>";
 						echo "Please contact josh.sorenson@ndkdenver.org and reference the below panel application number.<br>";
-						echo "PanelID: ".$panelID."<br><br>";
+						echo "PanelID: " . $panelID . "<br><br>";
 						echo "Sorry about that :(";
 					}
 				}

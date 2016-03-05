@@ -3,12 +3,14 @@
  Plugin Name: Panel Planner
  Plugin URI: http://chronostasis.net/PanelPlanner
  Description: A plugin used to help accept and deny panels for conventions
- Version: 1.0
+ Version: 1.1
  Author: Kravlin
  Author URI: http://chronostasis.net
  Network: False
  License: GNU Public License 2
  Copyright 2015  Kravlin  (email : kravlin@gmail.com)
+ 
+ Contributing Author: Lanji (lanji@l.oimolw.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as 
@@ -47,7 +49,7 @@ function install_database(){
 	//Create Database Tables
 
 	global $wpdb;
-	$panelplanner_db_version = "1.0";
+	$panelplanner_db_version = "1.1";
 	$charset_collate = $wpdb->get_charset_collate();
 
 	//Create Panelists Table
@@ -58,7 +60,8 @@ id int AUTO_INCREMENT PRIMARY KEY,
 firstName varchar(20) NOT NULL,
 lastName varchar(20) NOT NULL,
 email varchar(50) NOT NULL,
-age int NOT NULL
+age int NOT NULL,
+datetime_created DATETIME NOT NULL DEFAULT  '2015-09-01 00:00:00'
 )".$charset_collate.";";
 
 	dbDelta( $create_panelists );
@@ -75,7 +78,8 @@ title varchar(50) NOT NULL,
 description varchar(5000) NOT NULL,
 outline varchar(5000) NOT NULL,
 approvalStage int NOT NULL,
-rejectionReason varchar(500) NOT NULL
+rejectionReason varchar(500) NOT NULL,
+datetime_created DATETIME NOT NULL DEFAULT  '2015-09-01 00:00:00'
 )".$charset_collate.";";
 
 	dbDelta( $create_panels );
