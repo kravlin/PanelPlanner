@@ -82,7 +82,7 @@
 			echo '<label for="pp-outline">Detailed Panel outline (required) </label>';
 			echo '<textarea class="form-control" rows="10" cols="35" name="pp-outline" placeholder="'. ( isset( $_POST["pp-outline"] ) ? esc_attr( $_POST["pp-outline"] ) : 'Outline your panel here, what are you going to talk about? How long do you expect the different parts to last?' ) .'"></textarea>';	
 			echo '</div>';
-			echo '<input class="btn btn-primary" type="submit" name="pp-submitted" value="Send"/>';
+			echo '<input type="submit" name="pp-submitted" value="Send"/>';
 			echo '</form>';
 		}
 		static public function panel_planner_disclaimer() {
@@ -101,7 +101,7 @@
 			echo "<p>If you've read the <a href=\"/ndk-events/panels/guidelines\">Panel Guidelines</a>, fleshed out your panel idea, and are ready to submit a detailed proposal, please continue.</p><p>";
 			echo '<form action="' . $_SERVER['REQUEST_URI'] . '" method="post">';
 			echo "&nbsp;</p><p>";
-			echo '<input class="form-control btn btn-primary" type="submit" name="pp-guidelines-accept" value="Accept"/>';
+			echo '<input type="submit" name="pp-guidelines-accept" value="Accept"/>';
 			echo "</p>";
 			echo "</form>";
 		}
@@ -148,7 +148,7 @@
 						$_POST['pp-email'], $_POST['pp-age'],
 						$panelID, $_POST['pp-title'], $_POST['pp-description'],
 						$_POST['pp-outline'],'events@ndkdenver.org');
-					$this->panel_planner_stage_1_thankyou();
+					self::panel_planner_stage_1_thankyou();
 				}
 				error_log("Reading Input Correct");
 
