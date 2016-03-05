@@ -3,7 +3,7 @@
  Plugin Name: Panel Planner
  Plugin URI: http://chronostasis.net/PanelPlanner
  Description: A plugin used to help accept and deny panels for conventions
- Version: 1.1
+ Version: 1.1.1
  Author: Kravlin
  Author URI: http://chronostasis.net
  Network: False

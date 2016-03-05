@@ -82,28 +82,33 @@
 			echo '<label for="pp-outline">Detailed Panel outline (required) </label>';
 			echo '<textarea class="form-control" rows="10" cols="35" name="pp-outline" placeholder="'. ( isset( $_POST["pp-outline"] ) ? esc_attr( $_POST["pp-outline"] ) : 'Outline your panel here, what are you going to talk about? How long do you expect the different parts to last?' ) .'"></textarea>';	
 			echo '</div>';
-			echo '<input type="submit" name="pp-submitted" value="Send"/>';
+			echo '<input class="btn btn-primary" type="submit" name="pp-submitted" value="Send"/>';
 			echo '</form>';
 		}
 		static public function panel_planner_disclaimer() {
 			echo "<h1>Panel Submission Form</h1>";
-			echo "Thank you for your interest in running a panel (or other activity) at Nan Desu Kan ";
+			echo "<p>Thank you for your interest in running a panel (or other activity) at Nan Desu Kan ";
 			echo date('Y'); 
-			echo ". We look forward to reading your proposal.  <br>";
-			echo "<br>";
-			echo "If you haven't yet done so, please take this time to go read the <a href=\"/ndk-events/panels/guidelines\">Panel Guidelines</a>.<br><br>";
-			echo "All prospective panelists <strong>must</strong> read and understand these guidelines before they submit proposals. Failure to understand the guidelines could result in the rejection of your proposal.<br>";
-			echo "<br>";
-			echo "If you aren't prepared to submit a detailed proposal just yet, please take your time to flesh out your panel idea. We'd rather see a strong proposal later on than a weak one earlier on.<br>";
-			echo "<br>";
-			echo "Please don't delay too long, however. The deadline to submit the detailed proposal for your panel is <strong>, June 28 </strong>at 10:00 PM MST. This form will be disabled after that time and all panels not submitted by that point will be rejected <strong>without exception</strong>. You must also be pre-registered for NDK (or be on NDK Staff) before submitting this form. If you haven't pre-registered, please <a href=\"/registration\">do so now</a>. We'll be checking submissions against our pre-registration records.<br>";
-			echo "<br>";
-			echo "If you've read the <a href=\"/ndk-events/panels/guidelines\">Panel Guidelines</a>, fleshed out your panel idea, and are ready to submit a detailed proposal, please continue.<br><br>";
+			echo ". We look forward to reading your proposal.  </p>";
+			
+			echo "<p>If you haven't yet done so, please take this time to go read the <a href=\"/ndk-events/panels/guidelines\">Panel Guidelines</a>.</p>";
+			echo "<p>All prospective panelists <strong>must</strong> read and understand these guidelines before they submit proposals. Failure to understand the guidelines could result in the rejection of your proposal.</p>";
+			
+			echo "<p>If you aren't prepared to submit a detailed proposal just yet, please take your time to flesh out your panel idea. We'd rather see a strong proposal later on than a weak one earlier on.</p>";
+			
+			echo "<p>Please don't delay too long, however. The deadline to submit the detailed proposal for your panel is <strong>, June 28 </strong>at 10:00 PM MST. This form will be disabled after that time and all panels not submitted by that point will be rejected <strong>without exception</strong>. You must also be pre-registered for NDK (or be on NDK Staff) before submitting this form. If you haven't pre-registered, please <a href=\"/registration\">do so now</a>. We'll be checking submissions against our pre-registration records.</p>";
+			
+			echo "<p>If you've read the <a href=\"/ndk-events/panels/guidelines\">Panel Guidelines</a>, fleshed out your panel idea, and are ready to submit a detailed proposal, please continue.</p><p>";
 			echo '<form action="' . $_SERVER['REQUEST_URI'] . '" method="post">';
-			echo "<br><p>";
-			echo '<input type="submit" name="pp-guidelines-accept" value="Accept"/>';
+			echo "&nbsp;</p><p>";
+			echo '<input class="form-control btn btn-primary" type="submit" name="pp-guidelines-accept" value="Accept"/>';
 			echo "</p>";
 			echo "</form>";
+		}
+		static public function panel_planner_stage_1_thankyou() {
+			echo "<h1>Thank you for your Panel Submission</h1>";
+			echo "<p>Your Panel proposal has been sent to our Events Team, and stored in our database.  We'll get back to you as soon as we can after submissions close.</p>";
+			echo "<p>If you have questions, comments or concerns please use the Contact-Us form to contact the Events Department.</p>";
 		}
 		public function panel_planner_stage_1_process(){
 			if ( isset($_POST['pp-guidelines-accept']) ) {
@@ -143,6 +148,7 @@
 						$_POST['pp-email'], $_POST['pp-age'],
 						$panelID, $_POST['pp-title'], $_POST['pp-description'],
 						$_POST['pp-outline'],'events@ndkdenver.org');
+					$this->panel_planner_stage_1_thankyou();
 				}
 				error_log("Reading Input Correct");
 
