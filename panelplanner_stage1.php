@@ -84,6 +84,8 @@
 			echo '</div>';
 			echo '<input type="submit" name="pp-submitted" value="Send"/>';
 			echo '</form>';
+			
+			echo "<p style=\"font-size: smaller\">Please note, please don't be worried if the confirmation page shows blank after submitting.  We are working on our PanelPlanning plugin to fix this.</p>";
 		}
 		static public function panel_planner_disclaimer() {
 			echo "<h1>Panel Submission Form</h1>";
@@ -96,7 +98,7 @@
 			
 			echo "<p>If you aren't prepared to submit a detailed proposal just yet, please take your time to flesh out your panel idea. We'd rather see a strong proposal later on than a weak one earlier on.</p>";
 			
-			echo "<p>Please don't delay too long, however. The deadline to submit the detailed proposal for your panel is <strong>, June 28 </strong>at 10:00 PM MST. This form will be disabled after that time and all panels not submitted by that point will be rejected <strong>without exception</strong>. You must also be pre-registered for NDK (or be on NDK Staff) before submitting this form. If you haven't pre-registered, please <a href=\"/registration\">do so now</a>. We'll be checking submissions against our pre-registration records.</p>";
+			echo "<p>Please don't delay too long, however. The deadline to submit the detailed proposal for your panel is <strong>, May 29, " . date("Y") . " </strong>at 10:00 PM MST. This form will be disabled after that time and all panels not submitted by that point will be rejected <strong>without exception</strong>. You must also be pre-registered for NDK (or be on NDK Staff) before submitting this form. If you haven't pre-registered, please <a href=\"/registration\">do so now</a>. We'll be checking submissions against our pre-registration records.</p>";
 			
 			echo "<p>If you've read the <a href=\"/ndk-events/panels/guidelines\">Panel Guidelines</a>, fleshed out your panel idea, and are ready to submit a detailed proposal, please continue.</p><p>";
 			echo '<form action="' . $_SERVER['REQUEST_URI'] . '" method="post">';
